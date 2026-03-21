@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LogoMart — Boutique de Logos</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#0d0d0f;--surface:#15151a;--surface2:#1c1c23;--border:#2a2a35;
+  --text:#f0eee8;--muted:#888899;
+  --c1:#ff6b35;--c2:#f7c948;--c3:#4ecdc4;--c4:#a855f7;--c5:#22d3ee;
+  --font-head:'Syne',sans-serif;--font-body:'Instrument Sans',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-weight:300;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");opacity:.4;}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 3rem;background:rgba(13,13,15,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:var(--font-head);font-size:1.3rem;font-weight:800;text-decoration:none;background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.82rem;transition:color .2s;}
+.nav-links a:hover{color:var(--text);}
+.nav-right{display:flex;align-items:center;gap:.8rem;}
+.cart-btn{position:relative;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:.55rem 1.1rem;font-family:var(--font-body);font-size:.8rem;cursor:pointer;display:flex;align-items:center;gap:.5rem;border-radius:8px;transition:all .2s;}
+.cart-btn:hover{border-color:var(--c1);}
+.cart-count{position:absolute;top:-.4rem;right:-.4rem;background:var(--c1);color:#fff;width:18px;height:18px;border-radius:50%;font-size:.65rem;font-weight:700;display:none;align-items:center;justify-content:center;}
+.admin-nav-btn{background:transparent;border:1px solid var(--c4);color:var(--c4);padding:.5rem 1rem;font-family:var(--font-body);font-size:.75rem;cursor:pointer;border-radius:8px;transition:all .2s;}
+.admin-nav-btn:hover{background:var(--c4);color:#fff;}
+
+/* ===== HERO ===== */
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:6rem 3rem 4rem;text-align:center;}
+.hero-blobs{position:absolute;inset:0;pointer-events:none;}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.18;animation:blobFloat 8s ease-in-out infinite alternate;}
+.blob1{width:500px;height:500px;background:var(--c1);top:-10%;left:-10%;}
+.blob2{width:400px;height:400px;background:var(--c4);bottom:-5%;right:-5%;animation-delay:-3s;}
+.blob3{width:300px;height:300px;background:var(--c3);top:30%;left:60%;animation-delay:-5s;}
+@keyframes blobFloat{from{transform:translate(0,0) scale(1);}to{transform:translate(30px,20px) scale(1.1);}}
+.hero-inner{position:relative;z-index:1;max-width:780px;}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--surface2);border:1px solid var(--border);padding:.4rem 1rem;border-radius:100px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;animation:fadeDown .7s ease .1s both;}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--c3);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(.8);}}
+.hero-title{font-family:var(--font-head);font-size:clamp(2.8rem,7vw,5.5rem);font-weight:800;line-height:.95;letter-spacing:-.03em;margin-bottom:1.5rem;animation:fadeDown .8s ease .25s both;}
+.grad1{background:linear-gradient(135deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.grad2{background:linear-gradient(135deg,var(--c3),var(--c5));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-sub{color:var(--muted);font-size:1rem;line-height:1.8;max-width:520px;margin:0 auto 2.5rem;animation:fadeDown .8s ease .4s both;}
+.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeDown .8s ease .55s both;}
+.btn-primary{background:linear-gradient(135deg,var(--c1),var(--c2));color:#111;padding:.9rem 2rem;border:none;font-family:var(--font-head);font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:10px;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 24px rgba(255,107,53,.3);display:inline-block;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(255,107,53,.45);}
+.btn-outline{background:transparent;color:var(--text);padding:.9rem 2rem;border:1px solid var(--border);font-family:var(--font-head);font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:10px;text-decoration:none;transition:border-color .2s,background .2s;display:inline-block;}
+.btn-outline:hover{border-color:var(--c3);background:rgba(78,205,196,.06);}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;color:var(--muted);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;animation:fadeDown .8s ease .8s both;}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--border),transparent);}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-16px);}to{opacity:1;transform:translateY(0);}}
+
+/* ===== STATS ===== */
+.stats-bar{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:flex;justify-content:center;position:relative;z-index:1;}
+.stat-item{flex:1;max-width:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.8rem 1rem;border-right:1px solid var(--border);}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-family:var(--font-head);font-size:1.8rem;font-weight:800;}
+.stat-num.c1{color:var(--c1);}.stat-num.c2{color:var(--c2);}.stat-num.c3{color:var(--c3);}.stat-num.c4{color:var(--c4);}
+.stat-lbl{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.25rem;}
+
+/* ===== SECTIONS ===== */
+section{padding:6rem 3rem;position:relative;z-index:1;}
+.section-header{margin-bottom:3.5rem;}
+.section-tag{display:inline-block;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;padding:.3rem .9rem;border-radius:100px;margin-bottom:1rem;font-weight:500;}
+.tag-orange{background:rgba(255,107,53,.12);color:var(--c1);border:1px solid rgba(255,107,53,.25);}
+.tag-teal{background:rgba(78,205,196,.12);color:var(--c3);border:1px solid rgba(78,205,196,.25);}
+.section-title{font-family:var(--font-head);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:.8rem;}
+.section-sub{color:var(--muted);font-size:.9rem;line-height:1.8;max-width:500px;}
+
+/* ===== FILTERS ===== */
+.filter-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.filter-chip{background:var(--surface2);border:1px solid var(--border);color:var(--muted);padding:.45rem 1.1rem;border-radius:100px;font-size:.75rem;font-weight:500;cursor:pointer;transition:all .2s;font-family:var(--font-body);}
+.filter-chip.active,.filter-chip:hover{background:var(--c1);border-color:var(--c1);color:#111;}
+
+/* ===== LOGO GRID ===== */
+.logo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem;}
+.logo-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s;cursor:pointer;}
+.logo-card:hover{transform:translateY(-6px);border-color:var(--c1);box-shadow:0 16px 48px rgba(255,107,53,.15);}
+.logo-preview{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.logo-img{width:75%;height:75%;object-fit:contain;transition:transform .3s;filter:drop-shadow(0 4px 16px rgba(0,0,0,.4));}
+.logo-card:hover .logo-img{transform:scale(1.07);}
+.logo-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;}
+.placeholder-icon{font-size:2.5rem;opacity:.3;}
+.placeholder-text{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.logo-badges{position:absolute;top:.75rem;left:.75rem;display:flex;gap:.4rem;}
+.badge{font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .55rem;border-radius:6px;}
+.badge-new{background:var(--c3);color:#0d1a1a;}
+.badge-hot{background:var(--c1);color:#fff;}
+.badge-excl{background:var(--c4);color:#fff;}
+.logo-info{padding:1.2rem 1.4rem 1.4rem;}
+.logo-cat{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem;}
+.logo-name{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:.3rem;}
+.logo-desc{font-size:.78rem;color:var(--muted);line-height:1.6;margin-bottom:1rem;}
+.logo-footer{display:flex;align-items:center;justify-content:space-between;}
+.logo-price{font-family:var(--font-head);font-size:1.3rem;font-weight:800;}
+.add-cart-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:.5rem 1rem;border-radius:8px;font-family:var(--font-body);font-size:.75rem;font-weight:500;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:.4rem;}
+.add-cart-btn:hover{background:var(--c1);border-color:var(--c1);color:#111;}
+.add-cart-btn.added{background:var(--c3);border-color:var(--c3);color:#0d1a1a;}
+
+/* Loading */
+.loading-grid{display:flex;align-items:center;justify-content:center;padding:4rem;flex-direction:column;gap:1rem;color:var(--muted);}
+.spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--c1);border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.empty-state{text-align:center;padding:4rem;color:var(--muted);}
+.empty-icon{font-size:3rem;margin-bottom:1rem;opacity:.4;}
+
+/* ===== CUSTOM ===== */
+#custom{background:var(--surface);}
+.custom-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.custom-steps{display:flex;flex-direction:column;gap:1.5rem;margin-top:2rem;}
+.step-item{display:flex;gap:1.2rem;align-items:flex-start;}
+.step-num{width:36px;height:36px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:.85rem;font-weight:800;}
+.sn1{background:rgba(255,107,53,.15);color:var(--c1);}
+.sn2{background:rgba(247,201,72,.15);color:var(--c2);}
+.sn3{background:rgba(78,205,196,.15);color:var(--c3);}
+.sn4{background:rgba(168,85,247,.15);color:var(--c4);}
+.step-content h4{font-family:var(--font-head);font-size:.9rem;font-weight:700;margin-bottom:.25rem;}
+.step-content p{font-size:.8rem;color:var(--muted);line-height:1.7;}
+.order-form{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.form-title{font-family:var(--font-head);font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;}
+.form-group{margin-bottom:1.2rem;}
+.form-group label{display:block;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text);font-family:var(--font-body);font-size:.88rem;font-weight:300;padding:.8rem 1rem;border-radius:10px;outline:none;transition:border-color .2s;appearance:none;}
+.form-group select{cursor:pointer;}
+.form-group select option{background:#1c1c23;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--c3);}
+.form-group textarea{resize:none;height:100px;}
+.form-row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.color-pickers{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.5rem;}
+.color-opt{width:32px;height:32px;border-radius:8px;cursor:pointer;border:2px solid transparent;transition:border-color .2s,transform .2s;}
+.color-opt:hover,.color-opt.sel{border-color:var(--text);transform:scale(1.1);}
+.style-opts{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.5rem;}
+.style-opt{background:var(--surface);border:1px solid var(--border);color:var(--muted);padding:.4rem .9rem;border-radius:8px;font-size:.73rem;font-weight:500;cursor:pointer;transition:all .2s;}
+.style-opt.sel,.style-opt:hover{background:var(--c3);border-color:var(--c3);color:#0d1a1a;}
+.form-price-row{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:1rem;display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;}
+.price-label{font-size:.72rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
+.price-val{font-family:var(--font-head);font-size:1.4rem;font-weight:800;color:var(--c2);}
+.submit-order{width:100%;background:linear-gradient(135deg,var(--c3),var(--c5));color:#0d1a1a;border:none;padding:1rem;border-radius:10px;font-family:var(--font-head);font-size:.85rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:opacity .2s,transform .2s;box-shadow:0 4px 20px rgba(78,205,196,.3);}
+.submit-order:hover{opacity:.88;transform:translateY(-2px);}
+
+/* ===== CART ===== */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:900;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px);}
+.cart-overlay.open{opacity:1;pointer-events:all;}
+.cart-drawer{position:fixed;top:0;right:0;bottom:0;width:400px;max-width:95vw;background:var(--surface);border-left:1px solid var(--border);z-index:901;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;}
+.cart-overlay.open .cart-drawer{transform:translateX(0);}
+.cart-head{padding:1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.cart-head h2{font-family:var(--font-head);font-size:1.1rem;font-weight:800;}
+.cart-close{background:var(--surface2);border:1px solid var(--border);color:var(--text);width:34px;height:34px;border-radius:8px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.cart-close:hover{background:var(--border);}
+.cart-items{flex:1;overflow-y:auto;padding:1rem 1.5rem;}
+.cart-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:var(--muted);gap:1rem;font-size:.9rem;}
+.cart-empty-icon{font-size:3rem;opacity:.3;}
+.cart-item{display:flex;gap:1rem;align-items:center;padding:1rem 0;border-bottom:1px solid var(--border);}
+.cart-item-preview{width:60px;height:60px;border-radius:10px;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.cart-item-info{flex:1;}
+.cart-item-name{font-family:var(--font-head);font-size:.88rem;font-weight:700;margin-bottom:.2rem;}
+.cart-item-type{font-size:.7rem;color:var(--muted);}
+.cart-item-price{font-family:var(--font-head);font-size:1rem;font-weight:800;color:var(--c2);}
+.cart-item-remove{background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem;padding:.3rem;transition:color .2s;}
+.cart-item-remove:hover{color:var(--c1);}
+.cart-footer{padding:1.2rem 1.5rem;border-top:1px solid var(--border);flex-shrink:0;}
+.cart-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;}
+.cart-total-lbl{font-size:.8rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
+.cart-total-val{font-family:var(--font-head);font-size:1.5rem;font-weight:800;color:var(--c2);}
+.checkout-btn{width:100%;background:linear-gradient(135deg,var(--c1),var(--c2));color:#111;border:none;padding:1rem;border-radius:10px;font-family:var(--font-head);font-size:.85rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:opacity .2s,transform .2s;box-shadow:0 4px 20px rgba(255,107,53,.3);}
+.checkout-btn:hover{opacity:.88;transform:translateY(-2px);}
+.checkout-note{font-size:.68rem;color:var(--muted);text-align:center;margin-top:.8rem;line-height:1.6;}
+
+/* ===== CHECKOUT MODAL ===== */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:950;display:none;align-items:center;justify-content:center;backdrop-filter:blur(8px);padding:1.5rem;}
+.modal-overlay.open{display:flex;}
+.modal-box{background:var(--surface);border:1px solid var(--border);border-radius:20px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;padding:2rem;position:relative;}
+.modal-close{position:absolute;top:1rem;right:1rem;background:var(--surface2);border:1px solid var(--border);color:var(--text);width:34px;height:34px;border-radius:8px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;}
+.modal-title{font-family:var(--font-head);font-size:1.3rem;font-weight:800;margin-bottom:.4rem;}
+.modal-sub{color:var(--muted);font-size:.82rem;margin-bottom:1.5rem;}
+.payment-methods{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:1.5rem;}
+.pay-method{background:var(--surface2);border:2px solid var(--border);border-radius:12px;padding:1rem;cursor:pointer;transition:all .2s;text-align:center;}
+.pay-method:hover,.pay-method.active{border-color:var(--c3);}
+.pay-method-icon{font-size:1.6rem;margin-bottom:.4rem;}
+.pay-method-name{font-size:.75rem;font-weight:600;font-family:var(--font-head);}
+.pay-method-sub{font-size:.65rem;color:var(--muted);}
+.modal-form-group{margin-bottom:1rem;}
+.modal-form-group label{display:block;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;}
+.modal-form-group input{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:var(--font-body);font-size:.88rem;padding:.75rem 1rem;border-radius:10px;outline:none;transition:border-color .2s;}
+.modal-form-group input:focus{border-color:var(--c3);}
+.modal-total{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1rem;display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;}
+.pay-btn{width:100%;background:linear-gradient(135deg,var(--c3),var(--c5));color:#0d1a1a;border:none;padding:1rem;border-radius:10px;font-family:var(--font-head);font-size:.88rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:opacity .2s;}
+.pay-btn:hover{opacity:.85;}
+.modal-secure{font-size:.65rem;color:var(--muted);text-align:center;margin-top:.8rem;}
+.success-screen{display:none;text-align:center;padding:2rem 0;}
+.success-screen.show{display:block;}
+.success-icon{font-size:4rem;margin-bottom:1rem;}
+.success-title{font-family:var(--font-head);font-size:1.5rem;font-weight:800;margin-bottom:.5rem;}
+.success-sub{color:var(--muted);font-size:.85rem;line-height:1.7;}
+
+/* ===== TOAST ===== */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(20px);background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:.8rem 1.4rem;font-size:.8rem;font-weight:500;z-index:800;opacity:0;pointer-events:none;transition:all .3s;display:flex;align-items:center;gap:.6rem;box-shadow:0 8px 32px rgba(0,0,0,.4);}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.toast-dot{width:8px;height:8px;border-radius:50%;background:var(--c3);}
+
+/* ===== FOOTER ===== */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;position:relative;z-index:1;}
+.footer-logo{font-family:var(--font-head);font-size:1.1rem;font-weight:800;background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.footer-copy{font-size:.72rem;color:var(--muted);}
+.footer-links{display:flex;gap:1.5rem;}
+.footer-links a{font-size:.72rem;color:var(--muted);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--text);}
+
+/* ===== REVEAL ===== */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ========================================
+   PANNEAU ADMIN
+   ======================================== */
+.admin-overlay{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:1000;display:none;flex-direction:column;overflow-y:auto;}
+.admin-overlay.open{display:flex;}
+
+/* Login */
+.admin-login{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem;}
+.login-box{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:2.5rem;width:100%;max-width:380px;}
+.login-logo{font-family:var(--font-head);font-size:1.5rem;font-weight:800;background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.3rem;}
+.login-sub{color:var(--muted);font-size:.82rem;margin-bottom:2rem;}
+.login-input{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:var(--font-body);font-size:.9rem;padding:.9rem 1rem;border-radius:10px;outline:none;margin-bottom:1rem;transition:border-color .2s;}
+.login-input:focus{border-color:var(--c4);}
+.login-btn{width:100%;background:linear-gradient(135deg,var(--c4),var(--c5));color:#fff;border:none;padding:1rem;border-radius:10px;font-family:var(--font-head);font-size:.85rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:opacity .2s;}
+.login-btn:hover{opacity:.88;}
+.login-error{color:var(--c1);font-size:.78rem;margin-top:.5rem;display:none;}
+
+/* Dashboard */
+.admin-dashboard{display:none;flex-direction:column;min-height:100vh;}
+.admin-dashboard.show{display:flex;}
+.admin-nav{background:var(--surface);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.admin-nav-logo{font-family:var(--font-head);font-size:1.1rem;font-weight:800;background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.admin-nav-logo span{color:var(--muted);font-size:.75rem;font-weight:400;margin-left:.5rem;-webkit-text-fill-color:var(--muted);}
+.admin-logout{background:transparent;border:1px solid var(--border);color:var(--muted);padding:.5rem 1rem;border-radius:8px;font-family:var(--font-body);font-size:.75rem;cursor:pointer;transition:all .2s;}
+.admin-logout:hover{border-color:var(--c1);color:var(--c1);}
+.admin-body{flex:1;padding:2rem;max-width:1000px;width:100%;margin:0 auto;}
+
+/* Stats admin */
+.admin-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem;}
+.admin-stat{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.5rem;}
+.admin-stat-num{font-family:var(--font-head);font-size:1.8rem;font-weight:800;margin-bottom:.2rem;}
+.admin-stat-lbl{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+
+/* Tabs */
+.admin-tabs{display:flex;gap:.5rem;margin-bottom:2rem;border-bottom:1px solid var(--border);padding-bottom:0;}
+.admin-tab{background:transparent;border:none;color:var(--muted);padding:.8rem 1.2rem;font-family:var(--font-body);font-size:.82rem;font-weight:500;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;margin-bottom:-1px;}
+.admin-tab.active{color:var(--c1);border-color:var(--c1);}
+.admin-tab-content{display:none;}
+.admin-tab-content.active{display:block;}
+
+/* Formulaire ajout logo */
+.admin-form-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.8rem;margin-bottom:2rem;}
+.admin-form-title{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem;}
+.admin-input{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:var(--font-body);font-size:.85rem;padding:.75rem 1rem;border-radius:10px;outline:none;transition:border-color .2s;margin-bottom:1rem;appearance:none;}
+.admin-input:focus{border-color:var(--c3);}
+.admin-input option{background:#1c1c23;}
+.admin-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.admin-label{display:block;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;}
+.admin-group{margin-bottom:0;}
+.img-upload-area{border:2px dashed var(--border);border-radius:12px;padding:2rem;text-align:center;cursor:pointer;transition:border-color .2s;margin-bottom:1rem;}
+.img-upload-area:hover{border-color:var(--c3);}
+.img-upload-area input{display:none;}
+.img-preview{width:100%;max-height:150px;object-fit:contain;border-radius:8px;margin-top:.5rem;display:none;}
+.img-upload-icon{font-size:2rem;margin-bottom:.5rem;opacity:.4;}
+.img-upload-text{font-size:.78rem;color:var(--muted);}
+.admin-save-btn{background:linear-gradient(135deg,var(--c3),var(--c5));color:#0d1a1a;border:none;padding:.9rem 2rem;border-radius:10px;font-family:var(--font-head);font-size:.82rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:opacity .2s;width:100%;}
+.admin-save-btn:hover{opacity:.88;}
+.admin-save-btn:disabled{opacity:.4;cursor:not-allowed;}
+
+/* Liste logos admin */
+.admin-logos-list{display:flex;flex-direction:column;gap:1rem;}
+.admin-logo-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem;display:flex;align-items:center;gap:1rem;}
+.admin-logo-thumb{width:56px;height:56px;border-radius:8px;object-fit:contain;flex-shrink:0;background:var(--surface2);}
+.admin-logo-thumb-placeholder{width:56px;height:56px;border-radius:8px;flex-shrink:0;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:1.5rem;opacity:.4;}
+.admin-logo-info{flex:1;}
+.admin-logo-name{font-family:var(--font-head);font-size:.92rem;font-weight:700;margin-bottom:.2rem;}
+.admin-logo-meta{font-size:.72rem;color:var(--muted);}
+.admin-logo-price{font-family:var(--font-head);font-size:1rem;font-weight:800;color:var(--c2);margin-right:1rem;white-space:nowrap;}
+.admin-logo-actions{display:flex;gap:.5rem;flex-shrink:0;}
+.admin-edit-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text);width:32px;height:32px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:all .2s;}
+.admin-edit-btn:hover{border-color:var(--c2);color:var(--c2);}
+.admin-del-btn{background:var(--surface2);border:1px solid var(--border);color:var(--muted);width:32px;height:32px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:all .2s;}
+.admin-del-btn:hover{border-color:var(--c1);color:var(--c1);}
+.admin-badge{font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .5rem;border-radius:5px;margin-left:.4rem;}
+.ab-new{background:rgba(78,205,196,.15);color:var(--c3);}
+.ab-hot{background:rgba(255,107,53,.15);color:var(--c1);}
+.ab-excl{background:rgba(168,85,247,.15);color:var(--c4);}
+
+/* Commandes */
+.admin-orders-list{display:flex;flex-direction:column;gap:.8rem;}
+.admin-order-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem;}
+.order-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem;}
+.order-name{font-family:var(--font-head);font-size:.9rem;font-weight:700;}
+.order-amount{font-family:var(--font-head);font-size:.9rem;font-weight:800;color:var(--c2);}
+.order-meta{font-size:.72rem;color:var(--muted);}
+.order-status{font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .6rem;border-radius:5px;}
+.status-pending{background:rgba(247,201,72,.15);color:var(--c2);}
+.status-done{background:rgba(78,205,196,.15);color:var(--c3);}
+
+/* Confirmation suppression */
+.confirm-modal{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:1100;display:none;align-items:center;justify-content:center;padding:1.5rem;}
+.confirm-modal.open{display:flex;}
+.confirm-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;max-width:360px;width:100%;text-align:center;}
+.confirm-icon{font-size:2.5rem;margin-bottom:1rem;}
+.confirm-title{font-family:var(--font-head);font-size:1.1rem;font-weight:800;margin-bottom:.5rem;}
+.confirm-sub{color:var(--muted);font-size:.82rem;margin-bottom:1.5rem;line-height:1.7;}
+.confirm-actions{display:flex;gap:.8rem;}
+.confirm-cancel{flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:.8rem;border-radius:10px;font-family:var(--font-body);font-size:.82rem;cursor:pointer;transition:background .2s;}
+.confirm-cancel:hover{background:var(--border);}
+.confirm-delete{flex:1;background:var(--c1);color:#fff;border:none;padding:.8rem;border-radius:10px;font-family:var(--font-head);font-size:.82rem;font-weight:700;cursor:pointer;transition:opacity .2s;}
+.confirm-delete:hover{opacity:.85;}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  section{padding:4rem 1.5rem;}
+  .logo-grid{grid-template-columns:1fr 1fr;}
+  .custom-grid{grid-template-columns:1fr;}
+  .stats-bar{flex-wrap:wrap;}
+  .stat-item{min-width:50%;border-right:none;border-bottom:1px solid var(--border);}
+  footer{flex-direction:column;text-align:center;}
+  .admin-stats{grid-template-columns:1fr;}
+  .admin-row{grid-template-columns:1fr;}
+  .admin-body{padding:1rem;}
+}
+@media(max-width:560px){
+  .logo-grid{grid-template-columns:1fr;}
+  .form-row2{grid-template-columns:1fr;}
+  .payment-methods{grid-template-columns:1fr;}
+  .cart-drawer{width:100%;}
+  .admin-logo-item{flex-wrap:wrap;}
+}
+</style>
+</head>
+<body>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><span class="toast-dot"></span><span id="toastMsg"></span></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">LogoMart</a>
+  <ul class="nav-links">
+    <li><a href="#stock">Logos Stock</a></li>
+    <li><a href="#custom">Sur Commande</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="admin-nav-btn" onclick="openAdmin()">⚙️ Admin</button>
+    <button class="cart-btn" onclick="openCart()">
+      🛒 Panier
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-blobs">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="hero-badge-dot"></span>Boutique de logos · Abidjan, Côte d'Ivoire</div>
+    <h1 class="hero-title">
+      Des logos qui<br>
+      <span class="grad1">frappent</span> les<br>
+      <span class="grad2">esprits.</span>
+    </h1>
+    <p class="hero-sub">Logos prêts à l'emploi ou créés sur-mesure pour votre marque. Fichiers HD livrés en 48–72h. Payez facilement via Mobile Money ou carte bancaire.</p>
+    <div class="hero-actions">
+      <a href="#stock" class="btn-primary">Voir les logos →</a>
+      <a href="#custom" class="btn-outline">Commander un logo custom</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div>Défiler</div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item"><span class="stat-num c1">72h</span><span class="stat-lbl">Livraison max</span></div>
+  <div class="stat-item"><span class="stat-num c2">100%</span><span class="stat-lbl">Droits inclus</span></div>
+  <div class="stat-item"><span class="stat-num c3">3</span><span class="stat-lbl">Révisions incluses</span></div>
+  <div class="stat-item"><span class="stat-num c4">100%</span><span class="stat-lbl">Satisfaction garantie</span></div>
+</div>
+
+<!-- STOCK LOGOS -->
+<section id="stock">
+  <div class="section-header reveal">
+    <span class="section-tag tag-orange">Logos Stock</span>
+    <h2 class="section-title">Prêts à utiliser<br>dès aujourd'hui</h2>
+    <p class="section-sub">Logos exclusifs disponibles à l'achat unique. Fichiers PNG, SVG, AI inclus. Droits de propriété totaux transférés.</p>
+  </div>
+  <div class="filter-row reveal" id="filterRow">
+    <button class="filter-chip active" onclick="filterLogos(this,'all')">Tous</button>
+    <button class="filter-chip" onclick="filterLogos(this,'tech')">Tech</button>
+    <button class="filter-chip" onclick="filterLogos(this,'food')">Food & Restaurant</button>
+    <button class="filter-chip" onclick="filterLogos(this,'mode')">Mode & Luxe</button>
+    <button class="filter-chip" onclick="filterLogos(this,'sport')">Sport</button>
+    <button class="filter-chip" onclick="filterLogos(this,'sante')">Santé & Bien-être</button>
+  </div>
+  <div id="logoGrid"></div>
+</section>
+
+<!-- CUSTOM -->
+<section id="custom">
+  <div class="section-header reveal">
+    <span class="section-tag tag-teal">Sur Commande</span>
+    <h2 class="section-title">Votre logo,<br>100% unique.</h2>
+    <p class="section-sub">Décrivez votre marque, je crée un logo exclusif rien que pour vous. Livraison en 48–72h avec révisions incluses.</p>
+  </div>
+  <div class="custom-grid">
+    <div class="custom-left reveal">
+      <div class="custom-steps">
+        <div class="step-item">
+          <div class="step-num sn1">1</div>
+          <div class="step-content">
+            <h4>Remplissez le brief</h4>
+            <p>Nom, secteur, couleurs, style souhaité. Plus c'est précis, meilleur est le résultat.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num sn2">2</div>
+          <div class="step-content">
+            <h4>Payez en ligne</h4>
+            <p>Paiement sécurisé via Mobile Money (Orange, MTN, Wave) ou carte bancaire.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num sn3">3</div>
+          <div class="step-content">
+            <h4>Recevez les propositions</h4>
+            <p>2 à 3 concepts différents vous sont envoyés dans le délai choisi.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num sn4">4</div>
+          <div class="step-content">
+            <h4>Finalisez & téléchargez</h4>
+            <p>Retouches incluses. Fichiers finaux en AI, EPS, SVG, PNG HD livrés par email.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="order-form">
+        <p class="form-title">🎨 Commander un logo custom</p>
+        <div class="form-group">
+          <label>Nom de votre marque</label>
+          <input type="text" id="cf-nom" placeholder="Ex: BioKôko, TechPay..."/>
+        </div>
+        <div class="form-row2">
+          <div class="form-group">
+            <label>Secteur d'activité</label>
+            <select id="cf-secteur">
+              <option value="" disabled selected>Choisir…</option>
+              <option>Tech / App</option>
+              <option>Food & Restaurant</option>
+              <option>Mode & Luxe</option>
+              <option>Sport & Fitness</option>
+              <option>Santé & Bien-être</option>
+              <option>Finance</option>
+              <option>Éducation</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Délai souhaité</label>
+            <select id="cf-delai" onchange="updateCustomPrice()">
+              <option value="standard">Standard — 72h</option>
+              <option value="express">Express — 48h (+10 000)</option>
+              <option value="urgent">Urgent — 24h (+25 000)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Couleurs préférées</label>
+          <div class="color-pickers" id="colorPickers"></div>
+        </div>
+        <div class="form-group">
+          <label>Style de logo</label>
+          <div class="style-opts" id="styleOpts"></div>
+        </div>
+        <div class="form-group">
+          <label>Description & inspirations</label>
+          <textarea id="cf-desc" placeholder="Décrivez votre activité, votre cible, l'ambiance souhaitée…"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Votre email</label>
+          <input type="email" id="cf-email" placeholder="vous@exemple.com"/>
+        </div>
+        <div class="form-price-row">
+          <span class="price-label">Total commande</span>
+          <span class="price-val" id="customPriceDisplay">65 000 FCFA</span>
+        </div>
+        <button class="submit-order" onclick="submitCustomOrder()">Passer commande & payer →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">LogoMart</div>
+  <p class="footer-copy">© 2025 LogoMart · Abidjan, Côte d'Ivoire · Tous droits réservés</p>
+  <div class="footer-links">
+    <a href="#stock">Stock</a>
+    <a href="#custom">Custom</a>
+    <a href="https://wa.me/2250584161702" target="_blank">WhatsApp</a>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCartOutside(event)">
+  <div class="cart-drawer">
+    <div class="cart-head">
+      <h2>🛒 Mon Panier</h2>
+      <button class="cart-close" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItemsList">
+      <div class="cart-empty"><div class="cart-empty-icon">🛒</div><span>Votre panier est vide</span></div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none;">
+      <div class="cart-total-row">
+        <span class="cart-total-lbl">Total</span>
+        <span class="cart-total-val" id="cartTotalDisplay">0 FCFA</span>
+      </div>
+      <button class="checkout-btn" onclick="openCheckout()">Passer au paiement →</button>
+      <p class="checkout-note">💳 Mobile Money · Carte bancaire<br>Fichiers livrés par email sous 72h</p>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeCheckout()">✕</button>
+    <div id="checkoutForm">
+      <h2 class="modal-title">Paiement sécurisé</h2>
+      <p class="modal-sub">Choisissez votre méthode de paiement préférée</p>
+      <div class="payment-methods">
+        <div class="pay-method active" onclick="selectPay(this,'orange')">
+          <div class="pay-method-icon">🟠</div>
+          <div class="pay-method-name">Orange Money</div>
+          <div class="pay-method-sub">CI · SN · ML</div>
+        </div>
+        <div class="pay-method" onclick="selectPay(this,'mtn')">
+          <div class="pay-method-icon">🟡</div>
+          <div class="pay-method-name">MTN MoMo</div>
+          <div class="pay-method-sub">CI · GH · CM</div>
+        </div>
+        <div class="pay-method" onclick="selectPay(this,'wave')">
+          <div class="pay-method-icon">🔵</div>
+          <div class="pay-method-name">Wave</div>
+          <div class="pay-method-sub">CI · SN</div>
+        </div>
+        <div class="pay-method" onclick="selectPay(this,'card')">
+          <div class="pay-method-icon">💳</div>
+          <div class="pay-method-name">Carte Bancaire</div>
+          <div class="pay-method-sub">Visa · Mastercard</div>
+        </div>
+      </div>
+      <div class="modal-form-group">
+        <label>Votre numéro / email</label>
+        <input type="text" id="pay-contact" placeholder="07 00 00 00 00 ou email@exemple.com"/>
+      </div>
+      <div class="modal-form-group">
+        <label>Nom complet</label>
+        <input type="text" id="pay-name" placeholder="Votre nom complet"/>
+      </div>
+      <div class="modal-total">
+        <span style="font-size:.8rem;color:var(--muted);">Total à payer</span>
+        <span style="font-family:var(--font-head);font-size:1.3rem;font-weight:800;color:var(--c2);" id="modalTotalDisplay">0 FCFA</span>
+      </div>
+      <button class="pay-btn" onclick="processPayment()">Confirmer le paiement →</button>
+      <p class="modal-secure">🔒 Paiement sécurisé · Fichiers livrés par email sous 72h</p>
+    </div>
+    <div class="success-screen" id="successScreen">
+      <div class="success-icon">✅</div>
+      <h2 class="success-title">Commande confirmée !</h2>
+      <p class="success-sub">Merci pour votre achat.<br>Vos fichiers vous seront envoyés par email dans les <strong>72 heures</strong>.<br><br>Pour toute question : <strong>WhatsApp +225 05 84 16 17 02</strong></p>
+      <button class="btn-primary" style="margin-top:1.5rem;border:none;" onclick="closeCheckout();closeCart();">Retour à la boutique</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================
+     PANNEAU ADMIN
+     ======================================== -->
+<div class="admin-overlay" id="adminOverlay">
+
+  <!-- LOGIN -->
+  <div class="admin-login" id="adminLogin">
+    <div class="login-box">
+      <div class="login-logo">LogoMart</div>
+      <p class="login-sub">Panneau d'administration · Accès restreint</p>
+      <input type="password" class="login-input" id="adminPassword" placeholder="Mot de passe admin" onkeydown="if(event.key==='Enter')checkLogin()"/>
+      <button class="login-btn" onclick="checkLogin()">Accéder au panneau →</button>
+      <p class="login-error" id="loginError">❌ Mot de passe incorrect</p>
+      <button onclick="closeAdmin()" style="width:100%;background:transparent;border:none;color:var(--muted);font-family:var(--font-body);font-size:.78rem;cursor:pointer;margin-top:1rem;padding:.5rem;">← Retour à la boutique</button>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="admin-dashboard" id="adminDashboard">
+    <div class="admin-nav">
+      <div>
+        <span class="admin-nav-logo">LogoMart <span>Admin</span></span>
+      </div>
+      <div style="display:flex;gap:.8rem;align-items:center;">
+        <button onclick="closeAdmin()" style="background:transparent;border:none;color:var(--muted);font-family:var(--font-body);font-size:.78rem;cursor:pointer;">← Boutique</button>
+        <button class="admin-logout" onclick="logout()">Déconnexion</button>
+      </div>
+    </div>
+
+    <div class="admin-body">
+      <!-- Stats -->
+      <div class="admin-stats" id="adminStats">
+        <div class="admin-stat">
+          <div class="admin-stat-num" style="color:var(--c1);" id="statLogos">—</div>
+          <div class="admin-stat-lbl">Logos en vente</div>
+        </div>
+        <div class="admin-stat">
+          <div class="admin-stat-num" style="color:var(--c2);" id="statOrders">—</div>
+          <div class="admin-stat-lbl">Commandes reçues</div>
+        </div>
+        <div class="admin-stat">
+          <div class="admin-stat-num" style="color:var(--c3);" id="statRevenue">—</div>
+          <div class="admin-stat-lbl">Revenus totaux</div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="admin-tabs">
+        <button class="admin-tab active" onclick="switchTab(this,'tabLogos')">🎨 Mes Logos</button>
+        <button class="admin-tab" onclick="switchTab(this,'tabAjouter')">➕ Ajouter un Logo</button>
+        <button class="admin-tab" onclick="switchTab(this,'tabCommandes')">📋 Commandes</button>
+      </div>
+
+      <!-- TAB : MES LOGOS -->
+      <div class="admin-tab-content active" id="tabLogos">
+        <div id="adminLogosList">
+          <div class="loading-grid"><div class="spinner"></div><span>Chargement…</span></div>
+        </div>
+      </div>
+
+      <!-- TAB : AJOUTER UN LOGO -->
+      <div class="admin-tab-content" id="tabAjouter">
+        <div class="admin-form-box">
+          <div class="admin-form-title">🎨 Ajouter un nouveau logo</div>
+
+          <!-- Upload image -->
+          <label class="admin-label">Image du logo (PNG recommandé)</label>
+          <div class="img-upload-area" onclick="document.getElementById('imgInput').click()">
+            <input type="file" id="imgInput" accept="image/*" onchange="previewImage(event)"/>
+            <div class="img-upload-icon">🖼️</div>
+            <div class="img-upload-text">Clique pour choisir une image PNG</div>
+            <img id="imgPreview" class="img-preview"/>
+          </div>
+
+          <div class="admin-row">
+            <div class="admin-group">
+              <label class="admin-label">Nom du logo</label>
+              <input type="text" class="admin-input" id="a-name" placeholder="Ex: NexaCore"/>
+            </div>
+            <div class="admin-group">
+              <label class="admin-label">Prix (FCFA)</label>
+              <input type="number" class="admin-input" id="a-price" placeholder="45000"/>
+            </div>
+          </div>
+
+          <div class="admin-row">
+            <div class="admin-group">
+              <label class="admin-label">Catégorie</label>
+              <select class="admin-input" id="a-cat">
+                <option value="tech">Tech & App</option>
+                <option value="food">Food & Restaurant</option>
+                <option value="mode">Mode & Luxe</option>
+                <option value="sport">Sport</option>
+                <option value="sante">Santé & Bien-être</option>
+              </select>
+            </div>
+            <div class="admin-group">
+              <label class="admin-label">Badge</label>
+              <select class="admin-input" id="a-badge">
+                <option value="">Aucun</option>
+                <option value="new">Nouveau</option>
+                <option value="hot">🔥 Populaire</option>
+                <option value="excl">Exclusif</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="admin-group" style="margin-bottom:1rem;">
+            <label class="admin-label">Description courte</label>
+            <input type="text" class="admin-input" id="a-desc" placeholder="Ex: Logo minimaliste pour startup tech."/>
+          </div>
+
+          <div class="admin-row" style="margin-bottom:1rem;">
+            <div class="admin-group">
+              <label class="admin-label">Couleur du prix</label>
+              <select class="admin-input" id="a-color">
+                <option value="#22d3ee">Bleu cyan</option>
+                <option value="#ff6b35">Orange</option>
+                <option value="#f7c948">Jaune</option>
+                <option value="#4ecdc4">Vert teal</option>
+                <option value="#a855f7">Violet</option>
+              </select>
+            </div>
+            <div class="admin-group">
+              <label class="admin-label">Couleur de fond</label>
+              <select class="admin-input" id="a-bg">
+                <option value="#00101a">Bleu nuit</option>
+                <option value="#1a0a00">Brun foncé</option>
+                <option value="#0d001a">Violet nuit</option>
+                <option value="#001a18">Vert nuit</option>
+                <option value="#1a1200">Or nuit</option>
+                <option value="#1a0010">Rose nuit</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="admin-save-btn" id="saveBtnAdd" onclick="addLogo()">✅ Ajouter ce logo à la boutique</button>
+        </div>
+      </div>
+
+      <!-- TAB : COMMANDES -->
+      <div class="admin-tab-content" id="tabCommandes">
+        <div id="adminOrdersList">
+          <div class="loading-grid"><div class="spinner"></div><span>Chargement…</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CONFIRMATION SUPPRESSION -->
+<div class="confirm-modal" id="confirmModal">
+  <div class="confirm-box">
+    <div class="confirm-icon">🗑️</div>
+    <div class="confirm-title">Supprimer ce logo ?</div>
+    <p class="confirm-sub">Cette action est irréversible. Le logo sera retiré de la boutique définitivement.</p>
+    <div class="confirm-actions">
+      <button class="confirm-cancel" onclick="closeConfirm()">Annuler</button>
+      <button class="confirm-delete" onclick="confirmDelete()">Supprimer</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ╔══════════════════════════════════════════╗
+// ║         CONFIGURATION LOGOMART           ║
+// ╚══════════════════════════════════════════╝
+const SUPABASE_URL = 'https://vifbcxjzhzakagfuneue.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZpZmJjeGp6aHpha2FnZnVuZXVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwNDkxMjEsImV4cCI6MjA4OTYyNTEyMX0.g-KKy1XTE_YLTcGxY8r57fsc7G070IMtuYmSXzo6lRM';
+const ADMIN_PASSWORD = 'logomart2025'; // ← Change ce mot de passe !
+const WHATSAPP = '2250584161702';
+const EMAIL_CONTACT = 'regisange37@gmail.com';
+
+// ╔══════════════════════════════════════════╗
+// ║           SUPABASE HELPERS               ║
+// ╚══════════════════════════════════════════╝
+const SB_HEADERS = {
+  'apikey': SUPABASE_KEY,
+  'Authorization': `Bearer ${SUPABASE_KEY}`,
+  'Content-Type': 'application/json'
+};
+
+async function sbGet(table, query=''){
+  const r = await fetch(`${SUPABASE_URL}/rest/v1/${table}${query}`, {headers: SB_HEADERS});
+  return r.ok ? await r.json() : [];
+}
+async function sbPost(table, data){
+  const r = await fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
+    method:'POST', headers:{...SB_HEADERS,'Prefer':'return=representation'}, body:JSON.stringify(data)
+  });
+  return r.ok ? await r.json() : null;
+}
+async function sbDelete(table, id){
+  const r = await fetch(`${SUPABASE_URL}/rest/v1/${table}?id=eq.${id}`, {method:'DELETE', headers: SB_HEADERS});
+  return r.ok;
+}
+async function sbUpdate(table, id, data){
+  const r = await fetch(`${SUPABASE_URL}/rest/v1/${table}?id=eq.${id}`, {
+    method:'PATCH', headers:{...SB_HEADERS,'Prefer':'return=minimal'}, body:JSON.stringify(data)
+  });
+  return r.ok;
+}
+
+// Upload image vers Supabase Storage
+async function uploadImage(file){
+  const ext = file.name.split('.').pop();
+  const fileName = `logo_${Date.now()}.${ext}`;
+  const r = await fetch(`${SUPABASE_URL}/storage/v1/object/logos/${fileName}`, {
+    method:'POST',
+    headers:{'apikey': SUPABASE_KEY,'Authorization': `Bearer ${SUPABASE_KEY}`,'Content-Type': file.type},
+    body: file
+  });
+  if(!r.ok) return null;
+  return `${SUPABASE_URL}/storage/v1/object/public/logos/${fileName}`;
+}
+
+// ╔══════════════════════════════════════════╗
+// ║              BOUTIQUE                    ║
+// ╚══════════════════════════════════════════╝
+const COLORS = ['#ff6b35','#f7c948','#4ecdc4','#a855f7','#22d3ee','#ef4444','#10b981','#3b82f6','#1a1a1a','#ffffff'];
+const STYLES = ['Minimaliste','Géométrique','Typographique','Illustratif','Vintage','Moderne','Playful','Luxe'];
+const CUSTOM_BASE = 65000;
+const CUSTOM_EXTRA = {standard:0, express:10000, urgent:25000};
+let cart = [];
+let allLogos = [];
+let currentFilter = 'all';
+let selectedColors = [];
+let selectedStyles = [];
+let activePayMethod = 'orange';
+let deleteTargetId = null;
+let currentImageFile = null;
+
+function formatPrice(n){return Number(n).toLocaleString('fr-FR')+' FCFA';}
+function catLabel(c){return{tech:'Tech & App',food:'Food & Restaurant',mode:'Mode & Luxe',sport:'Sport',sante:'Santé & Bien-être'}[c]||c;}
+function badgeLabel(b){return{new:'Nouveau',hot:'🔥 Populaire',excl:'Exclusif'}[b]||'';}
+
+// Charger logos depuis Supabase
+async function loadLogos(){
+  document.getElementById('logoGrid').innerHTML = `<div class="loading-grid"><div class="spinner"></div><span>Chargement des logos…</span></div>`;
+  const data = await sbGet('logos','?order=created_at.desc');
+  allLogos = data || [];
+  renderLogos();
+}
+
+function renderLogos(){
+  const grid = document.getElementById('logoGrid');
+  const items = currentFilter==='all' ? allLogos : allLogos.filter(l=>l.cat===currentFilter);
+  if(items.length===0){
+    grid.innerHTML = `<div class="empty-state"><div class="empty-icon">🎨</div><p>Aucun logo dans cette catégorie pour le moment.<br>Revenez bientôt !</p></div>`;
+    return;
+  }
+  grid.innerHTML = `<div class="logo-grid">${items.map(logo=>{
+    const inCart = cart.some(c=>c.id===logo.id);
+    return `<div class="logo-card reveal" data-id="${logo.id}">
+      <div class="logo-preview" style="background:${logo.bg_color||'#111'}">
+        ${logo.badge?`<div class="logo-badges"><span class="badge badge-${logo.badge}">${badgeLabel(logo.badge)}</span></div>`:''}
+        ${logo.image_url
+          ? `<img src="${logo.image_url}" alt="${logo.name}" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/><div class="logo-placeholder" style="display:none;"><span class="placeholder-icon">🖼️</span><span class="placeholder-text">Image à venir</span></div>`
+          : `<div class="logo-placeholder"><span class="placeholder-icon">🎨</span><span class="placeholder-text">Aperçu bientôt</span></div>`}
+      </div>
+      <div class="logo-info">
+        <div class="logo-cat">${catLabel(logo.cat)}</div>
+        <div class="logo-name">${logo.name}</div>
+        <div class="logo-desc">${logo.description||''}</div>
+        <div class="logo-footer">
+          <span class="logo-price" style="color:${logo.color||'var(--c1)'}">${formatPrice(logo.price)}</span>
+          <button class="add-cart-btn ${inCart?'added':''}" onclick="addToCart('${logo.id}')" id="btn-${logo.id}">
+            ${inCart?'✓ Ajouté':'+ Panier'}
+          </button>
+        </div>
+      </div>
+    </div>`;
+  }).join('')}</div>`;
+  initReveal();
+}
+
+function filterLogos(btn, cat){
+  document.querySelectorAll('.filter-chip').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  currentFilter = cat;
+  renderLogos();
+}
+
+// ===== PANIER =====
+function addToCart(id){
+  const logo = allLogos.find(l=>String(l.id)===String(id));
+  if(!logo){showToast('Logo introuvable');return;}
+  if(cart.some(c=>String(c.id)===String(id))){showToast('Déjà dans le panier !');return;}
+  cart.push({...logo, type:'stock'});
+  updateCartUI();
+  const btn = document.getElementById('btn-'+id);
+  if(btn){btn.classList.add('added');btn.textContent='✓ Ajouté';}
+  showToast(`"${logo.name}" ajouté au panier`);
+}
+function removeFromCart(id){
+  cart = cart.filter(c=>String(c.id)!==String(id));
+  updateCartUI();
+  const btn = document.getElementById('btn-'+id);
+  if(btn){btn.classList.remove('added');btn.textContent='+ Panier';}
+}
+function updateCartUI(){
+  const count = cart.length;
+  const countEl = document.getElementById('cartCount');
+  countEl.textContent = count;
+  countEl.style.display = count>0?'flex':'none';
+  const list = document.getElementById('cartItemsList');
+  const footer = document.getElementById('cartFooter');
+  if(count===0){
+    list.innerHTML='<div class="cart-empty"><div class="cart-empty-icon">🛒</div><span>Votre panier est vide</span></div>';
+    footer.style.display='none';return;
+  }
+  footer.style.display='block';
+  list.innerHTML = cart.map(item=>`
+    <div class="cart-item">
+      <div class="cart-item-preview" style="background:${item.bg_color||'#111'}">
+        ${item.image_url?`<img src="${item.image_url}" alt="${item.name}" style="width:80%;height:80%;object-fit:contain;" onerror="this.style.display='none'"/>`:''}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-type">${item.type==='stock'?'Logo Stock':'Logo Custom'}</div>
+      </div>
+      <span class="cart-item-price">${formatPrice(item.price)}</span>
+      <button class="cart-item-remove" onclick="removeFromCart('${item.id}')">🗑</button>
+    </div>`).join('');
+  const total = cart.reduce((s,i)=>s+Number(i.price),0);
+  document.getElementById('cartTotalDisplay').textContent = formatPrice(total);
+  document.getElementById('modalTotalDisplay').textContent = formatPrice(total);
+}
+function openCart(){document.getElementById('cartOverlay').classList.add('open');}
+function closeCart(){document.getElementById('cartOverlay').classList.remove('open');}
+function closeCartOutside(e){if(e.target===document.getElementById('cartOverlay'))closeCart();}
+
+// ===== CHECKOUT =====
+function openCheckout(){
+  if(cart.length===0){showToast('Votre panier est vide');return;}
+  document.getElementById('checkoutForm').style.display='block';
+  document.getElementById('successScreen').classList.remove('show');
+  document.getElementById('checkoutModal').classList.add('open');
+}
+function closeCheckout(){document.getElementById('checkoutModal').classList.remove('open');}
+function selectPay(el,method){
+  document.querySelectorAll('.pay-method').forEach(m=>m.classList.remove('active'));
+  el.classList.add('active');activePayMethod=method;
+}
+async function processPayment(){
+  const contact = document.getElementById('pay-contact').value.trim();
+  const name = document.getElementById('pay-name').value.trim();
+  if(!contact||!name){showToast('Veuillez remplir tous les champs');return;}
+  const total = cart.reduce((s,i)=>s+Number(i.price),0);
+  // Sauvegarder la commande dans Supabase
+  await sbPost('commandes',{
+    client_nom: name,
+    client_contact: contact,
+    methode_paiement: activePayMethod,
+    montant: total,
+    logos: cart.map(c=>c.name).join(', '),
+    statut: 'en_attente'
+  });
+  document.getElementById('checkoutForm').style.display='none';
+  document.getElementById('successScreen').classList.add('show');
+  cart=[];updateCartUI();
+}
+
+// ===== CUSTOM ORDER =====
+function renderColorPickers(){
+  document.getElementById('colorPickers').innerHTML = COLORS.map(c=>`<div class="color-opt" style="background:${c}" onclick="toggleColor(this,'${c}')"></div>`).join('');
+}
+function toggleColor(el,c){
+  el.classList.toggle('sel');
+  if(selectedColors.includes(c))selectedColors=selectedColors.filter(x=>x!==c);
+  else selectedColors.push(c);
+}
+function renderStyleOpts(){
+  document.getElementById('styleOpts').innerHTML = STYLES.map(s=>`<div class="style-opt" onclick="toggleStyle(this,'${s}')">${s}</div>`).join('');
+}
+function toggleStyle(el,s){
+  el.classList.toggle('sel');
+  if(selectedStyles.includes(s))selectedStyles=selectedStyles.filter(x=>x!==s);
+  else selectedStyles.push(s);
+}
+function updateCustomPrice(){
+  const d = document.getElementById('cf-delai')?.value||'standard';
+  document.getElementById('customPriceDisplay').textContent = formatPrice(CUSTOM_BASE+(CUSTOM_EXTRA[d]||0));
+}
+async function submitCustomOrder(){
+  const nom = document.getElementById('cf-nom').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const secteur = document.getElementById('cf-secteur').value;
+  if(!nom||!email||!secteur){showToast('Remplissez tous les champs obligatoires');return;}
+  const delai = document.getElementById('cf-delai').value;
+  const price = CUSTOM_BASE+(CUSTOM_EXTRA[delai]||0);
+  await sbPost('commandes',{
+    client_nom: nom,
+    client_contact: email,
+    methode_paiement: 'custom',
+    montant: price,
+    logos: `Logo Custom — ${nom} (${secteur})`,
+    statut: 'en_attente',
+    notes: `Délai: ${delai} | Couleurs: ${selectedColors.join(',')} | Styles: ${selectedStyles.join(',')}`
+  });
+  cart=[{id:999,name:`Logo Custom — ${nom}`,type:'custom',price,bg_color:'#0d001a',image_url:null}];
+  updateCartUI();openCart();
+  showToast('Commande custom ajoutée au panier');
+}
+
+// ===== TOAST =====
+function showToast(msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+// ===== SCROLL REVEAL =====
+function initReveal(){
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.1});
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el=>obs.observe(el));
+}
+
+// ╔══════════════════════════════════════════╗
+// ║           PANNEAU ADMIN                  ║
+// ╚══════════════════════════════════════════╝
+let isLoggedIn = false;
+
+function openAdmin(){
+  document.getElementById('adminOverlay').classList.add('open');
+  document.getElementById('adminPassword').value='';
+  document.getElementById('loginError').style.display='none';
+  if(isLoggedIn){
+    document.getElementById('adminLogin').style.display='none';
+    document.getElementById('adminDashboard').classList.add('show');
+    loadAdminData();
+  } else {
+    document.getElementById('adminLogin').style.display='flex';
+    document.getElementById('adminDashboard').classList.remove('show');
+  }
+}
+function closeAdmin(){document.getElementById('adminOverlay').classList.remove('open');}
+function checkLogin(){
+  const pw = document.getElementById('adminPassword').value;
+  if(pw===ADMIN_PASSWORD){
+    isLoggedIn=true;
+    document.getElementById('adminLogin').style.display='none';
+    document.getElementById('adminDashboard').classList.add('show');
+    loadAdminData();
+  } else {
+    document.getElementById('loginError').style.display='block';
+  }
+}
+function logout(){
+  isLoggedIn=false;
+  document.getElementById('adminDashboard').classList.remove('show');
+  document.getElementById('adminLogin').style.display='flex';
+}
+function switchTab(btn, tabId){
+  document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.admin-tab-content').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(tabId).classList.add('active');
+  if(tabId==='tabLogos')loadAdminLogos();
+  if(tabId==='tabCommandes')loadAdminOrders();
+}
+
+async function loadAdminData(){
+  loadAdminLogos();
+  loadAdminOrders();
+  // Stats
+  const logos = await sbGet('logos','');
+  const orders = await sbGet('commandes','');
+  document.getElementById('statLogos').textContent = logos.length;
+  document.getElementById('statOrders').textContent = orders.length;
+  const rev = orders.reduce((s,o)=>s+Number(o.montant||0),0);
+  document.getElementById('statRevenue').textContent = formatPrice(rev);
+}
+
+async function loadAdminLogos(){
+  document.getElementById('adminLogosList').innerHTML = `<div class="loading-grid"><div class="spinner"></div><span>Chargement…</span></div>`;
+  const data = await sbGet('logos','?order=created_at.desc');
+  allLogos = data || [];
+  if(data.length===0){
+    document.getElementById('adminLogosList').innerHTML = `<div class="empty-state"><div class="empty-icon">🎨</div><p>Aucun logo ajouté.<br>Va dans l'onglet "Ajouter un Logo" !</p></div>`;
+    return;
+  }
+  document.getElementById('adminLogosList').innerHTML = `<div class="admin-logos-list">${data.map(logo=>`
+    <div class="admin-logo-item">
+      ${logo.image_url
+        ? `<img src="${logo.image_url}" alt="${logo.name}" class="admin-logo-thumb" onerror="this.style.display='none'"/>`
+        : `<div class="admin-logo-thumb-placeholder">🎨</div>`}
+      <div class="admin-logo-info">
+        <div class="admin-logo-name">${logo.name}${logo.badge?`<span class="admin-badge ab-${logo.badge}">${badgeLabel(logo.badge)}</span>`:''}</div>
+        <div class="admin-logo-meta">${catLabel(logo.cat)}</div>
+      </div>
+      <span class="admin-logo-price">${formatPrice(logo.price)}</span>
+      <div class="admin-logo-actions">
+        <button class="admin-del-btn" onclick="askDelete('${logo.id}')" title="Supprimer">🗑</button>
+      </div>
+    </div>`).join('')}</div>`;
+}
+
+async function loadAdminOrders(){
+  document.getElementById('adminOrdersList').innerHTML = `<div class="loading-grid"><div class="spinner"></div><span>Chargement…</span></div>`;
+  const data = await sbGet('commandes','?order=created_at.desc');
+  if(!data||data.length===0){
+    document.getElementById('adminOrdersList').innerHTML = `<div class="empty-state"><div class="empty-icon">📋</div><p>Aucune commande reçue pour le moment.</p></div>`;
+    return;
+  }
+  document.getElementById('adminOrdersList').innerHTML = `<div class="admin-orders-list">${data.map(o=>`
+    <div class="admin-order-item">
+      <div class="order-header">
+        <span class="order-name">${o.client_nom||'Client'}</span>
+        <span class="order-amount">${formatPrice(o.montant||0)}</span>
+      </div>
+      <div class="order-meta">${o.logos||''} · ${o.client_contact||''} · ${o.methode_paiement||''}</div>
+    </div>`).join('')}</div>`;
+}
+
+// Ajouter un logo
+function previewImage(e){
+  const file = e.target.files[0];
+  if(!file)return;
+  currentImageFile = file;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const img = document.getElementById('imgPreview');
+    img.src = ev.target.result;
+    img.style.display='block';
+    document.querySelector('.img-upload-icon').style.display='none';
+    document.querySelector('.img-upload-text').textContent = file.name;
+  };
+  reader.readAsDataURL(file);
+}
+
+async function addLogo(){
+  const name = document.getElementById('a-name').value.trim();
+  const price = document.getElementById('a-price').value.trim();
+  const cat = document.getElementById('a-cat').value;
+  const badge = document.getElementById('a-badge').value;
+  const desc = document.getElementById('a-desc').value.trim();
+  const color = document.getElementById('a-color').value;
+  const bgColor = document.getElementById('a-bg').value;
+  if(!name||!price){showToast('Nom et prix obligatoires');return;}
+  const btn = document.getElementById('saveBtnAdd');
+  btn.disabled=true;btn.textContent='⏳ Enregistrement…';
+  let imageUrl = null;
+  if(currentImageFile){
+    showToast('Upload de l\'image…');
+    imageUrl = await uploadImage(currentImageFile);
+  }
+  const result = await sbPost('logos',{
+    name, price:Number(price), cat, badge:badge||null,
+    description:desc, color, bg_color:bgColor, image_url:imageUrl
+  });
+  btn.disabled=false;btn.textContent='✅ Ajouter ce logo à la boutique';
+  if(result){
+    showToast(`✅ "${name}" ajouté à la boutique !`);
+    // Reset form
+    document.getElementById('a-name').value='';
+    document.getElementById('a-price').value='';
+    document.getElementById('a-desc').value='';
+    document.getElementById('imgPreview').style.display='none';
+    document.querySelector('.img-upload-icon').style.display='block';
+    document.querySelector('.img-upload-text').textContent='Clique pour choisir une image PNG';
+    currentImageFile=null;
+    // Recharger
+    loadLogos();
+    loadAdminData();
+    switchTab(document.querySelectorAll('.admin-tab')[0],'tabLogos');
+  } else {
+    showToast('❌ Erreur — Vérifie ta connexion');
+  }
+}
+
+// Supprimer un logo
+function askDelete(id){
+  deleteTargetId = id;
+  document.getElementById('confirmModal').classList.add('open');
+}
+function closeConfirm(){
+  deleteTargetId=null;
+  document.getElementById('confirmModal').classList.remove('open');
+}
+async function confirmDelete(){
+  if(!deleteTargetId)return;
+  const ok = await sbDelete('logos', deleteTargetId);
+  closeConfirm();
+  if(ok){
+    showToast('Logo supprimé');
+    loadLogos();
+    loadAdminData();
+  } else {
+    showToast('❌ Erreur lors de la suppression');
+  }
+}
+
+// ===== INIT =====
+async function init(){
+  await loadLogos();
+  renderColorPickers();
+  renderStyleOpts();
+  updateCustomPrice();
+  initReveal();
+}
+
+init();
+</script>
+</body>
+</html>
