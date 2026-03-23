@@ -465,26 +465,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
         </div>
         <div class="form-row2">
           <div class="form-group">
-            <label>Secteur d'activité</label>
-            <select id="cf-secteur">
-              <option value="" disabled selected>Choisir…</option>
-              <option>Tech / App</option>
-              <option>Food & Restaurant</option>
-              <option>Mode</option>
-              <option>Sport & Fitness</option>
-              <option>Santé & Bien-être</option>
-              <option>Finance</option>
-              <option>Éducation</option>
-              <option>Autre</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Délai souhaité</label>
-            <select id="cf-delai" onchange="updateCustomPrice()">
-              <option value="standard">Standard — 72h</option>
-              <option value="express">Express — 48h (+10 000)</option>
-              <option value="urgent">Urgent — 24h (+25 000)</option>
-            </select>
+            <label>Délai de livraison</label>
+            <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;font-size:.88rem;color:var(--muted);">⏱ Standard — 72h</div>
           </div>
         </div>
         <div class="form-group">
@@ -505,7 +487,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
         </div>
         <div class="form-price-row">
           <span class="price-label">Total commande</span>
-          <span class="price-val" id="customPriceDisplay">65 000 FCFA</span>
+          <span class="price-val" id="customPriceDisplay">— FCFA</span>
         </div>
         <button class="submit-order" onclick="submitCustomOrder()">Passer commande & payer →</button>
       </div>
@@ -829,8 +811,8 @@ async function uploadImage(file){
 // ╚══════════════════════════════════════════╝
 const COLORS = ['#ff6b35','#f7c948','#4ecdc4','#a855f7','#22d3ee','#ef4444','#10b981','#3b82f6','#1a1a1a','#ffffff'];
 const STYLES = ['Minimaliste','Géométrique','Typographique','Illustratif','Vintage','Moderne','Playful','Luxe'];
-const CUSTOM_BASE = 65000;
-const CUSTOM_EXTRA = {standard:0, express:10000, urgent:25000};
+const CUSTOM_BASE = 20000;
+const CUSTOM_EXTRA = {standard:0};
 let cart = [];
 let allLogos = [];
 let currentFilter = 'all';
@@ -898,6 +880,9 @@ function addToCart(id){
   if(cart.some(c=>String(c.id)===String(id))){showToast('Déjà dans le panier !');return;}
   cart.push({...logo, type:'stock'});
   updateCartUI();
+  // Mettre à jour le prix affiché dans le formulaire custom
+  const priceDisplay = document.getElementById('customPriceDisplay');
+  if(priceDisplay) priceDisplay.textContent = formatPrice(logo.price);
   const btn = document.getElementById('btn-'+id);
   if(btn){btn.classList.add('added');btn.textContent='✓ Ajouté';}
   showToast(`"${logo.name}" ajouté au panier`);
@@ -907,6 +892,13 @@ function removeFromCart(id){
   updateCartUI();
   const btn = document.getElementById('btn-'+id);
   if(btn){btn.classList.remove('added');btn.textContent='+ Panier';}
+  // Si plus aucun logo stock dans le panier, remettre le prix custom
+  const stockItem = cart.find(c=>c.type==='stock');
+  const priceDisplay = document.getElementById('customPriceDisplay');
+  if(priceDisplay){
+    if(stockItem) priceDisplay.textContent = formatPrice(stockItem.price);
+    else updateCustomPrice();
+  }
 }
 function updateCartUI(){
   const count = cart.length;
@@ -1015,24 +1007,32 @@ function toggleStyle(el,s){
   else selectedStyles.push(s);
 }
 function updateCustomPrice(){
-  const d = document.getElementById('cf-delai')?.value||'standard';
-  document.getElementById('customPriceDisplay').textContent = formatPrice(CUSTOM_BASE+(CUSTOM_EXTRA[d]||0));
+  document.getElementById('customPriceDisplay').textContent = formatPrice(CUSTOM_BASE);
+}
+
+// Met à jour le total affiché dans le formulaire custom si un logo stock est dans le panier
+function updateFormPriceFromCart(){
+  const stockItem = cart.find(c=>c.type==='stock');
+  if(stockItem){
+    document.getElementById('customPriceDisplay').textContent = formatPrice(stockItem.price);
+  } else if(cart.length===0){
+    // Remettre le prix custom par défaut
+    updateCustomPrice();
+  }
 }
 async function submitCustomOrder(){
   const nom = document.getElementById('cf-nom').value.trim();
   const email = document.getElementById('cf-email').value.trim();
-  const secteur = document.getElementById('cf-secteur').value;
-  if(!nom||!email||!secteur){showToast('Remplissez tous les champs obligatoires');return;}
-  const delai = document.getElementById('cf-delai').value;
-  const price = CUSTOM_BASE+(CUSTOM_EXTRA[delai]||0);
+  if(!nom||!email){showToast('Remplissez tous les champs obligatoires');return;}
+  const price = CUSTOM_BASE;
   await sbPost('commandes',{
     client_nom: nom,
     client_contact: email,
     methode_paiement: 'custom',
     montant: price,
-    logos: `Logo Custom — ${nom} (${secteur})`,
+    logos: `Logo Custom — ${nom}`,
     statut: 'en_attente',
-    notes: `Délai: ${delai} | Couleurs: ${selectedColors.join(',')} | Styles: ${selectedStyles.join(',')}`
+    notes: `Couleurs: ${selectedColors.join(',')} | Styles: ${selectedStyles.join(',')}`
   });
   cart=[{id:999,name:`Logo Custom — ${nom}`,type:'custom',price,bg_color:'#0d001a',image_url:null}];
   updateCartUI();openCart();
@@ -1256,6 +1256,7 @@ function checkSecretRoute(){
   }
 }
 window.addEventListener('hashchange', checkSecretRoute);
+window.addEventListener('load', checkSecretRoute);
 
 // ===== FEDAPAY INTÉGRATION =====
 async function processWithFedaPay(amount, name, contact){
