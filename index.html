@@ -15,23 +15,15 @@
 }
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-weight:300;overflow-x:hidden;}
-body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");opacity:.4;}
-
-/* ===== NAV ===== */
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");opacity:.4;}
 nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 3rem;background:rgba(13,13,15,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
 .nav-logo{font-family:var(--font-head);font-size:1.3rem;font-weight:800;text-decoration:none;background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .nav-links{display:flex;gap:2rem;list-style:none;}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:.82rem;transition:color .2s;}
 .nav-links a:hover{color:var(--text);}
-.nav-right{display:flex;align-items:center;gap:.8rem;}
-.cart-btn{position:relative;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:.55rem 1.1rem;font-family:var(--font-body);font-size:.8rem;cursor:pointer;display:flex;align-items:center;gap:.5rem;border-radius:8px;transition:all .2s;}
+.nav-right{display:flex;align-items:center;}
+.cart-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:.55rem 1.1rem;font-family:var(--font-body);font-size:.8rem;cursor:pointer;display:flex;align-items:center;gap:.5rem;border-radius:8px;transition:all .2s;}
 .cart-btn:hover{border-color:var(--c1);}
-.cart-count{position:absolute;top:-.4rem;right:-.4rem;background:var(--c1);color:#fff;width:18px;height:18px;border-radius:50%;font-size:.65rem;font-weight:700;display:none;align-items:center;justify-content:center;}
-.admin-nav-btn{background:transparent;border:1px solid var(--c4);color:var(--c4);padding:.5rem 1rem;font-family:var(--font-body);font-size:.75rem;cursor:pointer;border-radius:8px;transition:all .2s;}
-.admin-nav-btn:hover{background:var(--c4);color:#fff;}
-
-/* ===== HERO ===== */
 #hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:6rem 3rem 4rem;text-align:center;}
 .hero-blobs{position:absolute;inset:0;pointer-events:none;}
 .blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.18;animation:blobFloat 8s ease-in-out infinite alternate;}
@@ -49,22 +41,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 .hero-sub{color:var(--muted);font-size:1rem;line-height:1.8;max-width:520px;margin:0 auto 2.5rem;animation:fadeDown .8s ease .4s both;}
 .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeDown .8s ease .55s both;}
 .btn-primary{background:linear-gradient(135deg,var(--c1),var(--c2));color:#111;padding:.9rem 2rem;border:none;font-family:var(--font-head);font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:10px;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 24px rgba(255,107,53,.3);display:inline-block;}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(255,107,53,.45);}
-.btn-outline{background:transparent;color:var(--text);padding:.9rem 2rem;border:1px solid var(--border);font-family:var(--font-head);font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:10px;text-decoration:none;transition:border-color .2s,background .2s;display:inline-block;}
-.btn-outline:hover{border-color:var(--c3);background:rgba(78,205,196,.06);}
-.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;color:var(--muted);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;animation:fadeDown .8s ease .8s both;}
+.btn-primary:hover{transform:translateY(-2px);}
+.btn-outline{background:transparent;color:var(--text);padding:.9rem 2rem;border:1px solid var(--border);font-family:var(--font-head);font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:10px;text-decoration:none;transition:border-color .2s;display:inline-block;}
+.btn-outline:hover{border-color:var(--c3);}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;}
 .scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--border),transparent);}
 @keyframes fadeDown{from{opacity:0;transform:translateY(-16px);}to{opacity:1;transform:translateY(0);}}
-
-/* ===== STATS ===== */
 .stats-bar{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:flex;justify-content:center;position:relative;z-index:1;}
 .stat-item{flex:1;max-width:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.8rem 1rem;border-right:1px solid var(--border);}
 .stat-item:last-child{border-right:none;}
 .stat-num{font-family:var(--font-head);font-size:1.8rem;font-weight:800;}
 .stat-num.c1{color:var(--c1);}.stat-num.c2{color:var(--c2);}.stat-num.c3{color:var(--c3);}.stat-num.c4{color:var(--c4);}
 .stat-lbl{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.25rem;}
-
-/* ===== SECTIONS ===== */
 section{padding:6rem 3rem;position:relative;z-index:1;}
 .section-header{margin-bottom:3.5rem;}
 .section-tag{display:inline-block;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;padding:.3rem .9rem;border-radius:100px;margin-bottom:1rem;font-weight:500;}
@@ -72,13 +60,9 @@ section{padding:6rem 3rem;position:relative;z-index:1;}
 .tag-teal{background:rgba(78,205,196,.12);color:var(--c3);border:1px solid rgba(78,205,196,.25);}
 .section-title{font-family:var(--font-head);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:.8rem;}
 .section-sub{color:var(--muted);font-size:.9rem;line-height:1.8;max-width:500px;}
-
-/* ===== FILTERS ===== */
 .filter-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2.5rem;}
 .filter-chip{background:var(--surface2);border:1px solid var(--border);color:var(--muted);padding:.45rem 1.1rem;border-radius:100px;font-size:.75rem;font-weight:500;cursor:pointer;transition:all .2s;font-family:var(--font-body);}
 .filter-chip.active,.filter-chip:hover{background:var(--c1);border-color:var(--c1);color:#111;}
-
-/* ===== LOGO GRID ===== */
 .logo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem;}
 .logo-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s;}
 .logo-card:hover{transform:translateY(-6px);border-color:var(--c1);box-shadow:0 16px 48px rgba(255,107,53,.15);}
@@ -101,13 +85,11 @@ section{padding:6rem 3rem;position:relative;z-index:1;}
 .logo-price{font-family:var(--font-head);font-size:1.3rem;font-weight:800;}
 .buy-wa-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:.5rem 1rem;border-radius:8px;font-family:var(--font-body);font-size:.75rem;font-weight:500;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:.4rem;text-decoration:none;}
 .buy-wa-btn:hover{background:#25D366;border-color:#25D366;color:#fff;}
-
-/* Loading / empty */
 .loading-grid{display:flex;align-items:center;justify-content:center;padding:4rem;flex-direction:column;gap:1rem;color:var(--muted);}
+.spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--c1);border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
 .empty-state{text-align:center;padding:4rem;color:var(--muted);}
 .empty-icon{font-size:3rem;margin-bottom:1rem;opacity:.4;}
-
-/* ===== CUSTOM SECTION ===== */
 #custom{background:var(--surface);}
 .custom-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
 .custom-steps{display:flex;flex-direction:column;gap:1.5rem;margin-top:2rem;}
@@ -127,29 +109,19 @@ section{padding:6rem 3rem;position:relative;z-index:1;}
 .form-group select option{background:#1c1c23;}
 .form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--c3);}
 .form-group textarea{resize:none;height:100px;}
-.submit-order{width:100%;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;padding:1rem;border-radius:10px;font-family:var(--font-head);font-size:.85rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:opacity .2s,transform .2s;box-shadow:0 4px 20px rgba(37,211,102,.3);}
-.submit-order:hover{opacity:.88;transform:translateY(-2px);}
-
-/* ===== TOAST ===== */
+.submit-order{width:100%;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;padding:1rem;border-radius:10px;font-family:var(--font-head);font-size:.85rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:opacity .2s;box-shadow:0 4px 20px rgba(37,211,102,.3);}
+.submit-order:hover{opacity:.88;}
 .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(20px);background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:.8rem 1.4rem;font-size:.8rem;font-weight:500;z-index:800;opacity:0;pointer-events:none;transition:all .3s;display:flex;align-items:center;gap:.6rem;box-shadow:0 8px 32px rgba(0,0,0,.4);}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 .toast-dot{width:8px;height:8px;border-radius:50%;background:var(--c3);}
-
-/* ===== FOOTER ===== */
 footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;position:relative;z-index:1;}
 .footer-logo{font-family:var(--font-head);font-size:1.1rem;font-weight:800;background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .footer-copy{font-size:.72rem;color:var(--muted);}
 .footer-links{display:flex;gap:1.5rem;}
 .footer-links a{font-size:.72rem;color:var(--muted);text-decoration:none;transition:color .2s;}
 .footer-links a:hover{color:var(--text);}
-
-/* ===== REVEAL ===== */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
-
-/* ========================================
-   PANNEAU ADMIN
-   ======================================== */
 .admin-overlay{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:1000;display:none;flex-direction:column;overflow-y:auto;}
 .admin-overlay.open{display:flex;}
 .admin-login{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem;}
@@ -173,7 +145,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
 .admin-stat{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.5rem;}
 .admin-stat-num{font-family:var(--font-head);font-size:1.8rem;font-weight:800;margin-bottom:.2rem;}
 .admin-stat-lbl{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
-.admin-tabs{display:flex;gap:.5rem;margin-bottom:2rem;border-bottom:1px solid var(--border);padding-bottom:0;}
+.admin-tabs{display:flex;gap:.5rem;margin-bottom:2rem;border-bottom:1px solid var(--border);}
 .admin-tab{background:transparent;border:none;color:var(--muted);padding:.8rem 1.2rem;font-family:var(--font-body);font-size:.82rem;font-weight:500;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;margin-bottom:-1px;}
 .admin-tab.active{color:var(--c1);border-color:var(--c1);}
 .admin-tab-content{display:none;}
@@ -188,6 +160,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
 .admin-group{margin-bottom:0;}
 .admin-save-btn{background:linear-gradient(135deg,var(--c3),var(--c5));color:#0d1a1a;border:none;padding:.9rem 2rem;border-radius:10px;font-family:var(--font-head);font-size:.82rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:opacity .2s;width:100%;}
 .admin-save-btn:hover{opacity:.88;}
+.admin-save-btn:disabled{opacity:.4;cursor:not-allowed;}
 .admin-logos-list{display:flex;flex-direction:column;gap:1rem;}
 .admin-logo-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem;display:flex;align-items:center;gap:1rem;}
 .admin-logo-thumb{width:56px;height:56px;border-radius:8px;object-fit:contain;flex-shrink:0;background:var(--surface2);}
@@ -205,6 +178,12 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
 .ab-excl{background:rgba(168,85,247,.15);color:var(--c4);}
 .help-box{background:rgba(78,205,196,.06);border:1px solid rgba(78,205,196,.2);border-radius:12px;padding:1rem 1.2rem;margin-bottom:1.5rem;font-size:.8rem;color:var(--muted);line-height:1.7;}
 .help-box strong{color:var(--c3);}
+.admin-orders-list{display:flex;flex-direction:column;gap:.8rem;}
+.admin-order-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem;}
+.order-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem;}
+.order-name{font-family:var(--font-head);font-size:.9rem;font-weight:700;}
+.order-amount{font-family:var(--font-head);font-size:.9rem;font-weight:800;color:var(--c2);}
+.order-meta{font-size:.72rem;color:var(--muted);}
 .confirm-modal{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:1100;display:none;align-items:center;justify-content:center;padding:1.5rem;}
 .confirm-modal.open{display:flex;}
 .confirm-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;max-width:360px;width:100%;text-align:center;}
@@ -214,36 +193,14 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
 .confirm-actions{display:flex;gap:.8rem;}
 .confirm-cancel{flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:.8rem;border-radius:10px;font-family:var(--font-body);font-size:.82rem;cursor:pointer;}
 .confirm-delete{flex:1;background:var(--c1);color:#fff;border:none;padding:.8rem;border-radius:10px;font-family:var(--font-head);font-size:.82rem;font-weight:700;cursor:pointer;}
-
-/* WHATSAPP FLOAT */
 .whatsapp-float{position:fixed;bottom:2rem;right:2rem;z-index:300;display:flex;align-items:center;gap:.7rem;background:#25D366;color:#fff;padding:.8rem 1.2rem;border-radius:50px;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:transform .2s,box-shadow .2s;}
 .whatsapp-float:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(37,211,102,.5);}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:900px){
-  nav{padding:1rem 1.5rem;}
-  .nav-links{display:none;}
-  section{padding:4rem 1.5rem;}
-  .logo-grid{grid-template-columns:1fr 1fr;}
-  .custom-grid{grid-template-columns:1fr;}
-  .stats-bar{flex-wrap:wrap;}
-  .stat-item{min-width:50%;border-right:none;border-bottom:1px solid var(--border);}
-  footer{flex-direction:column;text-align:center;}
-  .admin-stats{grid-template-columns:1fr;}
-  .admin-row{grid-template-columns:1fr;}
-  .admin-body{padding:1rem;}
-}
-@media(max-width:480px){
-  .logo-grid{grid-template-columns:1fr;}
-  nav{padding:.8rem 1rem;}
-  .hero-title{font-size:2.5rem;}
-  section{padding:3rem 1rem;}
-}
+@media(max-width:900px){nav{padding:1rem 1.5rem;}.nav-links{display:none;}section{padding:4rem 1.5rem;}.logo-grid{grid-template-columns:1fr 1fr;}.custom-grid{grid-template-columns:1fr;}.stats-bar{flex-wrap:wrap;}.stat-item{min-width:50%;border-right:none;border-bottom:1px solid var(--border);}footer{flex-direction:column;text-align:center;}.admin-stats{grid-template-columns:1fr;}.admin-row{grid-template-columns:1fr;}.admin-body{padding:1rem;}}
+@media(max-width:480px){.logo-grid{grid-template-columns:1fr;}nav{padding:.8rem 1rem;}.hero-title{font-size:2.5rem;}section{padding:3rem 1rem;}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">LogoMart</a>
   <ul class="nav-links">
@@ -251,24 +208,16 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
     <li><a href="#custom">Logo Custom</a></li>
   </ul>
   <div class="nav-right">
-    <button class="cart-btn" onclick="alert('Boutique en ligne — commandez via WhatsApp ! 💬')">🛒 Panier</button>
+    <button class="cart-btn" onclick="alert('Commandez via WhatsApp ! 💬')">🛒 Panier</button>
   </div>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
-  <div class="hero-blobs">
-    <div class="blob blob1"></div>
-    <div class="blob blob2"></div>
-    <div class="blob blob3"></div>
-  </div>
+  <div class="hero-blobs"><div class="blob blob1"></div><div class="blob blob2"></div><div class="blob blob3"></div></div>
   <div class="hero-inner">
     <div class="hero-badge"><span class="hero-badge-dot"></span>Abidjan · Côte d'Ivoire</div>
-    <h1 class="hero-title">
-      <span class="grad1">Logos Pro</span><br>
-      <span class="grad2">Prêts à l'emploi</span>
-    </h1>
-    <p class="hero-sub">Des identités visuelles premium pour startups et PME francophones. Téléchargement immédiat après commande WhatsApp.</p>
+    <h1 class="hero-title"><span class="grad1">Logos Pro</span><br><span class="grad2">Prêts à l'emploi</span></h1>
+    <p class="hero-sub">Des identités visuelles premium pour startups et PME francophones. Commande rapide via WhatsApp.</p>
     <div class="hero-actions">
       <a href="#stock" class="btn-primary">Voir les logos →</a>
       <a href="#custom" class="btn-outline">Commande custom</a>
@@ -277,22 +226,20 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
   <div class="hero-scroll"><div class="scroll-line"></div></div>
 </section>
 
-<!-- STATS -->
 <div class="stats-bar">
   <div class="stat-item"><span class="stat-num c1">+60</span><span class="stat-lbl">Logos créés</span></div>
   <div class="stat-item"><span class="stat-num c2">72h</span><span class="stat-lbl">Délai de livraison</span></div>
   <div class="stat-item"><span class="stat-num c3">100%</span><span class="stat-lbl">Droits inclus</span></div>
-  <div class="stat-item"><span class="stat-num c4" style="display:flex;align-items:center;gap:.3rem;">3,9 <svg width="22" height="22" viewBox="0 0 24 24" fill="#f7c948" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="stat-lbl">Note clients</span></div>
+  <div class="stat-item"><span class="stat-num c4" style="display:flex;align-items:center;gap:.3rem;">3,9 <svg width="22" height="22" viewBox="0 0 24 24" fill="#f7c948"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="stat-lbl">Note clients</span></div>
 </div>
 
-<!-- BOUTIQUE STOCK -->
 <section id="stock">
   <div class="section-header reveal">
     <span class="section-tag tag-orange">Boutique</span>
     <h2 class="section-title">Logos disponibles</h2>
     <p class="section-sub">Choisissez votre logo, envoyez-nous un message WhatsApp et recevez vos fichiers sous 72h.</p>
   </div>
-  <div class="filter-row" id="filterRow">
+  <div class="filter-row">
     <button class="filter-chip active" onclick="filterLogos(this,'all')">Tous</button>
     <button class="filter-chip" onclick="filterLogos(this,'tech')">Tech & App</button>
     <button class="filter-chip" onclick="filterLogos(this,'food')">Food & Restaurant</button>
@@ -300,10 +247,9 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
     <button class="filter-chip" onclick="filterLogos(this,'sport')">Sport</button>
     <button class="filter-chip" onclick="filterLogos(this,'sante')">Santé</button>
   </div>
-  <div id="logoGrid"></div>
+  <div id="logoGrid"><div class="loading-grid"><div class="spinner"></div><span>Chargement des logos…</span></div></div>
 </section>
 
-<!-- LOGO CUSTOM -->
 <section id="custom">
   <div class="custom-grid">
     <div>
@@ -313,96 +259,44 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
         <p class="section-sub">Un logo unique créé spécialement pour votre marque, livré en 72h.</p>
       </div>
       <div class="custom-steps">
-        <div class="step-item reveal">
-          <div class="step-num sn1">1</div>
-          <div class="step-content"><h4>Remplissez le formulaire</h4><p>Décrivez votre activité, vos couleurs préférées et le style souhaité.</p></div>
-        </div>
-        <div class="step-item reveal">
-          <div class="step-num sn2">2</div>
-          <div class="step-content"><h4>Envoi WhatsApp automatique</h4><p>Votre brief est transmis directement sur notre WhatsApp.</p></div>
-        </div>
-        <div class="step-item reveal">
-          <div class="step-num sn3">3</div>
-          <div class="step-content"><h4>Livraison sous 72h</h4><p>Vous recevez vos fichiers PNG et SVG prêts à l'emploi.</p></div>
-        </div>
-        <div class="step-item reveal">
-          <div class="step-num sn4">4</div>
-          <div class="step-content"><h4>Révisions incluses</h4><p>1 révision offerte pour s'assurer que votre logo vous convient parfaitement.</p></div>
-        </div>
+        <div class="step-item reveal"><div class="step-num sn1">1</div><div class="step-content"><h4>Remplissez le formulaire</h4><p>Décrivez votre activité, vos couleurs et le style souhaité.</p></div></div>
+        <div class="step-item reveal"><div class="step-num sn2">2</div><div class="step-content"><h4>Envoi WhatsApp automatique</h4><p>Votre brief est transmis directement sur notre WhatsApp.</p></div></div>
+        <div class="step-item reveal"><div class="step-num sn3">3</div><div class="step-content"><h4>Livraison sous 72h</h4><p>Vous recevez vos fichiers PNG et SVG prêts à l'emploi.</p></div></div>
+        <div class="step-item reveal"><div class="step-num sn4">4</div><div class="step-content"><h4>Révisions incluses</h4><p>1 révision offerte pour s'assurer que votre logo vous convient.</p></div></div>
       </div>
     </div>
     <div class="order-form reveal">
       <div class="form-title">Commander un logo custom</div>
-      <div class="form-group">
-        <label>Nom de votre marque</label>
-        <input type="text" id="cf-nom" placeholder="Ex: BioKôko, TechPay..."/>
+      <div class="form-group"><label>Nom de votre marque</label><input type="text" id="cf-nom" placeholder="Ex: BioKôko, TechPay..."/></div>
+      <div class="form-group"><label>Secteur d'activité</label>
+        <select id="cf-secteur"><option value="">Choisir...</option><option>Tech & Numérique</option><option>Alimentation & Restauration</option><option>Mode & Beauté</option><option>Santé & Bien-être</option><option>Sport & Fitness</option><option>Commerce & Services</option><option>Autre</option></select>
       </div>
-      <div class="form-group">
-        <label>Secteur d'activité</label>
-        <select id="cf-secteur">
-          <option value="">Choisir...</option>
-          <option>Tech & Numérique</option>
-          <option>Alimentation & Restauration</option>
-          <option>Mode & Beauté</option>
-          <option>Santé & Bien-être</option>
-          <option>Sport & Fitness</option>
-          <option>Commerce & Services</option>
-          <option>Autre</option>
-        </select>
+      <div class="form-group"><label>Style souhaité</label>
+        <select id="cf-style"><option value="">Choisir...</option><option>Minimaliste</option><option>Moderne & Épuré</option><option>Géométrique</option><option>Luxe & Premium</option></select>
       </div>
-      <div class="form-group">
-        <label>Style souhaité</label>
-        <select id="cf-style">
-          <option value="">Choisir...</option>
-          <option>Minimaliste</option>
-          <option>Moderne & Épuré</option>
-          <option>Géométrique</option>
-          <option>Luxe & Premium</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Couleurs préférées (facultatif)</label>
-        <input type="text" id="cf-colors" placeholder="Ex: bleu marine et or, rouge et noir..."/>
-      </div>
-      <div class="form-group">
-        <label>Description & inspirations</label>
-        <textarea id="cf-desc" placeholder="Décrivez votre activité, votre cible, l'ambiance souhaitée…"></textarea>
-      </div>
-      <div class="form-group">
-        <label>Votre numéro WhatsApp</label>
-        <input type="tel" id="cf-tel" placeholder="+225 07 00 00 00 00"/>
-      </div>
+      <div class="form-group"><label>Couleurs préférées (facultatif)</label><input type="text" id="cf-colors" placeholder="Ex: bleu marine et or..."/></div>
+      <div class="form-group"><label>Description & inspirations</label><textarea id="cf-desc" placeholder="Décrivez votre activité, votre cible…"></textarea></div>
+      <div class="form-group"><label>Votre numéro WhatsApp</label><input type="tel" id="cf-tel" placeholder="+225 07 00 00 00 00"/></div>
       <button class="submit-order" onclick="submitCustomOrder()">💬 Envoyer ma commande via WhatsApp →</button>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-logo">LogoMart</div>
   <p class="footer-copy">© 2025 LogoMart · Abidjan, Côte d'Ivoire · Tous droits réservés</p>
-  <div class="footer-links">
-    <a href="#stock">Boutique</a>
-    <a href="#custom">Custom</a>
-    <a href="https://wa.me/2250584161702" target="_blank">WhatsApp</a>
-  </div>
+  <div class="footer-links"><a href="#stock">Boutique</a><a href="#custom">Custom</a><a href="https://wa.me/2250584161702" target="_blank">WhatsApp</a></div>
 </footer>
 
-<!-- WHATSAPP FLOATING -->
 <a href="https://wa.me/2250584161702" class="whatsapp-float" target="_blank">
-  <svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg" style="width:22px;height:22px;flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <svg viewBox="0 0 24 24" fill="#fff" style="width:22px;height:22px;flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   <span style="font-size:.78rem;font-weight:500;">WhatsApp</span>
 </a>
 
-<!-- TOAST -->
 <div class="toast" id="toast"><div class="toast-dot"></div><span id="toastMsg"></span></div>
 
-<!-- ========================================
-     PANNEAU ADMIN
-     ======================================== -->
+<!-- PANNEAU ADMIN -->
 <div class="admin-overlay" id="adminOverlay">
-
-  <!-- LOGIN -->
   <div class="admin-login" id="adminLogin">
     <div class="login-box">
       <div class="login-logo">LogoMart</div>
@@ -413,8 +307,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
       <button onclick="closeAdmin()" style="width:100%;background:transparent;border:none;color:var(--muted);font-family:var(--font-body);font-size:.78rem;cursor:pointer;margin-top:1rem;padding:.5rem;">← Retour à la boutique</button>
     </div>
   </div>
-
-  <!-- DASHBOARD -->
   <div class="admin-dashboard" id="adminDashboard">
     <div class="admin-nav">
       <span class="admin-nav-logo">LogoMart <span>Admin</span></span>
@@ -423,130 +315,71 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
         <button class="admin-logout" onclick="logout()">Déconnexion</button>
       </div>
     </div>
-
     <div class="admin-body">
-      <!-- Stats -->
       <div class="admin-stats">
-        <div class="admin-stat">
-          <div class="admin-stat-num" style="color:var(--c1);" id="adminStatLogos">0</div>
-          <div class="admin-stat-lbl">Logos en vente</div>
-        </div>
-        <div class="admin-stat">
-          <div class="admin-stat-num" style="color:var(--c2);" id="adminStatCats">0</div>
-          <div class="admin-stat-lbl">Catégories actives</div>
-        </div>
+        <div class="admin-stat"><div class="admin-stat-num" style="color:var(--c1);" id="adminStatLogos">—</div><div class="admin-stat-lbl">Logos en vente</div></div>
+        <div class="admin-stat"><div class="admin-stat-num" style="color:var(--c2);" id="adminStatCommandes">—</div><div class="admin-stat-lbl">Commandes reçues</div></div>
       </div>
-
-      <!-- Tabs -->
       <div class="admin-tabs">
         <button class="admin-tab active" onclick="switchTab(this,'tabLogos')">🎨 Mes Logos</button>
         <button class="admin-tab" onclick="switchTab(this,'tabAjouter')">➕ Ajouter un Logo</button>
+        <button class="admin-tab" onclick="switchTab(this,'tabCommandes')">📋 Commandes</button>
       </div>
-
-      <!-- TAB : MES LOGOS -->
       <div class="admin-tab-content active" id="tabLogos">
-        <div id="adminLogosList"></div>
+        <div id="adminLogosList"><div class="loading-grid"><div class="spinner"></div><span>Chargement…</span></div></div>
       </div>
-
-      <!-- TAB : AJOUTER UN LOGO -->
       <div class="admin-tab-content" id="tabAjouter">
         <div class="admin-form-box">
           <div class="admin-form-title">🎨 Ajouter un nouveau logo</div>
-
           <div class="help-box">
             💡 <strong>Comment ajouter une image ?</strong><br>
-            1. Va sur <strong>imgur.com</strong> depuis ton navigateur<br>
-            2. Clique sur <strong>"New post"</strong> et uploade ton image PNG<br>
-            3. Clique droit sur l'image → <strong>"Copier l'adresse de l'image"</strong><br>
-            4. Colle l'URL ici dans le champ ci-dessous
+            1. Va sur <strong>imgur.com</strong> → <strong>New post</strong> → uploade ton PNG<br>
+            2. Appuie longuement sur l'image → <strong>"Ouvrir dans un autre onglet"</strong><br>
+            3. Copie l'URL qui se termine par <strong>.png</strong> · Colle-la ci-dessous
           </div>
-
           <div class="admin-group" style="margin-bottom:1rem;">
-            <label class="admin-label">URL de l'image (Imgur, etc.)</label>
-            <input type="url" class="admin-input" id="a-url" placeholder="https://i.imgur.com/xxxxxxx.png"/>
+            <label class="admin-label">URL de l'image (Imgur)</label>
+            <input type="url" class="admin-input" id="a-url" placeholder="https://i.imgur.com/xxxxxxx.png" oninput="previewImg(this.value)"/>
           </div>
-
-          <!-- Prévisualisation -->
           <div id="imgPreviewBox" style="display:none;margin-bottom:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;">
             <img id="imgPreviewThumb" style="max-height:120px;object-fit:contain;border-radius:8px;" alt="Aperçu"/>
           </div>
-
           <div class="admin-row">
-            <div class="admin-group">
-              <label class="admin-label">Nom du logo</label>
-              <input type="text" class="admin-input" id="a-name" placeholder="Ex: NexaCore"/>
-            </div>
-            <div class="admin-group">
-              <label class="admin-label">Prix (FCFA)</label>
-              <input type="number" class="admin-input" id="a-price" placeholder="45000"/>
-            </div>
+            <div class="admin-group"><label class="admin-label">Nom du logo</label><input type="text" class="admin-input" id="a-name" placeholder="Ex: NexaCore"/></div>
+            <div class="admin-group"><label class="admin-label">Prix (FCFA)</label><input type="number" class="admin-input" id="a-price" placeholder="45000"/></div>
           </div>
-
           <div class="admin-row">
-            <div class="admin-group">
-              <label class="admin-label">Catégorie</label>
-              <select class="admin-input" id="a-cat">
-                <option value="tech">Tech & App</option>
-                <option value="food">Food & Restaurant</option>
-                <option value="mode">Mode</option>
-                <option value="sport">Sport</option>
-                <option value="sante">Santé & Bien-être</option>
-              </select>
+            <div class="admin-group"><label class="admin-label">Catégorie</label>
+              <select class="admin-input" id="a-cat"><option value="tech">Tech & App</option><option value="food">Food & Restaurant</option><option value="mode">Mode</option><option value="sport">Sport</option><option value="sante">Santé & Bien-être</option></select>
             </div>
-            <div class="admin-group">
-              <label class="admin-label">Badge</label>
-              <select class="admin-input" id="a-badge">
-                <option value="">Aucun</option>
-                <option value="new">Nouveau</option>
-                <option value="hot">🔥 Populaire</option>
-                <option value="excl">Exclusif</option>
-              </select>
+            <div class="admin-group"><label class="admin-label">Badge</label>
+              <select class="admin-input" id="a-badge"><option value="">Aucun</option><option value="new">Nouveau</option><option value="hot">🔥 Populaire</option><option value="excl">Exclusif</option></select>
             </div>
           </div>
-
-          <div class="admin-group" style="margin-bottom:1rem;">
-            <label class="admin-label">Description courte</label>
-            <input type="text" class="admin-input" id="a-desc" placeholder="Ex: Logo minimaliste pour startup tech."/>
-          </div>
-
+          <div class="admin-group" style="margin-bottom:1rem;"><label class="admin-label">Description courte</label><input type="text" class="admin-input" id="a-desc" placeholder="Ex: Logo minimaliste pour startup tech."/></div>
           <div class="admin-row" style="margin-bottom:1rem;">
-            <div class="admin-group">
-              <label class="admin-label">Couleur du prix</label>
-              <select class="admin-input" id="a-color">
-                <option value="#22d3ee">Bleu cyan</option>
-                <option value="#ff6b35">Orange</option>
-                <option value="#f7c948">Jaune</option>
-                <option value="#4ecdc4">Vert teal</option>
-                <option value="#a855f7">Violet</option>
-              </select>
+            <div class="admin-group"><label class="admin-label">Couleur du prix</label>
+              <select class="admin-input" id="a-color"><option value="#22d3ee">Bleu cyan</option><option value="#ff6b35">Orange</option><option value="#f7c948">Jaune</option><option value="#4ecdc4">Vert teal</option><option value="#a855f7">Violet</option></select>
             </div>
-            <div class="admin-group">
-              <label class="admin-label">Couleur de fond carte</label>
-              <select class="admin-input" id="a-bg">
-                <option value="#00101a">Bleu nuit</option>
-                <option value="#1a0a00">Brun foncé</option>
-                <option value="#0d001a">Violet nuit</option>
-                <option value="#001a18">Vert nuit</option>
-                <option value="#1a1200">Or nuit</option>
-                <option value="#111111">Noir</option>
-                <option value="#1a1a2e">Indigo nuit</option>
-              </select>
+            <div class="admin-group"><label class="admin-label">Couleur de fond carte</label>
+              <select class="admin-input" id="a-bg"><option value="#00101a">Bleu nuit</option><option value="#1a0a00">Brun foncé</option><option value="#0d001a">Violet nuit</option><option value="#001a18">Vert nuit</option><option value="#1a1200">Or nuit</option><option value="#111111">Noir</option><option value="#1a1a2e">Indigo nuit</option></select>
             </div>
           </div>
-
-          <button class="admin-save-btn" onclick="addLogo()">✅ Ajouter ce logo à la boutique</button>
+          <button class="admin-save-btn" id="saveBtnAdd" onclick="addLogo()">✅ Ajouter ce logo à la boutique</button>
         </div>
+      </div>
+      <div class="admin-tab-content" id="tabCommandes">
+        <div id="adminCommandesList"><div class="loading-grid"><div class="spinner"></div><span>Chargement…</span></div></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- MODAL CONFIRMATION SUPPRESSION -->
 <div class="confirm-modal" id="confirmModal">
   <div class="confirm-box">
     <div class="confirm-icon">🗑️</div>
     <div class="confirm-title">Supprimer ce logo ?</div>
-    <p class="confirm-sub">Cette action est irréversible. Le logo sera retiré de la boutique.</p>
+    <p class="confirm-sub">Cette action est irréversible. Le logo sera retiré définitivement.</p>
     <div class="confirm-actions">
       <button class="confirm-cancel" onclick="closeConfirm()">Annuler</button>
       <button class="confirm-delete" onclick="confirmDelete()">Supprimer</button>
@@ -555,30 +388,47 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
 </div>
 
 <script>
-// ╔══════════════════════════════════════════╗
-// ║         CONFIGURATION LOGOMART           ║
-// ╚══════════════════════════════════════════╝
+// ═══════════════════════════════
+// CONFIGURATION
+// ═══════════════════════════════
+const SUPABASE_URL = 'https://vifbcxjzhzakagfuneue.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZpZmJjeGp6aHpha2FnZnVuZXVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwNDkxMjEsImV4cCI6MjA4OTYyNTEyMX0.g-KKy1XTE_YLTcGxY8r57fsc7G070IMtuYmSXzo6lRM';
 const ADMIN_PASSWORD = 'Lm@2026#Rg!';
 const WHATSAPP = '2250584161702';
-const STORAGE_KEY = 'logomart_logos_v2';
 
-// ╔══════════════════════════════════════════╗
-// ║           DONNÉES LOGOS                  ║
-// ╚══════════════════════════════════════════╝
-// Les logos sont stockés dans localStorage du navigateur.
-// Tu les gères depuis le panneau Admin.
+// ═══════════════════════════════
+// SUPABASE HELPERS
+// ═══════════════════════════════
+const H = {
+  'apikey': SUPABASE_KEY,
+  'Authorization': `Bearer ${SUPABASE_KEY}`,
+  'Content-Type': 'application/json',
+  'Prefer': 'return=representation'
+};
 
-function getLogos(){
+async function sbGet(table, q=''){
   try{
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : [];
+    const r = await fetch(`${SUPABASE_URL}/rest/v1/${table}${q}`,{headers:H});
+    return r.ok ? await r.json() : [];
   }catch(e){return [];}
 }
-function saveLogos(logos){
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(logos));
+async function sbPost(table, data){
+  try{
+    const r = await fetch(`${SUPABASE_URL}/rest/v1/${table}`,{method:'POST',headers:H,body:JSON.stringify(data)});
+    return r.ok ? await r.json() : null;
+  }catch(e){return null;}
+}
+async function sbDelete(table, id){
+  try{
+    const r = await fetch(`${SUPABASE_URL}/rest/v1/${table}?id=eq.${id}`,{method:'DELETE',headers:H});
+    return r.ok;
+  }catch(e){return false;}
 }
 
-let allLogos = getLogos();
+// ═══════════════════════════════
+// STATE
+// ═══════════════════════════════
+let allLogos = [];
 let currentFilter = 'all';
 let deleteTargetId = null;
 let isLoggedIn = false;
@@ -587,33 +437,40 @@ function formatPrice(n){return Number(n).toLocaleString('fr-FR')+' FCFA';}
 function catLabel(c){return{tech:'Tech & App',food:'Food & Restaurant',mode:'Mode',sport:'Sport',sante:'Santé & Bien-être'}[c]||c;}
 function badgeLabel(b){return{new:'Nouveau',hot:'🔥 Populaire',excl:'Exclusif'}[b]||'';}
 
-// ╔══════════════════════════════════════════╗
-// ║              BOUTIQUE                    ║
-// ╚══════════════════════════════════════════╝
+// ═══════════════════════════════
+// BOUTIQUE
+// ═══════════════════════════════
+async function loadLogos(){
+  document.getElementById('logoGrid').innerHTML=`<div class="loading-grid"><div class="spinner"></div><span>Chargement des logos…</span></div>`;
+  const data = await sbGet('logos','?order=created_at.desc');
+  allLogos = data||[];
+  renderLogos();
+}
+
 function renderLogos(){
   const grid = document.getElementById('logoGrid');
   const items = currentFilter==='all' ? allLogos : allLogos.filter(l=>l.cat===currentFilter);
   if(items.length===0){
-    grid.innerHTML = `<div class="empty-state"><div class="empty-icon">🎨</div><p>Aucun logo dans cette catégorie pour le moment.<br>Revenez bientôt !</p></div>`;
+    grid.innerHTML=`<div class="empty-state"><div class="empty-icon">🎨</div><p>Aucun logo dans cette catégorie.<br>Revenez bientôt !</p></div>`;
     return;
   }
-  grid.innerHTML = `<div class="logo-grid">${items.map(logo=>{
+  grid.innerHTML=`<div class="logo-grid">${items.map(logo=>{
     const msg = encodeURIComponent(`Bonjour 👋 Je souhaite acheter le logo *${logo.name}* à ${formatPrice(logo.price)} sur LogoMart.\nMerci de me confirmer la disponibilité.`);
     const waLink = `https://wa.me/${WHATSAPP}?text=${msg}`;
     return `<div class="logo-card reveal">
-      <div class="logo-preview" style="background:${logo.bg||'#111'}">
+      <div class="logo-preview" style="background:${logo.bg_color||'#111'}">
         ${logo.badge?`<div class="logo-badges"><span class="badge badge-${logo.badge}">${badgeLabel(logo.badge)}</span></div>`:''}
-        ${logo.url
-          ? `<img src="${logo.url}" alt="${logo.name}" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/><div class="logo-placeholder" style="display:none;"><span class="placeholder-icon">🖼️</span><span class="placeholder-text">Image non disponible</span></div>`
-          : `<div class="logo-placeholder"><span class="placeholder-icon">🎨</span><span class="placeholder-text">Aperçu bientôt</span></div>`}
+        ${logo.image_url
+          ?`<img src="${logo.image_url}" alt="${logo.name}" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/><div class="logo-placeholder" style="display:none;"><span class="placeholder-icon">🖼️</span><span class="placeholder-text">Image non disponible</span></div>`
+          :`<div class="logo-placeholder"><span class="placeholder-icon">🎨</span><span class="placeholder-text">Aperçu bientôt</span></div>`}
       </div>
       <div class="logo-info">
         <div class="logo-cat">${catLabel(logo.cat)}</div>
         <div class="logo-name">${logo.name}</div>
-        <div class="logo-desc">${logo.desc||''}</div>
+        <div class="logo-desc">${logo.description||''}</div>
         <div class="logo-footer">
           <span class="logo-price" style="color:${logo.color||'var(--c1)'}">${formatPrice(logo.price)}</span>
-          <a class="buy-wa-btn" href="${waLink}" target="_blank">💬 Acheter</a>
+          <a class="buy-wa-btn" href="${waLink}" target="_blank" onclick="logCommande('${logo.name.replace(/'/g,"\\'")}',${logo.price})">💬 Acheter</a>
         </div>
       </div>
     </div>`;
@@ -621,54 +478,67 @@ function renderLogos(){
   initReveal();
 }
 
-function filterLogos(btn, cat){
+function filterLogos(btn,cat){
   document.querySelectorAll('.filter-chip').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  currentFilter = cat;
+  currentFilter=cat;
   renderLogos();
 }
 
-// ===== COMMANDE CUSTOM =====
+async function logCommande(nomLogo,prix){
+  await sbPost('commandes',{logo_name:nomLogo,montant:prix,statut:'en_attente'});
+}
+
+// ═══════════════════════════════
+// CUSTOM ORDER
+// ═══════════════════════════════
 function submitCustomOrder(){
-  const nom = document.getElementById('cf-nom').value.trim();
-  const secteur = document.getElementById('cf-secteur').value;
-  const style = document.getElementById('cf-style').value;
-  const colors = document.getElementById('cf-colors').value.trim();
-  const desc = document.getElementById('cf-desc').value.trim();
-  const tel = document.getElementById('cf-tel').value.trim();
+  const nom=document.getElementById('cf-nom').value.trim();
+  const secteur=document.getElementById('cf-secteur').value;
+  const style=document.getElementById('cf-style').value;
+  const colors=document.getElementById('cf-colors').value.trim();
+  const desc=document.getElementById('cf-desc').value.trim();
+  const tel=document.getElementById('cf-tel').value.trim();
   if(!nom||!secteur||!desc){showToast('Veuillez remplir les champs obligatoires');return;}
-  let msg = `🎨 *Commande Logo Custom — LogoMart*\n\n`;
-  msg += `📌 *Marque :* ${nom}\n`;
-  msg += `🏷️ *Secteur :* ${secteur}\n`;
-  msg += `🖌️ *Style :* ${style||'Non précisé'}\n`;
-  if(colors) msg += `🎨 *Couleurs :* ${colors}\n`;
-  msg += `📝 *Brief :* ${desc}\n`;
-  if(tel) msg += `📞 *Mon numéro :* ${tel}\n`;
-  msg += `\nMerci de me contacter pour confirmer et procéder au paiement. 🙏`;
+  let msg=`🎨 *Commande Logo Custom — LogoMart*\n\n📌 *Marque :* ${nom}\n🏷️ *Secteur :* ${secteur}\n🖌️ *Style :* ${style||'Non précisé'}\n`;
+  if(colors)msg+=`🎨 *Couleurs :* ${colors}\n`;
+  msg+=`📝 *Brief :* ${desc}\n`;
+  if(tel)msg+=`📞 *Mon numéro :* ${tel}\n`;
+  msg+=`\nMerci de me contacter pour confirmer et procéder au paiement. 🙏`;
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank');
 }
 
-// ===== TOAST =====
+// ═══════════════════════════════
+// UTILS
+// ═══════════════════════════════
 let toastTimer;
 function showToast(msg){
-  const t = document.getElementById('toast');
-  document.getElementById('toastMsg').textContent = msg;
+  const t=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
   t.classList.add('show');
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(()=>t.classList.remove('show'),3000);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),3000);
 }
 
-// ===== REVEAL =====
 function initReveal(){
-  const obs = new IntersectionObserver(entries=>{
+  const obs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
   },{threshold:.1});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 }
 
-// ╔══════════════════════════════════════════╗
-// ║           PANNEAU ADMIN                  ║
-// ╚══════════════════════════════════════════╝
+function previewImg(val){
+  const box=document.getElementById('imgPreviewBox');
+  const thumb=document.getElementById('imgPreviewThumb');
+  if(val.startsWith('http')){
+    thumb.src=val;box.style.display='block';
+    thumb.onerror=()=>{box.style.display='none';};
+  }else{box.style.display='none';}
+}
+
+// ═══════════════════════════════
+// ADMIN
+// ═══════════════════════════════
 function openAdmin(){
   document.getElementById('adminOverlay').classList.add('open');
   if(isLoggedIn){
@@ -683,13 +553,13 @@ function closeAdmin(){
   document.getElementById('loginError').style.display='none';
 }
 function checkLogin(){
-  const pw = document.getElementById('adminPassword').value;
+  const pw=document.getElementById('adminPassword').value;
   if(pw===ADMIN_PASSWORD){
     isLoggedIn=true;
     document.getElementById('adminLogin').style.display='none';
     document.getElementById('adminDashboard').classList.add('show');
     loadAdminData();
-  } else {
+  }else{
     document.getElementById('loginError').style.display='block';
   }
 }
@@ -698,126 +568,108 @@ function logout(){
   document.getElementById('adminDashboard').classList.remove('show');
   document.getElementById('adminLogin').style.display='flex';
 }
-function switchTab(btn, tabId){
+function switchTab(btn,tabId){
   document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.admin-tab-content').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
   document.getElementById(tabId).classList.add('active');
+  if(tabId==='tabCommandes')loadCommandes();
 }
 
-// Prévisualisation image URL
-document.addEventListener('DOMContentLoaded',()=>{
-  const urlInput = document.getElementById('a-url');
-  if(urlInput){
-    urlInput.addEventListener('input',()=>{
-      const val = urlInput.value.trim();
-      const box = document.getElementById('imgPreviewBox');
-      const thumb = document.getElementById('imgPreviewThumb');
-      if(val.startsWith('http')){
-        thumb.src = val;
-        box.style.display='block';
-        thumb.onerror=()=>{box.style.display='none';};
-      } else {
-        box.style.display='none';
-      }
-    });
-  }
-});
-
-function loadAdminData(){
-  allLogos = getLogos();
-  const list = document.getElementById('adminLogosList');
-  document.getElementById('adminStatLogos').textContent = allLogos.length;
-  const cats = new Set(allLogos.map(l=>l.cat)).size;
-  document.getElementById('adminStatCats').textContent = cats;
-
+async function loadAdminData(){
+  const logos=await sbGet('logos','?order=created_at.desc');
+  allLogos=logos||[];
+  document.getElementById('adminStatLogos').textContent=allLogos.length;
+  const commandes=await sbGet('commandes','?order=created_at.desc');
+  document.getElementById('adminStatCommandes').textContent=(commandes||[]).length;
+  const list=document.getElementById('adminLogosList');
   if(allLogos.length===0){
-    list.innerHTML=`<div class="empty-state"><div class="empty-icon">🎨</div><p>Aucun logo ajouté pour l'instant.<br>Utilisez l'onglet "Ajouter un Logo" pour commencer.</p></div>`;
+    list.innerHTML=`<div class="empty-state"><div class="empty-icon">🎨</div><p>Aucun logo ajouté.<br>Utilisez l'onglet "Ajouter un Logo".</p></div>`;
     return;
   }
   list.innerHTML=`<div class="admin-logos-list">${allLogos.map(logo=>`
     <div class="admin-logo-item">
-      ${logo.url
-        ? `<img src="${logo.url}" class="admin-logo-thumb" alt="${logo.name}" onerror="this.style.display='none'"/>`
-        : `<div class="admin-logo-thumb-placeholder">🎨</div>`}
+      ${logo.image_url?`<img src="${logo.image_url}" class="admin-logo-thumb" alt="${logo.name}" onerror="this.style.display='none'"/>`:`<div class="admin-logo-thumb-placeholder">🎨</div>`}
       <div class="admin-logo-info">
         <div class="admin-logo-name">${logo.name}${logo.badge?`<span class="admin-badge ab-${logo.badge}">${badgeLabel(logo.badge)}</span>`:''}</div>
-        <div class="admin-logo-meta">${catLabel(logo.cat)} · ${logo.desc||'—'}</div>
+        <div class="admin-logo-meta">${catLabel(logo.cat)} · ${logo.description||'—'}</div>
       </div>
       <span class="admin-logo-price">${formatPrice(logo.price)}</span>
       <div class="admin-logo-actions">
-        <button class="admin-del-btn" onclick="askDelete('${logo.id}')" title="Supprimer">🗑</button>
+        <button class="admin-del-btn" onclick="askDelete(${logo.id})" title="Supprimer">🗑</button>
       </div>
     </div>`).join('')}</div>`;
 }
 
-function addLogo(){
-  const url   = document.getElementById('a-url').value.trim();
-  const name  = document.getElementById('a-name').value.trim();
-  const price = document.getElementById('a-price').value.trim();
-  const cat   = document.getElementById('a-cat').value;
-  const badge = document.getElementById('a-badge').value;
-  const desc  = document.getElementById('a-desc').value.trim();
-  const color = document.getElementById('a-color').value;
-  const bg    = document.getElementById('a-bg').value;
-
-  if(!name||!price){showToast('Nom et prix obligatoires');return;}
-
-  const logos = getLogos();
-  const newLogo = {
-    id: Date.now().toString(),
-    url, name, price: Number(price),
-    cat, badge, desc, color, bg
-  };
-  logos.unshift(newLogo);
-  saveLogos(logos);
-  allLogos = logos;
-
-  // Reset form
-  ['a-url','a-name','a-price','a-desc'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('a-badge').value='';
-  document.getElementById('imgPreviewBox').style.display='none';
-
-  renderLogos();
-  loadAdminData();
-  showToast(`"${name}" ajouté à la boutique ✅`);
-  // Switch to logos tab
-  document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.admin-tab-content').forEach(t=>t.classList.remove('active'));
-  document.querySelector('.admin-tab').classList.add('active');
-  document.getElementById('tabLogos').classList.add('active');
-}
-
-function askDelete(id){
-  deleteTargetId = id;
-  document.getElementById('confirmModal').classList.add('open');
-}
-function closeConfirm(){
-  deleteTargetId=null;
-  document.getElementById('confirmModal').classList.remove('open');
-}
-function confirmDelete(){
-  if(!deleteTargetId)return;
-  const logos = getLogos().filter(l=>l.id!==deleteTargetId);
-  saveLogos(logos);
-  allLogos = logos;
-  renderLogos();
-  loadAdminData();
-  closeConfirm();
-  showToast('Logo supprimé');
-}
-
-// URL secrète admin
-function checkSecretRoute(){
-  if(window.location.hash==='#admin-lm2026'){
-    openAdmin();
+async function loadCommandes(){
+  const list=document.getElementById('adminCommandesList');
+  list.innerHTML=`<div class="loading-grid"><div class="spinner"></div><span>Chargement…</span></div>`;
+  const commandes=await sbGet('commandes','?order=created_at.desc');
+  if(!commandes||commandes.length===0){
+    list.innerHTML=`<div class="empty-state"><div class="empty-icon">📋</div><p>Aucune commande pour l'instant.</p></div>`;
+    return;
   }
+  list.innerHTML=`<div class="admin-orders-list">${commandes.map(c=>`
+    <div class="admin-order-item">
+      <div class="order-header">
+        <span class="order-name">🛍️ ${c.logo_name||'Commande'}</span>
+        <span class="order-amount">${c.montant?formatPrice(c.montant):''}</span>
+      </div>
+      <div class="order-meta">${c.created_at?new Date(c.created_at).toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}):''} · ${c.statut||'en attente'}</div>
+    </div>`).join('')}</div>`;
+}
+
+async function addLogo(){
+  const url=document.getElementById('a-url').value.trim();
+  const name=document.getElementById('a-name').value.trim();
+  const price=document.getElementById('a-price').value.trim();
+  const cat=document.getElementById('a-cat').value;
+  const badge=document.getElementById('a-badge').value;
+  const desc=document.getElementById('a-desc').value.trim();
+  const color=document.getElementById('a-color').value;
+  const bg=document.getElementById('a-bg').value;
+  if(!name||!price){showToast('Nom et prix obligatoires');return;}
+  const btn=document.getElementById('saveBtnAdd');
+  btn.disabled=true;btn.textContent='Enregistrement…';
+  const result=await sbPost('logos',{
+    name,price:Number(price),cat,
+    badge:badge||null,description:desc,
+    color,bg_color:bg,image_url:url||null
+  });
+  btn.disabled=false;btn.textContent='✅ Ajouter ce logo à la boutique';
+  if(result){
+    ['a-url','a-name','a-price','a-desc'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('a-badge').value='';
+    document.getElementById('imgPreviewBox').style.display='none';
+    await loadLogos();
+    await loadAdminData();
+    showToast(`"${name}" ajouté à la boutique ✅`);
+    document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.admin-tab-content').forEach(t=>t.classList.remove('active'));
+    document.querySelector('.admin-tab').classList.add('active');
+    document.getElementById('tabLogos').classList.add('active');
+  }else{
+    showToast('Erreur — vérifie ta connexion internet');
+  }
+}
+
+function askDelete(id){deleteTargetId=id;document.getElementById('confirmModal').classList.add('open');}
+function closeConfirm(){deleteTargetId=null;document.getElementById('confirmModal').classList.remove('open');}
+async function confirmDelete(){
+  if(!deleteTargetId)return;
+  const ok=await sbDelete('logos',deleteTargetId);
+  if(ok){await loadLogos();await loadAdminData();showToast('Logo supprimé ✅');}
+  else{showToast('Erreur lors de la suppression');}
+  closeConfirm();
+}
+
+function checkSecretRoute(){
+  if(window.location.hash==='#admin-lm2026')openAdmin();
 }
 window.addEventListener('hashchange',checkSecretRoute);
 window.addEventListener('load',checkSecretRoute);
 
-// ===== INIT =====
-renderLogos();
+loadLogos();
 initReveal();
 </script>
 </body>
