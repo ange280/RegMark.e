@@ -486,7 +486,7 @@ function filterLogos(btn,cat){
 }
 
 async function logCommande(nomLogo,prix){
-  await sbPost('commandes',{logo_name:nomLogo,montant:prix,statut:'en_attente'});
+  await sbPost('commandes',{logos:nomLogo,montant:prix,statut:'en_attente'});
 }
 
 // ═══════════════════════════════
@@ -612,7 +612,7 @@ async function loadCommandes(){
   list.innerHTML=`<div class="admin-orders-list">${commandes.map(c=>`
     <div class="admin-order-item">
       <div class="order-header">
-        <span class="order-name">🛍️ ${c.logo_name||'Commande'}</span>
+        <span class="order-name">🛍️ ${c.logos||'Commande'}</span>
         <span class="order-amount">${c.montant?formatPrice(c.montant):''}</span>
       </div>
       <div class="order-meta">${c.created_at?new Date(c.created_at).toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}):''} · ${c.statut||'en attente'}</div>
