@@ -11,208 +11,229 @@
   --bg:#0d0d0f;--surface:#15151a;--surface2:#1c1c23;--border:#2a2a35;
   --text:#f0eee8;--muted:#888899;
   --c1:#ff6b35;--c2:#f7c948;--c3:#4ecdc4;--c4:#a855f7;--c5:#22d3ee;
-  --font-head:'Syne',sans-serif;--font-body:'Inter',sans-serif;
+  --head:'Syne',sans-serif;--body:'Inter',sans-serif;
 }
 html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-weight:300;overflow-x:hidden;}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-weight:300;overflow-x:hidden;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(13,13,15,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
-.nav-logo{font-family:var(--font-head);font-size:1.2rem;font-weight:800;text-decoration:none;background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.nav-links{display:flex;gap:1.5rem;list-style:none;}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:.8rem;transition:color .2s;}
-.nav-links a:hover{color:var(--text);}
-.cart-btn{position:relative;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:.5rem 1rem;font-family:var(--font-body);font-size:.8rem;cursor:pointer;display:flex;align-items:center;gap:.4rem;border-radius:8px;transition:border-color .2s;}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;background:rgba(13,13,15,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:var(--head);font-size:1.2rem;font-weight:800;text-decoration:none;background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.cart-btn{position:relative;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:.5rem 1.1rem;font-family:var(--body);font-size:.8rem;cursor:pointer;display:flex;align-items:center;gap:.4rem;border-radius:8px;transition:border-color .2s;}
 .cart-btn:hover{border-color:var(--c1);}
 .cart-count{position:absolute;top:-.4rem;right:-.4rem;background:var(--c1);color:#fff;width:18px;height:18px;border-radius:50%;font-size:.6rem;font-weight:700;display:none;align-items:center;justify-content:center;}
 
 /* HERO */
-#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:6rem 2rem 4rem;text-align:center;position:relative;}
-.hero-inner{max-width:700px;position:relative;z-index:1;}
-.hero-badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--surface2);border:1px solid var(--border);padding:.35rem .9rem;border-radius:100px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1.8rem;}
-.hero-badge-dot{width:5px;height:5px;border-radius:50%;background:var(--c3);animation:pulse 2s infinite;}
+#hero{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:6rem 1.5rem 3rem;text-align:center;position:relative;overflow:hidden;}
+.hero-blobs{position:absolute;inset:0;pointer-events:none;}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.12;animation:blobFloat 9s ease-in-out infinite alternate;}
+.blob1{width:350px;height:350px;background:var(--c1);top:-10%;left:-15%;}
+.blob2{width:300px;height:300px;background:var(--c4);bottom:-5%;right:-10%;animation-delay:-4s;}
+.blob3{width:220px;height:220px;background:var(--c3);top:30%;left:55%;animation-delay:-7s;}
+@keyframes blobFloat{from{transform:translate(0,0);}to{transform:translate(20px,15px);}}
+.hero-inner{position:relative;z-index:1;max-width:720px;width:100%;}
+.hero-badge{display:inline-flex;align-items:center;gap:.45rem;background:var(--surface2);border:1px solid var(--border);padding:.38rem 1rem;border-radius:100px;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--c3);animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
-.hero-title{font-family:var(--font-head);font-size:clamp(2.5rem,7vw,5rem);font-weight:800;line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;}
+.hero-title{font-family:var(--head);font-size:clamp(2.4rem,8vw,5rem);font-weight:800;line-height:.95;letter-spacing:-.03em;margin-bottom:1.5rem;}
 .g1{background:linear-gradient(135deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .g2{background:linear-gradient(135deg,var(--c3),var(--c5));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.hero-sub{color:var(--muted);font-size:.9rem;line-height:1.8;max-width:480px;margin:0 auto 2rem;}
-.hero-actions{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;}
-.btn-primary{background:linear-gradient(135deg,var(--c1),var(--c2));color:#111;padding:.8rem 1.8rem;border:none;font-family:var(--font-head);font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:10px;text-decoration:none;display:inline-block;transition:opacity .2s;}
-.btn-primary:hover{opacity:.88;}
-.btn-outline{background:transparent;color:var(--text);padding:.8rem 1.8rem;border:1px solid var(--border);font-family:var(--font-head);font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:10px;text-decoration:none;display:inline-block;transition:border-color .2s;}
-.btn-outline:hover{border-color:var(--c3);}
+.hero-sub{color:var(--muted);font-size:.95rem;line-height:1.85;max-width:480px;margin:0 auto 2.5rem;}
+.hero-sub strong{color:var(--text);}
+.btn-primary{background:linear-gradient(135deg,var(--c1),var(--c2));color:#111;padding:.9rem 2.2rem;border:none;font-family:var(--head);font-size:.85rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:10px;text-decoration:none;display:inline-block;transition:opacity .2s,transform .2s;box-shadow:0 4px 20px rgba(255,107,53,.3);}
+.btn-primary:hover{opacity:.9;transform:translateY(-2px);}
 
 /* STATS */
 .stats-bar{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:flex;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;}
-.stat-item{flex:1;min-width:120px;max-width:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem 1rem;border-right:1px solid var(--border);}
+.stat-item{flex:1;min-width:110px;max-width:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem .8rem;border-right:1px solid var(--border);}
 .stat-item:last-child{border-right:none;}
-.stat-num{font-family:var(--font-head);font-size:1.6rem;font-weight:800;}
+.stat-num{font-family:var(--head);font-size:1.7rem;font-weight:800;}
 .sn1{color:var(--c1);}.sn2{color:var(--c2);}.sn3{color:var(--c3);}.sn4{color:var(--c4);}
-.stat-lbl{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.2rem;}
+.stat-lbl{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.2rem;text-align:center;}
 
-/* SECTION */
-section{padding:5rem 2rem;position:relative;z-index:1;}
+/* BOUTIQUE */
+#stock{padding:5rem 1.5rem;position:relative;z-index:1;}
 .section-header{margin-bottom:2.5rem;}
-.section-tag{display:inline-block;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;padding:.25rem .8rem;border-radius:100px;margin-bottom:.8rem;font-weight:600;}
-.tag-orange{background:rgba(255,107,53,.1);color:var(--c1);border:1px solid rgba(255,107,53,.2);}
-.tag-teal{background:rgba(78,205,196,.1);color:var(--c3);border:1px solid rgba(78,205,196,.2);}
-.section-title{font-family:var(--font-head);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem;}
-.section-sub{color:var(--muted);font-size:.85rem;line-height:1.75;max-width:500px;}
+.section-tag{display:inline-block;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;padding:.25rem .8rem;border-radius:100px;margin-bottom:.8rem;font-weight:600;background:rgba(255,107,53,.1);color:var(--c1);border:1px solid rgba(255,107,53,.2);}
+.section-title{font-family:var(--head);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem;}
+.section-sub{color:var(--muted);font-size:.85rem;line-height:1.75;max-width:520px;}
 
 /* INCLUS BARRE */
-.inclus-bar{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.8rem 1.2rem;margin-bottom:1.8rem;}
+.inclus-bar{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.85rem 1.2rem;margin-bottom:1.8rem;}
 .inclus-label{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;flex-shrink:0;}
-.inclus-item{font-size:.75rem;color:var(--c3);}
+.inclus-item{font-size:.76rem;color:var(--c3);}
+
+/* PACK DETAILS */
+.pack-bar{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.3rem;margin-bottom:1.8rem;display:flex;flex-direction:column;gap:.7rem;}
+.pack-bar-title{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;}
+.pack-formats{display:flex;flex-wrap:wrap;gap:1rem;}
+.pack-format{display:flex;align-items:center;gap:.5rem;font-size:.8rem;}
+.pf-badge{font-family:var(--head);font-size:.72rem;font-weight:800;padding:.18rem .45rem;border-radius:5px;}
+.pf-png{background:rgba(78,205,196,.12);color:var(--c3);}
+.pf-svg{background:rgba(168,85,247,.12);color:var(--c4);}
+.pf-pdf{background:rgba(247,201,72,.12);color:var(--c2);}
+.pf-desc{color:var(--muted);}
+.pack-note{font-size:.76rem;color:var(--c3);font-weight:500;}
 
 /* FILTRES */
 .filter-row{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem;}
-.filter-chip{background:var(--surface2);border:1px solid var(--border);color:var(--muted);padding:.4rem 1rem;border-radius:100px;font-size:.72rem;font-weight:500;cursor:pointer;transition:all .2s;font-family:var(--font-body);}
+.filter-chip{background:var(--surface2);border:1px solid var(--border);color:var(--muted);padding:.42rem 1rem;border-radius:100px;font-size:.72rem;font-weight:500;cursor:pointer;transition:all .2s;font-family:var(--body);}
 .filter-chip.active,.filter-chip:hover{background:var(--c1);border-color:var(--c1);color:#111;}
 
 /* LOGO GRID */
 .logo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.2rem;}
-.logo-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .25s,border-color .25s;}
-.logo-card:hover{transform:translateY(-4px);border-color:var(--c1);}
+.logo-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s;}
+.logo-card:hover{transform:translateY(-4px);border-color:var(--c1);box-shadow:0 12px 36px rgba(255,107,53,.12);}
 .logo-preview{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
 .logo-img{width:72%;height:72%;object-fit:contain;transition:transform .25s;}
 .logo-card:hover .logo-img{transform:scale(1.05);}
 .logo-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;}
-.ph-icon{font-size:2rem;opacity:.25;}
+.ph-icon{font-size:2rem;opacity:.2;}
 .ph-text{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
-.logo-badges{position:absolute;top:.6rem;left:.6rem;display:flex;gap:.3rem;}
+.logo-badges{position:absolute;top:.6rem;left:.6rem;}
 .badge{font-size:.58rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .5rem;border-radius:5px;}
 .badge-new{background:var(--c3);color:#0d1a1a;}
 .badge-hot{background:var(--c1);color:#fff;}
 .badge-excl{background:var(--c4);color:#fff;}
 .logo-info{padding:1rem 1.2rem 1.2rem;}
 .logo-cat{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem;}
-.logo-name{font-family:var(--font-head);font-size:.95rem;font-weight:700;margin-bottom:.25rem;}
-.logo-inclus{font-size:.7rem;color:var(--muted);margin-bottom:.8rem;line-height:1.6;}
+.logo-name{font-family:var(--head);font-size:.95rem;font-weight:700;margin-bottom:.25rem;}
+.logo-inclus{font-size:.7rem;color:var(--muted);margin-bottom:.85rem;line-height:1.65;}
 .logo-inclus span{color:var(--c3);}
 .logo-footer{display:flex;align-items:center;justify-content:space-between;}
-.logo-price{font-family:var(--font-head);font-size:1.2rem;font-weight:800;}
-.add-cart-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:.45rem .9rem;border-radius:7px;font-family:var(--font-body);font-size:.72rem;font-weight:500;cursor:pointer;transition:all .2s;}
+.logo-price{font-family:var(--head);font-size:1.2rem;font-weight:800;}
+.add-cart-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:.45rem .9rem;border-radius:7px;font-family:var(--body);font-size:.72rem;font-weight:500;cursor:pointer;transition:all .2s;}
 .add-cart-btn:hover{background:var(--c1);border-color:var(--c1);color:#111;}
 .add-cart-btn.added{background:var(--c3);border-color:var(--c3);color:#0d1a1a;}
 
 /* LOADING / EMPTY */
-.loading-grid{display:flex;align-items:center;justify-content:center;padding:4rem;flex-direction:column;gap:1rem;color:var(--muted);}
-.spinner{width:32px;height:32px;border:2px solid var(--border);border-top-color:var(--c1);border-radius:50%;animation:spin .8s linear infinite;}
+.loading-grid{display:flex;align-items:center;justify-content:center;padding:5rem;flex-direction:column;gap:1rem;color:var(--muted);}
+.spinner{width:34px;height:34px;border:2px solid var(--border);border-top-color:var(--c1);border-radius:50%;animation:spin .8s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
-.empty-state{text-align:center;padding:3rem;color:var(--muted);}
+.empty-state{text-align:center;padding:4rem;color:var(--muted);}
 
-/* SECTION CUSTOM */
-#custom{background:var(--surface);}
-.custom-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;max-width:1000px;margin:0 auto;}
-.tarifs-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;}
-.tarif-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:1.2rem;}
-.tarif-top{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:.5rem;}
-.tarif-prix{font-family:var(--font-head);font-size:1.3rem;font-weight:800;color:var(--c2);margin-bottom:.5rem;}
-.tarif-prix span{font-size:.7rem;color:var(--muted);}
-.tarif-items{font-size:.7rem;color:var(--muted);line-height:1.8;}
-.tarif-items .ok{color:var(--c3);}
+/* FICHIERS SECTION */
+#fichiers{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:5rem 1.5rem;position:relative;z-index:1;}
+.fichiers-inner{max-width:860px;margin:0 auto;}
+.fichiers-header{text-align:center;margin-bottom:3rem;}
+.fichiers-tag{display:inline-block;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;padding:.25rem .8rem;border-radius:100px;margin-bottom:.8rem;font-weight:600;background:rgba(78,205,196,.1);color:var(--c3);border:1px solid rgba(78,205,196,.2);}
+.fichiers-title{font-family:var(--head);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem;}
+.fichiers-sub{color:var(--muted);font-size:.85rem;line-height:1.75;}
+.fichiers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.fichier-card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:1.4rem;}
+.fichier-badge{font-family:var(--head);font-size:1.3rem;font-weight:800;margin-bottom:.6rem;display:block;}
+.fb-png{color:var(--c3);}
+.fb-svg{color:var(--c4);}
+.fb-pdf{color:var(--c2);}
+.fichier-name{font-family:var(--head);font-size:.9rem;font-weight:700;margin-bottom:.4rem;}
+.fichier-desc{font-size:.75rem;color:var(--muted);line-height:1.7;}
+.fichiers-note{margin-top:1.5rem;text-align:center;font-size:.8rem;color:var(--c3);font-weight:500;}
 
-.custom-steps{display:flex;flex-direction:column;gap:1.2rem;}
-.step-item{display:flex;gap:.9rem;align-items:flex-start;}
-.step-num{width:30px;height:30px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:.78rem;font-weight:800;}
-.sn-a{background:rgba(255,107,53,.12);border:1px solid rgba(255,107,53,.2);color:var(--c1);}
-.sn-b{background:rgba(247,201,72,.12);border:1px solid rgba(247,201,72,.2);color:var(--c2);}
-.sn-c{background:rgba(78,205,196,.12);border:1px solid rgba(78,205,196,.2);color:var(--c3);}
-.sn-d{background:rgba(168,85,247,.12);border:1px solid rgba(168,85,247,.2);color:var(--c4);}
-.step-content h4{font-family:var(--font-head);font-size:.88rem;font-weight:700;margin-bottom:.2rem;}
-.step-content p{font-size:.76rem;color:var(--muted);line-height:1.7;}
+/* POURQUOI */
+#pourquoi{padding:5rem 1.5rem;position:relative;z-index:1;}
+.pourquoi-inner{max-width:860px;margin:0 auto;}
+.pourquoi-header{text-align:center;margin-bottom:3rem;}
+.pourquoi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.pourquoi-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.4rem;text-align:center;}
+.pourquoi-num{font-family:var(--head);font-size:.75rem;font-weight:800;padding:.2rem .55rem;border-radius:6px;display:inline-block;margin-bottom:.8rem;}
+.pn1{background:rgba(255,107,53,.12);color:var(--c1);}
+.pn2{background:rgba(78,205,196,.12);color:var(--c3);}
+.pn3{background:rgba(247,201,72,.12);color:var(--c2);}
+.pourquoi-name{font-family:var(--head);font-size:.92rem;font-weight:700;margin-bottom:.4rem;}
+.pourquoi-body{font-size:.76rem;color:var(--muted);line-height:1.7;}
 
-.order-form{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:1.8rem;}
-.form-title{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:1.3rem;}
-.form-group{margin-bottom:1rem;}
-.form-group label{display:block;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;}
-.form-group input,.form-group textarea,.form-group select{width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text);font-family:var(--font-body);font-size:.85rem;font-weight:300;padding:.7rem .9rem;border-radius:9px;outline:none;transition:border-color .2s;appearance:none;}
-.form-group select option{background:#1c1c23;}
-.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--c3);}
-.form-group textarea{resize:none;height:90px;}
-.submit-order{width:100%;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;padding:.9rem;border-radius:10px;font-family:var(--font-head);font-size:.82rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:opacity .2s;}
-.submit-order:hover{opacity:.88;}
-
-/* PANIER DRAWER */
-.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:600;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px);}
-.cart-overlay.open{opacity:1;pointer-events:all;}
-.cart-drawer{position:fixed;top:0;right:0;bottom:0;width:360px;max-width:95vw;background:var(--surface);border-left:1px solid var(--border);z-index:601;transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;}
-.cart-overlay.open .cart-drawer{transform:translateX(0);}
-.cart-head{padding:1.1rem 1.4rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
-.cart-head h2{font-family:var(--font-head);font-size:.95rem;font-weight:800;}
-.cart-close{background:var(--surface2);border:1px solid var(--border);color:var(--text);width:30px;height:30px;border-radius:7px;cursor:pointer;font-size:.9rem;}
-.cart-items{flex:1;overflow-y:auto;padding:1rem 1.4rem;}
-.cart-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:var(--muted);gap:.6rem;font-size:.82rem;}
-.cart-item{display:flex;gap:.7rem;align-items:center;padding:.8rem 0;border-bottom:1px solid var(--border);}
-.cart-thumb{width:48px;height:48px;border-radius:7px;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
-.cart-thumb img{width:100%;height:100%;object-fit:contain;}
-.cart-info{flex:1;}
-.cart-name{font-family:var(--font-head);font-size:.82rem;font-weight:700;}
-.cart-cat{font-size:.65rem;color:var(--muted);}
-.cart-price{font-family:var(--font-head);font-size:.9rem;font-weight:800;color:var(--c2);}
-.cart-remove{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.85rem;padding:.2rem;}
-.cart-remove:hover{color:var(--c1);}
-.cart-footer{padding:1.1rem 1.4rem;border-top:1px solid var(--border);flex-shrink:0;}
-.cart-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:.9rem;}
-.cart-total-lbl{font-size:.72rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
-.cart-total-val{font-family:var(--font-head);font-size:1.3rem;font-weight:800;color:var(--c2);}
-.cart-wa{width:100%;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;padding:.85rem;border-radius:10px;font-family:var(--font-head);font-size:.8rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:opacity .2s;}
-.cart-wa:hover{opacity:.88;}
-
-/* TOAST */
-.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(16px);background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.7rem 1.2rem;font-size:.78rem;font-weight:500;z-index:700;opacity:0;pointer-events:none;transition:all .3s;display:flex;align-items:center;gap:.5rem;box-shadow:0 8px 24px rgba(0,0,0,.4);}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-.toast-dot{width:7px;height:7px;border-radius:50%;background:var(--c3);}
+/* CTA */
+#cta{background:linear-gradient(135deg,rgba(255,107,53,.1),rgba(168,85,247,.06));border-top:1px solid rgba(255,107,53,.15);padding:5rem 1.5rem;text-align:center;position:relative;z-index:1;}
+.cta-inner{max-width:560px;margin:0 auto;}
+.cta-title{font-family:var(--head);font-size:clamp(1.8rem,5vw,3rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.8rem;}
+.cta-title span{background:linear-gradient(135deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.cta-sub{color:var(--muted);font-size:.88rem;line-height:1.8;margin-bottom:.6rem;}
+.cta-note{color:var(--c3);font-size:.82rem;font-weight:500;margin-bottom:2rem;}
+.cta-actions{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;}
+.btn-wa{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:.9rem 2rem;border:none;font-family:var(--head);font-size:.85rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:10px;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:opacity .2s;}
+.btn-wa:hover{opacity:.88;}
 
 /* FOOTER */
-footer{background:var(--surface);border-top:1px solid var(--border);padding:1.8rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;position:relative;z-index:1;}
-.footer-logo{font-family:var(--font-head);font-size:1rem;font-weight:800;background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem 1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;position:relative;z-index:1;}
+.footer-logo{font-family:var(--head);font-size:1rem;font-weight:800;background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .footer-copy{font-size:.68rem;color:var(--muted);}
 .footer-links{display:flex;gap:1.2rem;}
 .footer-links a{font-size:.68rem;color:var(--muted);text-decoration:none;transition:color .2s;}
 .footer-links a:hover{color:var(--text);}
 
-/* WHATSAPP FLOAT */
-.wa-float{position:fixed;bottom:1.8rem;right:1.8rem;z-index:300;display:flex;align-items:center;gap:.6rem;background:#25D366;color:#fff;padding:.75rem 1.1rem;border-radius:50px;text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,.4);transition:transform .2s;}
+/* WA FLOAT */
+.wa-float{position:fixed;bottom:1.8rem;right:1.8rem;z-index:300;display:flex;align-items:center;gap:.6rem;background:#25D366;color:#fff;padding:.75rem 1.2rem;border-radius:50px;text-decoration:none;box-shadow:0 4px 18px rgba(37,211,102,.4);transition:transform .2s;}
 .wa-float:hover{transform:translateY(-2px);}
 .wa-float span{font-size:.76rem;font-weight:500;}
+
+/* TOAST */
+.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(16px);background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.7rem 1.2rem;font-size:.78rem;font-weight:500;z-index:700;opacity:0;pointer-events:none;transition:all .3s;display:flex;align-items:center;gap:.5rem;box-shadow:0 8px 24px rgba(0,0,0,.4);white-space:nowrap;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.toast-dot{width:7px;height:7px;border-radius:50%;background:var(--c3);flex-shrink:0;}
+
+/* PANIER */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:600;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px);}
+.cart-overlay.open{opacity:1;pointer-events:all;}
+.cart-drawer{position:fixed;top:0;right:0;bottom:0;width:360px;max-width:95vw;background:var(--surface);border-left:1px solid var(--border);z-index:601;transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;}
+.cart-overlay.open .cart-drawer{transform:translateX(0);}
+.cart-head{padding:1.1rem 1.4rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.cart-head h2{font-family:var(--head);font-size:.95rem;font-weight:800;}
+.cart-close{background:var(--surface2);border:1px solid var(--border);color:var(--text);width:30px;height:30px;border-radius:7px;cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;}
+.cart-items{flex:1;overflow-y:auto;padding:1rem 1.4rem;}
+.cart-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:var(--muted);gap:.6rem;font-size:.82rem;text-align:center;}
+.cart-item{display:flex;gap:.7rem;align-items:center;padding:.8rem 0;border-bottom:1px solid var(--border);}
+.cart-thumb{width:48px;height:48px;border-radius:7px;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.cart-thumb img{width:100%;height:100%;object-fit:contain;}
+.cart-info{flex:1;}
+.cart-name{font-family:var(--head);font-size:.82rem;font-weight:700;}
+.cart-cat{font-size:.65rem;color:var(--muted);}
+.cart-price{font-family:var(--head);font-size:.9rem;font-weight:800;color:var(--c2);flex-shrink:0;}
+.cart-remove{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.85rem;padding:.2rem;flex-shrink:0;}
+.cart-remove:hover{color:var(--c1);}
+.cart-footer{padding:1.1rem 1.4rem;border-top:1px solid var(--border);flex-shrink:0;}
+.cart-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:.9rem;}
+.cart-total-lbl{font-size:.72rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
+.cart-total-val{font-family:var(--head);font-size:1.3rem;font-weight:800;color:var(--c2);}
+.cart-wa{width:100%;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;padding:.88rem;border-radius:10px;font-family:var(--head);font-size:.82rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:opacity .2s;}
+.cart-wa:hover{opacity:.88;}
 
 /* ADMIN */
 .admin-overlay{position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:1000;display:none;flex-direction:column;overflow-y:auto;}
 .admin-overlay.open{display:flex;}
 .admin-login{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem;}
 .login-box{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:2.5rem;width:100%;max-width:360px;}
-.login-logo{font-family:var(--font-head);font-size:1.4rem;font-weight:800;background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.3rem;}
+.login-logo{font-family:var(--head);font-size:1.4rem;font-weight:800;background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.3rem;}
 .login-sub{color:var(--muted);font-size:.8rem;margin-bottom:2rem;}
-.login-input{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:var(--font-body);font-size:.88rem;padding:.85rem 1rem;border-radius:9px;outline:none;margin-bottom:1rem;transition:border-color .2s;}
+.login-input{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:var(--body);font-size:.88rem;padding:.85rem 1rem;border-radius:9px;outline:none;margin-bottom:1rem;transition:border-color .2s;}
 .login-input:focus{border-color:var(--c4);}
-.login-btn{width:100%;background:linear-gradient(135deg,var(--c4),var(--c5));color:#fff;border:none;padding:.9rem;border-radius:9px;font-family:var(--font-head);font-size:.82rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:opacity .2s;}
+.login-btn{width:100%;background:linear-gradient(135deg,var(--c4),var(--c5));color:#fff;border:none;padding:.9rem;border-radius:9px;font-family:var(--head);font-size:.82rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:opacity .2s;}
 .login-btn:hover{opacity:.88;}
 .login-error{color:var(--c1);font-size:.75rem;margin-top:.4rem;display:none;}
 .admin-dashboard{display:none;flex-direction:column;min-height:100vh;}
 .admin-dashboard.show{display:flex;}
-.admin-nav{background:var(--surface);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
-.admin-nav-logo{font-family:var(--font-head);font-size:1rem;font-weight:800;background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.admin-logout{background:transparent;border:1px solid var(--border);color:var(--muted);padding:.45rem .9rem;border-radius:7px;font-family:var(--font-body);font-size:.72rem;cursor:pointer;transition:all .2s;}
+.admin-nav{background:var(--surface);border-bottom:1px solid var(--border);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.admin-nav-logo{font-family:var(--head);font-size:1rem;font-weight:800;background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.admin-nav-logo span{color:var(--muted);font-size:.72rem;font-weight:400;-webkit-text-fill-color:var(--muted);}
+.admin-logout{background:transparent;border:1px solid var(--border);color:var(--muted);padding:.45rem .9rem;border-radius:7px;font-family:var(--body);font-size:.72rem;cursor:pointer;transition:all .2s;}
 .admin-logout:hover{border-color:var(--c1);color:var(--c1);}
 .admin-body{flex:1;padding:1.5rem;max-width:900px;width:100%;margin:0 auto;}
 .admin-stats{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:1.5rem;}
 .admin-stat{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.2rem;}
-.admin-stat-num{font-family:var(--font-head);font-size:1.6rem;font-weight:800;margin-bottom:.2rem;}
+.admin-stat-num{font-family:var(--head);font-size:1.6rem;font-weight:800;margin-bottom:.2rem;}
 .admin-stat-lbl{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
 .admin-tabs{display:flex;gap:.4rem;margin-bottom:1.5rem;border-bottom:1px solid var(--border);}
-.admin-tab{background:transparent;border:none;color:var(--muted);padding:.7rem 1rem;font-family:var(--font-body);font-size:.8rem;font-weight:500;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;margin-bottom:-1px;}
+.admin-tab{background:transparent;border:none;color:var(--muted);padding:.7rem 1rem;font-family:var(--body);font-size:.8rem;font-weight:500;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;margin-bottom:-1px;}
 .admin-tab.active{color:var(--c1);border-color:var(--c1);}
 .admin-tab-content{display:none;}
 .admin-tab-content.active{display:block;}
 .admin-form{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem;}
-.admin-form-title{font-family:var(--font-head);font-size:.95rem;font-weight:700;margin-bottom:1.2rem;}
-.admin-input{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:var(--font-body);font-size:.82rem;padding:.7rem .9rem;border-radius:9px;outline:none;transition:border-color .2s;margin-bottom:.8rem;appearance:none;}
+.admin-form-title{font-family:var(--head);font-size:.95rem;font-weight:700;margin-bottom:1.2rem;}
+.admin-input{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:var(--body);font-size:.82rem;padding:.7rem .9rem;border-radius:9px;outline:none;transition:border-color .2s;margin-bottom:.8rem;appearance:none;}
 .admin-input:focus{border-color:var(--c3);}
 .admin-input option{background:#1c1c23;}
 .admin-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
 .admin-label{display:block;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem;}
-.admin-save{background:linear-gradient(135deg,var(--c3),var(--c5));color:#0d1a1a;border:none;padding:.85rem 2rem;border-radius:9px;font-family:var(--font-head);font-size:.8rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:opacity .2s;width:100%;}
+.admin-save{background:linear-gradient(135deg,var(--c3),var(--c5));color:#0d1a1a;border:none;padding:.85rem 2rem;border-radius:9px;font-family:var(--head);font-size:.8rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:opacity .2s;width:100%;}
 .admin-save:hover{opacity:.88;}
 .admin-save:disabled{opacity:.4;cursor:not-allowed;}
 .help-tip{background:rgba(78,205,196,.05);border:1px solid rgba(78,205,196,.15);border-radius:10px;padding:.9rem 1rem;margin-bottom:1.2rem;font-size:.76rem;color:var(--muted);line-height:1.7;}
@@ -222,11 +243,11 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.8r
 .admin-logos-list{display:flex;flex-direction:column;gap:.8rem;}
 .admin-logo-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.9rem 1rem;display:flex;align-items:center;gap:.9rem;}
 .al-thumb{width:50px;height:50px;border-radius:7px;object-fit:contain;flex-shrink:0;background:var(--surface2);}
-.al-thumb-ph{width:50px;height:50px;border-radius:7px;flex-shrink:0;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:1.3rem;opacity:.4;}
+.al-thumb-ph{width:50px;height:50px;border-radius:7px;flex-shrink:0;background:var(--surface2);display:flex;align-items:center;justify-content:center;opacity:.4;}
 .al-info{flex:1;}
-.al-name{font-family:var(--font-head);font-size:.88rem;font-weight:700;margin-bottom:.15rem;}
+.al-name{font-family:var(--head);font-size:.88rem;font-weight:700;margin-bottom:.15rem;}
 .al-meta{font-size:.68rem;color:var(--muted);}
-.al-price{font-family:var(--font-head);font-size:.95rem;font-weight:800;color:var(--c2);margin-right:.8rem;white-space:nowrap;}
+.al-price{font-family:var(--head);font-size:.95rem;font-weight:800;color:var(--c2);margin-right:.8rem;white-space:nowrap;}
 .al-del{background:var(--surface2);border:1px solid var(--border);color:var(--muted);width:30px;height:30px;border-radius:7px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.8rem;transition:all .2s;flex-shrink:0;}
 .al-del:hover{border-color:var(--c1);color:var(--c1);}
 .admin-badge{font-size:.58rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.15rem .45rem;border-radius:4px;margin-left:.3rem;}
@@ -236,38 +257,36 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.8r
 .orders-list{display:flex;flex-direction:column;gap:.7rem;}
 .order-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.9rem 1rem;}
 .order-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem;}
-.order-name{font-family:var(--font-head);font-size:.88rem;font-weight:700;}
-.order-amount{font-family:var(--font-head);font-size:.88rem;font-weight:800;color:var(--c2);}
+.order-name{font-family:var(--head);font-size:.88rem;font-weight:700;}
+.order-amount{font-family:var(--head);font-size:.88rem;font-weight:800;color:var(--c2);}
 .order-meta{font-size:.68rem;color:var(--muted);}
 .confirm-modal{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:1100;display:none;align-items:center;justify-content:center;padding:1.5rem;}
 .confirm-modal.open{display:flex;}
 .confirm-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.8rem;max-width:340px;width:100%;text-align:center;}
 .confirm-icon{font-size:2.2rem;margin-bottom:.8rem;}
-.confirm-title{font-family:var(--font-head);font-size:1rem;font-weight:800;margin-bottom:.4rem;}
+.confirm-title{font-family:var(--head);font-size:1rem;font-weight:800;margin-bottom:.4rem;}
 .confirm-sub{color:var(--muted);font-size:.78rem;margin-bottom:1.3rem;line-height:1.6;}
 .confirm-actions{display:flex;gap:.7rem;}
-.confirm-cancel{flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:.75rem;border-radius:9px;font-family:var(--font-body);font-size:.78rem;cursor:pointer;}
-.confirm-delete{flex:1;background:var(--c1);color:#fff;border:none;padding:.75rem;border-radius:9px;font-family:var(--font-head);font-size:.78rem;font-weight:700;cursor:pointer;}
+.confirm-cancel{flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:.75rem;border-radius:9px;font-family:var(--body);font-size:.78rem;cursor:pointer;}
+.confirm-delete{flex:1;background:var(--c1);color:#fff;border:none;padding:.75rem;border-radius:9px;font-family:var(--head);font-size:.78rem;font-weight:700;cursor:pointer;}
 
 /* REVEAL */
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
 
-@media(max-width:860px){
-  .custom-grid{grid-template-columns:1fr;}
+@media(max-width:760px){
   nav{padding:.8rem 1.2rem;}
-  .nav-links{display:none;}
-  section{padding:3.5rem 1.2rem;}
+  #stock,#fichiers,#pourquoi,#cta{padding:3.5rem 1.2rem;}
+  .fichiers-grid,.pourquoi-grid{grid-template-columns:1fr;}
   .logo-grid{grid-template-columns:1fr 1fr;}
+  .stat-item{min-width:50%;border-right:none;border-bottom:1px solid var(--border);}
   footer{flex-direction:column;text-align:center;}
   .admin-row{grid-template-columns:1fr;}
   .admin-body{padding:1rem;}
 }
 @media(max-width:480px){
   .logo-grid{grid-template-columns:1fr;}
-  .hero-title{font-size:2.2rem;}
-  section{padding:3rem 1rem;}
-  .tarifs-grid{grid-template-columns:1fr;}
+  #stock,#fichiers,#pourquoi,#cta{padding:3rem 1rem;}
 }
 </style>
 </head>
@@ -276,52 +295,63 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.8r
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">LogoMart CI</a>
-  <ul class="nav-links">
-    <li><a href="#stock">Boutique</a></li>
-    <li><a href="#custom">Logo Custom</a></li>
-  </ul>
   <button class="cart-btn" onclick="openCart()">
-    🛒 Panier
+    Panier
     <span class="cart-count" id="cartCount">0</span>
   </button>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
+  <div class="hero-blobs">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+  </div>
   <div class="hero-inner">
     <div class="hero-badge"><span class="hero-badge-dot"></span>Abidjan · Côte d'Ivoire</div>
-    <h1 class="hero-title"><span class="g1">Logos Pro</span><br><span class="g2">Personnalisés</span></h1>
-    <p class="hero-sub">Choisissez votre modèle — on y ajoute le nom de votre marque et on livre PNG + SVG sous 48h.</p>
-    <div class="hero-actions">
-      <a href="#stock" class="btn-primary">Voir les modèles →</a>
-      <a href="#custom" class="btn-outline">Logo sur-mesure</a>
-    </div>
+    <h1 class="hero-title">
+      <span class="g1">Logos Pro</span><br>
+      <span class="g2">Personnalisés</span>
+    </h1>
+    <p class="hero-sub">Choisissez votre modèle — on y ajoute <strong>le nom de votre marque</strong> et on livre <strong>PNG + SVG + PDF</strong> sous 48h.</p>
+    <a href="#stock" class="btn-primary">Voir les modèles</a>
   </div>
 </section>
 
 <!-- STATS -->
 <div class="stats-bar">
-  <div class="stat-item"><span class="stat-num sn1">+60</span><span class="stat-lbl">Modèles disponibles</span></div>
-  <div class="stat-item"><span class="stat-num sn2">48h</span><span class="stat-lbl">Délai de livraison</span></div>
+  <div class="stat-item"><span class="stat-num sn1">+60</span><span class="stat-lbl">Logos créés</span></div>
+  <div class="stat-item"><span class="stat-num sn2">48h</span><span class="stat-lbl">Délai livraison</span></div>
   <div class="stat-item"><span class="stat-num sn3">100%</span><span class="stat-lbl">Droits inclus</span></div>
-  <div class="stat-item"><span class="stat-num sn4" style="display:flex;align-items:center;gap:.25rem;">3,9<svg width="20" height="20" viewBox="0 0 24 24" fill="#a855f7"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="stat-lbl">Note clients</span></div>
+  <div class="stat-item"><span class="stat-num sn4" style="display:flex;align-items:center;gap:.2rem;">3,9<svg width="18" height="18" viewBox="0 0 24 24" fill="#a855f7"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="stat-lbl">Note clients</span></div>
 </div>
 
-<!-- BOUTIQUE STOCK -->
+<!-- BOUTIQUE -->
 <section id="stock">
   <div class="section-header reveal">
-    <span class="section-tag tag-orange">Boutique</span>
+    <span class="section-tag">Boutique</span>
     <h2 class="section-title">Modèles disponibles</h2>
-    <p class="section-sub">Choisissez un modèle · On ajoute le nom de votre marque · Livraison PNG + SVG sous 48h.</p>
+    <p class="section-sub">Choisissez un modèle · Personnalisation avec votre nom incluse · Livraison PNG + SVG + PDF sous 48h.</p>
   </div>
 
   <div class="inclus-bar reveal">
-    <span class="inclus-label">Inclus dans chaque logo :</span>
-    <span class="inclus-item">✓ Nom de votre marque</span>
+    <span class="inclus-label">Inclus :</span>
+    <span class="inclus-item">✓ Nom personnalisable</span>
     <span class="inclus-item">✓ 2–3 couleurs au choix</span>
-    <span class="inclus-item">✓ PNG haute résolution</span>
-    <span class="inclus-item">✓ SVG vectoriel</span>
+    <span class="inclus-item">✓ PNG · SVG · PDF</span>
     <span class="inclus-item">✓ Droits commerciaux</span>
+    <span class="inclus-item">✓ Livraison 48h</span>
+  </div>
+
+  <div class="pack-bar reveal">
+    <div class="pack-bar-title">Fichiers inclus dans chaque commande</div>
+    <div class="pack-formats">
+      <div class="pack-format"><span class="pf-badge pf-png">PNG</span><span class="pf-desc">Réseaux sociaux & web</span></div>
+      <div class="pack-format"><span class="pf-badge pf-svg">SVG</span><span class="pf-desc">Qualité illimitée</span></div>
+      <div class="pack-format"><span class="pf-badge pf-pdf">PDF</span><span class="pf-desc">Usage professionnel</span></div>
+    </div>
+    <div class="pack-note">✓ Logo utilisable partout — web, impression, vêtements</div>
   </div>
 
   <div class="filter-row">
@@ -333,88 +363,79 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.8r
     <button class="filter-chip" onclick="filterLogos(this,'sante')">Santé</button>
   </div>
 
-  <div id="logoGrid"><div class="loading-grid"><div class="spinner"></div><span>Chargement…</span></div></div>
+  <div id="logoGrid">
+    <div class="loading-grid"><div class="spinner"></div><span>Chargement…</span></div>
+  </div>
 </section>
 
-<!-- LOGO CUSTOM -->
-<section id="custom">
-  <div class="custom-grid">
-    <div>
-      <div class="section-header reveal">
-        <span class="section-tag tag-teal">Sur-mesure</span>
-        <h2 class="section-title">Logo Custom</h2>
-        <p class="section-sub">Un logo créé de zéro pour votre marque. Livraison PNG + SVG sous 72h.</p>
+<!-- FICHIERS -->
+<section id="fichiers">
+  <div class="fichiers-inner">
+    <div class="fichiers-header reveal">
+      <span class="fichiers-tag">Ce que vous recevez</span>
+      <h2 class="fichiers-title">3 formats professionnels</h2>
+      <p class="fichiers-sub">Tout ce dont vous avez besoin — livré directement sur WhatsApp.</p>
+    </div>
+    <div class="fichiers-grid reveal">
+      <div class="fichier-card">
+        <span class="fichier-badge fb-png">PNG</span>
+        <div class="fichier-name">Réseaux sociaux & web</div>
+        <div class="fichier-desc">Prêt à utiliser immédiatement sur <strong>WhatsApp, Instagram, Facebook</strong> et votre site web. Fond transparent inclus.</div>
       </div>
-
-      <div class="tarifs-grid reveal">
-        <div class="tarif-card" style="border-top:2px solid var(--c1);">
-          <div class="tarif-top" style="color:var(--c1);">Logo Simple</div>
-          <div class="tarif-prix">15 000 <span>FCFA</span></div>
-          <div class="tarif-items">
-            <span class="ok">✓</span> Texte + icône simple<br>
-            <span class="ok">✓</span> 1–2 couleurs<br>
-            <span class="ok">✓</span> PNG + SVG<br>
-            <span class="ok">✓</span> 1 révision
-          </div>
-        </div>
-        <div class="tarif-card" style="border-top:2px solid var(--c3);">
-          <div class="tarif-top" style="color:var(--c3);">Logo Moyen</div>
-          <div class="tarif-prix">20 000 <span>FCFA</span></div>
-          <div class="tarif-items">
-            <span class="ok">✓</span> Illustration + texte<br>
-            <span class="ok">✓</span> 2–3 couleurs<br>
-            <span class="ok">✓</span> PNG + SVG<br>
-            <span class="ok">✓</span> 2 révisions
-          </div>
-        </div>
+      <div class="fichier-card">
+        <span class="fichier-badge fb-svg">SVG</span>
+        <div class="fichier-name">Qualité illimitée</div>
+        <div class="fichier-desc">Parfait pour les <strong>impressions, enseignes et grands formats</strong>. La qualité reste nette quelle que soit la taille d'affichage.</div>
       </div>
-
-      <div class="custom-steps">
-        <div class="step-item reveal"><div class="step-num sn-a">1</div><div class="step-content"><h4>Remplissez le formulaire</h4><p>Décrivez votre marque, vos couleurs et le style souhaité.</p></div></div>
-        <div class="step-item reveal"><div class="step-num sn-b">2</div><div class="step-content"><h4>Brief envoyé sur WhatsApp</h4><p>Votre demande arrive directement sur notre WhatsApp.</p></div></div>
-        <div class="step-item reveal"><div class="step-num sn-c">3</div><div class="step-content"><h4>Livraison sous 72h</h4><p>PNG haute résolution + SVG vectoriel prêts à l'emploi.</p></div></div>
-        <div class="step-item reveal"><div class="step-num sn-d">4</div><div class="step-content"><h4>Révisions incluses</h4><p>1 à 2 révisions selon la formule choisie.</p></div></div>
+      <div class="fichier-card">
+        <span class="fichier-badge fb-pdf">PDF</span>
+        <div class="fichier-name">Usage professionnel</div>
+        <div class="fichier-desc">Standard universel des imprimeurs — <strong>cartes de visite, flyers, affiches, kakémonos</strong>. Accepté partout.</div>
       </div>
     </div>
+    <div class="fichiers-note reveal">✓ Logo utilisable partout — web, impression, vêtements, broderie</div>
+  </div>
+</section>
 
-    <div class="order-form reveal">
-      <div class="form-title">Commander un logo custom</div>
-      <div class="form-group">
-        <label>Formule *</label>
-        <select id="cf-formule">
-          <option value="">Choisir une formule...</option>
-          <option value="simple">Logo Simple — 15 000 FCFA</option>
-          <option value="moyen">Logo Moyen — 20 000 FCFA</option>
-        </select>
+<!-- POURQUOI -->
+<section id="pourquoi">
+  <div class="pourquoi-inner">
+    <div class="pourquoi-header reveal">
+      <span class="section-tag" style="background:rgba(247,201,72,.1);color:var(--c2);border-color:rgba(247,201,72,.2);">Pourquoi nous ?</span>
+      <h2 class="section-title" style="margin:0 auto;">Simple, rapide, professionnel</h2>
+    </div>
+    <div class="pourquoi-grid reveal">
+      <div class="pourquoi-card">
+        <span class="pourquoi-num pn1">PRO</span>
+        <div class="pourquoi-name">Fait pour vous</div>
+        <div class="pourquoi-body">Chaque logo est personnalisé avec votre nom. Vous ne recevrez jamais un fichier générique identique à celui d'un autre client.</div>
       </div>
-      <div class="form-group"><label>Nom de votre marque *</label><input type="text" id="cf-nom" placeholder="Ex: BioKôko, TechPay..."/></div>
-      <div class="form-group">
-        <label>Secteur d'activité *</label>
-        <select id="cf-secteur">
-          <option value="">Choisir...</option>
-          <option>Tech & Numérique</option>
-          <option>Alimentation & Restauration</option>
-          <option>Mode & Beauté</option>
-          <option>Santé & Bien-être</option>
-          <option>Sport & Fitness</option>
-          <option>Commerce & Services</option>
-          <option>Autre</option>
-        </select>
+      <div class="pourquoi-card">
+        <span class="pourquoi-num pn2">WA</span>
+        <div class="pourquoi-name">100% WhatsApp</div>
+        <div class="pourquoi-body">Commande et livraison sur WhatsApp — l'application que vous utilisez déjà chaque jour. Simple et sans complication.</div>
       </div>
-      <div class="form-group">
-        <label>Style souhaité</label>
-        <select id="cf-style">
-          <option value="">Choisir...</option>
-          <option>Minimaliste</option>
-          <option>Moderne & Épuré</option>
-          <option>Géométrique</option>
-          <option>Luxe & Premium</option>
-        </select>
+      <div class="pourquoi-card">
+        <span class="pourquoi-num pn3">CI</span>
+        <div class="pourquoi-name">Prix accessible</div>
+        <div class="pourquoi-body">Un logo professionnel complet — PNG + SVG + PDF — à un prix pensé pour les entrepreneurs d'Afrique francophone.</div>
       </div>
-      <div class="form-group"><label>Couleurs préférées (facultatif)</label><input type="text" id="cf-colors" placeholder="Ex: bleu marine et or..."/></div>
-      <div class="form-group"><label>Description de votre activité *</label><textarea id="cf-desc" placeholder="Décrivez votre activité, votre cible, l'ambiance souhaitée…"></textarea></div>
-      <div class="form-group"><label>Votre numéro WhatsApp</label><input type="tel" id="cf-tel" placeholder="+225 07 00 00 00 00"/></div>
-      <button class="submit-order" onclick="submitCustomOrder()">💬 Envoyer ma commande via WhatsApp →</button>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-inner reveal">
+    <h2 class="cta-title">Prêt à <span>professionnaliser</span> votre image ?</h2>
+    <p class="cta-sub">Choisissez votre modèle ci-dessus ou écrivez-nous directement sur WhatsApp — on vous guide.</p>
+    <p class="cta-note">✓ Logo utilisable partout — web, impression, vêtements</p>
+    <div class="cta-actions">
+      <a href="#stock" class="btn-primary">Voir les modèles</a>
+      <a href="https://wa.me/2250584161702" target="_blank" class="btn-wa">
+        <svg viewBox="0 0 24 24" fill="#fff" style="width:18px;height:18px;flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Nous contacter
+      </a>
     </div>
   </div>
 </section>
@@ -425,12 +446,11 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.8r
   <p class="footer-copy">© 2026 LogoMart CI · Abidjan, Côte d'Ivoire · Tous droits réservés</p>
   <div class="footer-links">
     <a href="#stock">Boutique</a>
-    <a href="#custom">Custom</a>
     <a href="https://wa.me/2250584161702" target="_blank">WhatsApp</a>
   </div>
 </footer>
 
-<!-- WHATSAPP FLOTTANT -->
+<!-- WA FLOAT -->
 <a href="https://wa.me/2250584161702" class="wa-float" target="_blank">
   <svg viewBox="0 0 24 24" fill="#fff" style="width:20px;height:20px;flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   <span>WhatsApp</span>
@@ -443,18 +463,18 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.8r
 <div class="cart-overlay" id="cartOverlay" onclick="closeCartOutside(event)">
   <div class="cart-drawer">
     <div class="cart-head">
-      <h2>🛒 Mon Panier</h2>
+      <h2>Mon Panier</h2>
       <button class="cart-close" onclick="closeCart()">✕</button>
     </div>
     <div class="cart-items" id="cartItems">
-      <div class="cart-empty"><span style="font-size:1.8rem;opacity:.25;">🛒</span><span>Votre panier est vide</span></div>
+      <div class="cart-empty"><span style="font-size:2rem;opacity:.2;">&#128722;</span><span>Votre panier est vide</span></div>
     </div>
     <div class="cart-footer" id="cartFooter" style="display:none;">
       <div class="cart-total">
         <span class="cart-total-lbl">Total</span>
         <span class="cart-total-val" id="cartTotal">0 FCFA</span>
       </div>
-      <button class="cart-wa" onclick="commanderPanier()">💬 Commander via WhatsApp →</button>
+      <button class="cart-wa" onclick="commanderPanier()">Commander via WhatsApp</button>
     </div>
   </div>
 </div>
@@ -464,18 +484,18 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.8r
   <div class="admin-login" id="adminLogin">
     <div class="login-box">
       <div class="login-logo">LogoMart CI</div>
-      <p class="login-sub">Panneau d'administration · Accès restreint</p>
+      <p class="login-sub">Panneau Admin · Accès restreint</p>
       <input type="password" class="login-input" id="adminPwd" placeholder="Mot de passe" onkeydown="if(event.key==='Enter')checkLogin()"/>
-      <button class="login-btn" onclick="checkLogin()">Accéder →</button>
-      <p class="login-error" id="loginError">❌ Mot de passe incorrect</p>
-      <button onclick="closeAdmin()" style="width:100%;background:transparent;border:none;color:var(--muted);font-family:var(--font-body);font-size:.75rem;cursor:pointer;margin-top:1rem;padding:.4rem;">← Retour</button>
+      <button class="login-btn" onclick="checkLogin()">Accéder</button>
+      <p class="login-error" id="loginError">Mot de passe incorrect</p>
+      <button onclick="closeAdmin()" style="width:100%;background:transparent;border:none;color:var(--muted);font-family:var(--body);font-size:.75rem;cursor:pointer;margin-top:1rem;padding:.4rem;">Retour</button>
     </div>
   </div>
   <div class="admin-dashboard" id="adminDashboard">
     <div class="admin-nav">
-      <span class="admin-nav-logo">LogoMart CI <span style="color:var(--muted);font-size:.72rem;font-weight:400;-webkit-text-fill-color:var(--muted);">Admin</span></span>
+      <span class="admin-nav-logo">LogoMart CI <span>Admin</span></span>
       <div style="display:flex;gap:.7rem;align-items:center;">
-        <button onclick="closeAdmin()" style="background:transparent;border:none;color:var(--muted);font-family:var(--font-body);font-size:.75rem;cursor:pointer;">← Boutique</button>
+        <button onclick="closeAdmin()" style="background:transparent;border:none;color:var(--muted);font-family:var(--body);font-size:.75rem;cursor:pointer;">Retour</button>
         <button class="admin-logout" onclick="logout()">Déconnexion</button>
       </div>
     </div>
@@ -485,31 +505,26 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.8r
         <div class="admin-stat"><div class="admin-stat-num" style="color:var(--c2);" id="statCommandes">—</div><div class="admin-stat-lbl">Commandes reçues</div></div>
       </div>
       <div class="admin-tabs">
-        <button class="admin-tab active" onclick="switchTab(this,'tabLogos')">🎨 Mes Logos</button>
-        <button class="admin-tab" onclick="switchTab(this,'tabAjouter')">➕ Ajouter</button>
-        <button class="admin-tab" onclick="switchTab(this,'tabCommandes')">📋 Commandes</button>
+        <button class="admin-tab active" onclick="switchTab(this,'tabLogos')">Mes Logos</button>
+        <button class="admin-tab" onclick="switchTab(this,'tabAjouter')">Ajouter</button>
+        <button class="admin-tab" onclick="switchTab(this,'tabCommandes')">Commandes</button>
       </div>
-      <!-- TAB LOGOS -->
       <div class="admin-tab-content active" id="tabLogos">
         <div id="adminLogosList"><div class="loading-grid"><div class="spinner"></div><span>Chargement…</span></div></div>
       </div>
-      <!-- TAB AJOUTER -->
       <div class="admin-tab-content" id="tabAjouter">
         <div class="admin-form">
-          <div class="admin-form-title">➕ Ajouter un modèle de logo</div>
+          <div class="admin-form-title">Ajouter un modèle</div>
           <div class="help-tip">
-            💡 <strong>Comment ajouter une image ?</strong><br>
-            1. Va sur <strong>imgur.com</strong> → New post → uploade ton PNG avec filigrane<br>
-            2. Appuie longuement sur l'image → <strong>"Ouvrir dans un autre onglet"</strong><br>
-            3. Copie l'URL qui se termine par <strong>.png</strong>
+            <strong>Imgur :</strong> uploade ton PNG → appuie longuement → "Ouvrir dans un autre onglet" → copie l'URL terminant par <strong>.png</strong>
           </div>
           <div style="margin-bottom:.8rem;">
-            <label class="admin-label">URL de l'image (Imgur)</label>
-            <input type="url" class="admin-input" id="a-url" placeholder="https://i.imgur.com/xxxxxxx.png" oninput="previewAdminImg(this.value)" style="margin-bottom:.5rem;"/>
-            <div class="img-preview" id="imgPreview"><img id="imgPreviewThumb" alt="Aperçu"/></div>
+            <label class="admin-label">URL Imgur de l'image</label>
+            <input type="url" class="admin-input" id="a-url" placeholder="https://i.imgur.com/xxxxxxx.png" oninput="previewImg(this.value)" style="margin-bottom:.5rem;"/>
+            <div class="img-preview" id="imgPreview"><img id="imgThumb" alt="Aperçu"/></div>
           </div>
           <div class="admin-row">
-            <div><label class="admin-label">Nom du modèle</label><input type="text" class="admin-input" id="a-name" placeholder="Ex: Brand Name"/></div>
+            <div><label class="admin-label">Nom du modèle</label><input type="text" class="admin-input" id="a-name" placeholder="Brand Name"/></div>
             <div><label class="admin-label">Prix (FCFA)</label><input type="number" class="admin-input" id="a-price" placeholder="10000"/></div>
           </div>
           <div class="admin-row">
@@ -526,12 +541,12 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.8r
               <select class="admin-input" id="a-badge">
                 <option value="">Aucun</option>
                 <option value="new">Nouveau</option>
-                <option value="hot">🔥 Populaire</option>
+                <option value="hot">Populaire</option>
                 <option value="excl">Exclusif</option>
               </select>
             </div>
           </div>
-          <div style="margin-bottom:.8rem;"><label class="admin-label">Description courte</label><input type="text" class="admin-input" id="a-desc" placeholder="Ex: Modèle minimaliste pour startup tech." style="margin-bottom:0;"/></div>
+          <div style="margin-bottom:.8rem;"><label class="admin-label">Description</label><input type="text" class="admin-input" id="a-desc" placeholder="Ex: Modèle minimaliste pour startup." style="margin-bottom:0;"/></div>
           <div class="admin-row" style="margin-bottom:.8rem;">
             <div><label class="admin-label">Couleur du prix</label>
               <select class="admin-input" id="a-color" style="margin-bottom:0;">
@@ -553,10 +568,9 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.8r
               </select>
             </div>
           </div>
-          <button class="admin-save" id="saveBtnAdd" onclick="addLogo()">✅ Ajouter ce modèle à la boutique</button>
+          <button class="admin-save" id="saveBtnAdd" onclick="addLogo()">Ajouter ce modèle</button>
         </div>
       </div>
-      <!-- TAB COMMANDES -->
       <div class="admin-tab-content" id="tabCommandes">
         <div id="adminCommandesList"><div class="loading-grid"><div class="spinner"></div><span>Chargement…</span></div></div>
       </div>
@@ -564,12 +578,12 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.8r
   </div>
 </div>
 
-<!-- MODAL CONFIRMATION SUPPRESSION -->
+<!-- CONFIRM MODAL -->
 <div class="confirm-modal" id="confirmModal">
   <div class="confirm-box">
-    <div class="confirm-icon">🗑️</div>
+    <div class="confirm-icon">&#128465;</div>
     <div class="confirm-title">Supprimer ce modèle ?</div>
-    <p class="confirm-sub">Cette action est irréversible. Le modèle sera retiré définitivement de la boutique.</p>
+    <p class="confirm-sub">Cette action est irréversible.</p>
     <div class="confirm-actions">
       <button class="confirm-cancel" onclick="closeConfirm()">Annuler</button>
       <button class="confirm-delete" onclick="confirmDelete()">Supprimer</button>
@@ -577,229 +591,218 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.8r
   </div>
 </div>
 
-<script>
+<!-- FIREBASE SDK -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc, orderBy, query } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+// ═══════════════════════
+// CONFIG FIREBASE
+// ═══════════════════════
+const firebaseConfig = {
+  apiKey: "AIzaSyCpqQAaGZjIqkvrU-misqUWWVW4Z0DyaX8",
+  authDomain: "logomart-775a2.firebaseapp.com",
+  projectId: "logomart-775a2",
+  storageBucket: "logomart-775a2.firebasestorage.app",
+  messagingSenderId: "154976140",
+  appId: "1:154976140:web:94b42be6caeee8e54fe0a9"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 // ═══════════════════════
 // CONFIG
 // ═══════════════════════
-const SB_URL = 'https://vifbcxjzhzakagfuneue.supabase.co';
-const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZpZmJjeGp6aHpha2FnZnVuZXVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwNDkxMjEsImV4cCI6MjA4OTYyNTEyMX0.g-KKy1XTE_YLTcGxY8r57fsc7G070IMtuYmSXzo6lRM';
 const ADMIN_PWD = 'Lm@2026#Rg!';
 const WA = '2250584161702';
-
-const H = {
-  'apikey':SB_KEY,
-  'Authorization':`Bearer ${SB_KEY}`,
-  'Content-Type':'application/json',
-  'Prefer':'return=representation'
-};
-
-async function sbGet(t,q=''){
-  try{const r=await fetch(`${SB_URL}/rest/v1/${t}${q}`,{headers:H});return r.ok?await r.json():[];}
-  catch(e){return[];}
-}
-async function sbPost(t,d){
-  try{const r=await fetch(`${SB_URL}/rest/v1/${t}`,{method:'POST',headers:H,body:JSON.stringify(d)});return r.ok?await r.json():null;}
-  catch(e){return null;}
-}
-async function sbDel(t,id){
-  try{const r=await fetch(`${SB_URL}/rest/v1/${t}?id=eq.${id}`,{method:'DELETE',headers:H});return r.ok;}
-  catch(e){return false;}
-}
 
 // ═══════════════════════
 // STATE
 // ═══════════════════════
-let allLogos=[];
-let cart=[];
-let currentFilter='all';
-let deleteId=null;
-let isAdmin=false;
+let allLogos = [];
+let cart = [];
+let currentFilter = 'all';
+let deleteId = null;
+let isAdmin = false;
 
 function fp(n){return Number(n).toLocaleString('fr-FR')+' FCFA';}
 function catLbl(c){return{tech:'Tech & App',food:'Food & Restaurant',mode:'Mode',sport:'Sport',sante:'Santé & Bien-être'}[c]||c;}
-function badgeLbl(b){return{new:'Nouveau',hot:'🔥 Populaire',excl:'Exclusif'}[b]||'';}
+function badgeLbl(b){return{new:'Nouveau',hot:'Populaire',excl:'Exclusif'}[b]||'';}
+
+// ═══════════════════════
+// FIREBASE HELPERS
+// ═══════════════════════
+async function fbGetLogos(){
+  try{
+    const q = query(collection(db,'logos'), orderBy('createdAt','desc'));
+    const snap = await getDocs(q);
+    return snap.docs.map(d=>({id:d.id,...d.data()}));
+  }catch(e){
+    // Si pas d'index, on récupère sans tri
+    try{
+      const snap = await getDocs(collection(db,'logos'));
+      return snap.docs.map(d=>({id:d.id,...d.data()}));
+    }catch(e2){return[];}
+  }
+}
+
+async function fbGetCommandes(){
+  try{
+    const snap = await getDocs(collection(db,'commandes'));
+    return snap.docs.map(d=>({id:d.id,...d.data()}));
+  }catch(e){return[];}
+}
+
+async function fbAddLogo(data){
+  try{
+    const ref = await addDoc(collection(db,'logos'),{...data,createdAt:new Date().toISOString()});
+    return {id:ref.id,...data};
+  }catch(e){console.error(e);return null;}
+}
+
+async function fbAddCommande(data){
+  try{
+    await addDoc(collection(db,'commandes'),{...data,createdAt:new Date().toISOString()});
+  }catch(e){console.error(e);}
+}
+
+async function fbDeleteLogo(id){
+  try{
+    await deleteDoc(doc(db,'logos',id));
+    return true;
+  }catch(e){return false;}
+}
 
 // ═══════════════════════
 // BOUTIQUE
 // ═══════════════════════
 async function loadLogos(){
-  document.getElementById('logoGrid').innerHTML=`<div class="loading-grid"><div class="spinner"></div><span>Chargement…</span></div>`;
-  const data=await sbGet('logos','?order=created_at.desc');
-  allLogos=data||[];
+  document.getElementById('logoGrid').innerHTML='<div class="loading-grid"><div class="spinner"></div><span>Chargement…</span></div>';
+  allLogos = await fbGetLogos();
   renderLogos();
 }
 
 function renderLogos(){
-  const grid=document.getElementById('logoGrid');
-  const items=currentFilter==='all'?allLogos:allLogos.filter(l=>l.cat===currentFilter);
+  const grid = document.getElementById('logoGrid');
+  const items = currentFilter==='all' ? allLogos : allLogos.filter(l=>l.cat===currentFilter);
   if(!items.length){
-    grid.innerHTML=`<div class="empty-state"><div style="font-size:2.5rem;opacity:.25;margin-bottom:.8rem;">🎨</div><p>Aucun modèle dans cette catégorie.<br>Revenez bientôt !</p></div>`;
+    grid.innerHTML='<div class="empty-state"><p style="font-size:2rem;opacity:.2;margin-bottom:.8rem;">&#127912;</p><p>Aucun modèle dans cette catégorie.<br>Revenez bientôt !</p></div>';
     return;
   }
-  grid.innerHTML=`<div class="logo-grid">${items.map(l=>{
-    const msg=encodeURIComponent(`Bonjour 👋 Je souhaite commander le modèle *${l.name}* à ${fp(l.price)} sur LogoMart CI.\n\nNom de ma marque : \nCouleurs souhaitées (facultatif) : \n\nMerci !`);
-    return `<div class="logo-card reveal">
-      <div class="logo-preview" style="background:${l.bg_color||'#111'}">
-        ${l.badge?`<div class="logo-badges"><span class="badge badge-${l.badge}">${badgeLbl(l.badge)}</span></div>`:''}
-        ${l.image_url
-          ?`<img src="${l.image_url}" alt="${l.name}" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="logo-placeholder" style="display:none"><span class="ph-icon">🖼️</span><span class="ph-text">Image non disponible</span></div>`
-          :`<div class="logo-placeholder"><span class="ph-icon">🎨</span><span class="ph-text">Aperçu bientôt</span></div>`}
-      </div>
-      <div class="logo-info">
-        <div class="logo-cat">${catLbl(l.cat)}</div>
-        <div class="logo-name">${l.name}</div>
-        <div class="logo-inclus"><span>✓ Nom personnalisé</span> · <span>✓ PNG + SVG</span> · <span>✓ Droits inclus</span></div>
-        <div class="logo-footer">
-          <span class="logo-price" style="color:${l.color||'var(--c1)'}">${fp(l.price)}</span>
-          <button class="add-cart-btn" id="cb-${l.id}" onclick="addToCart(${l.id})">+ Panier</button>
-        </div>
-      </div>
-    </div>`;
-  }).join('')}</div>`;
+  const cards = items.map(function(l){
+    const msg = encodeURIComponent('Bonjour je souhaite commander le modèle *'+l.name+'* à '+fp(l.price)+' sur LogoMart CI.\n\nNom de ma marque : \nCouleurs souhaitées (facultatif) : \n\nMerci !');
+    return '<div class="logo-card reveal">'
+      +'<div class="logo-preview" style="background:'+(l.bg_color||'#111')+'">'
+      +(l.badge?'<div class="logo-badges"><span class="badge badge-'+l.badge+'">'+badgeLbl(l.badge)+'</span></div>':'')
+      +(l.image_url
+        ?'<img src="'+l.image_url+'" alt="'+l.name+'" class="logo-img" onerror="this.style.display=\'none\'"/>'
+        :'<div class="logo-placeholder"><span class="ph-icon">&#127912;</span><span class="ph-text">Aperçu bientôt</span></div>')
+      +'</div>'
+      +'<div class="logo-info">'
+      +'<div class="logo-cat">'+catLbl(l.cat)+'</div>'
+      +'<div class="logo-name">'+l.name+'</div>'
+      +'<div class="logo-inclus"><span>✓ Nom personnalisé</span> · <span>✓ PNG + SVG + PDF</span></div>'
+      +'<div class="logo-footer">'
+      +'<span class="logo-price" style="color:'+(l.color||'var(--c1)')+'">'+fp(l.price)+'</span>'
+      +'<button class="add-cart-btn" id="cb-'+l.id+'" onclick="window.addToCart(\''+l.id+'\')">+ Panier</button>'
+      +'</div></div></div>';
+  });
+  grid.innerHTML='<div class="logo-grid">'+cards.join('')+'</div>';
   initReveal();
 }
 
 function filterLogos(btn,cat){
-  document.querySelectorAll('.filter-chip').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.filter-chip').forEach(function(b){b.classList.remove('active');});
   btn.classList.add('active');
   currentFilter=cat;
   renderLogos();
 }
+window.filterLogos = filterLogos;
 
 // ═══════════════════════
 // PANIER
 // ═══════════════════════
-function addToCart(id){
-  const l=allLogos.find(x=>String(x.id)===String(id));
+window.addToCart = function(id){
+  const l = allLogos.find(function(x){return String(x.id)===String(id);});
   if(!l){showToast('Logo introuvable');return;}
-  if(cart.some(c=>String(c.id)===String(id))){showToast('Déjà dans le panier !');return;}
+  if(cart.some(function(c){return String(c.id)===String(id);})){showToast('Déjà dans le panier !');return;}
   cart.push(l);
   updateCart();
-  const btn=document.getElementById('cb-'+id);
+  const btn = document.getElementById('cb-'+id);
   if(btn){btn.classList.add('added');btn.textContent='✓ Ajouté';}
-  showToast(`"${l.name}" ajouté au panier`);
-}
+  showToast('"'+l.name+'" ajouté au panier');
+};
 
-function removeFromCart(id){
-  cart=cart.filter(c=>String(c.id)!==String(id));
+window.removeFromCart = function(id){
+  cart = cart.filter(function(c){return String(c.id)!==String(id);});
   updateCart();
-  const btn=document.getElementById('cb-'+id);
+  const btn = document.getElementById('cb-'+id);
   if(btn){btn.classList.remove('added');btn.textContent='+ Panier';}
-}
+};
 
 function updateCart(){
-  const n=cart.length;
-  const ce=document.getElementById('cartCount');
-  ce.textContent=n;
-  ce.style.display=n>0?'flex':'none';
-  const items=document.getElementById('cartItems');
-  const footer=document.getElementById('cartFooter');
+  const n = cart.length;
+  const ce = document.getElementById('cartCount');
+  ce.textContent = n;
+  ce.style.display = n>0?'flex':'none';
+  const items = document.getElementById('cartItems');
+  const footer = document.getElementById('cartFooter');
   if(!n){
-    items.innerHTML=`<div class="cart-empty"><span style="font-size:1.8rem;opacity:.25;">🛒</span><span>Votre panier est vide</span></div>`;
+    items.innerHTML='<div class="cart-empty"><span style="font-size:1.8rem;opacity:.2;">&#128722;</span><span>Votre panier est vide</span></div>';
     footer.style.display='none';
     return;
   }
   footer.style.display='block';
-  items.innerHTML=cart.map(l=>`
-    <div class="cart-item">
-      <div class="cart-thumb" style="background:${l.bg_color||'#111'}">
-        ${l.image_url?`<img src="${l.image_url}" alt="${l.name}"/>`:'🎨'}
-      </div>
-      <div class="cart-info">
-        <div class="cart-name">${l.name}</div>
-        <div class="cart-cat">${catLbl(l.cat)}</div>
-      </div>
-      <span class="cart-price">${fp(l.price)}</span>
-      <button class="cart-remove" onclick="removeFromCart('${l.id}')">🗑</button>
-    </div>`).join('');
-  document.getElementById('cartTotal').textContent=fp(cart.reduce((s,i)=>s+Number(i.price),0));
+  items.innerHTML = cart.map(function(l){
+    return '<div class="cart-item">'
+      +'<div class="cart-thumb" style="background:'+(l.bg_color||'#111')+'">'
+      +(l.image_url?'<img src="'+l.image_url+'" alt="'+l.name+'"/>':'&#127912;')
+      +'</div>'
+      +'<div class="cart-info"><div class="cart-name">'+l.name+'</div><div class="cart-cat">'+catLbl(l.cat)+'</div></div>'
+      +'<span class="cart-price">'+fp(l.price)+'</span>'
+      +'<button class="cart-remove" onclick="window.removeFromCart(\''+l.id+'\')">&#128465;</button>'
+      +'</div>';
+  }).join('');
+  const total = cart.reduce(function(s,i){return s+Number(i.price);},0);
+  document.getElementById('cartTotal').textContent = fp(total);
 }
 
-function openCart(){document.getElementById('cartOverlay').classList.add('open');}
-function closeCart(){document.getElementById('cartOverlay').classList.remove('open');}
-function closeCartOutside(e){if(e.target===document.getElementById('cartOverlay'))closeCart();}
+window.openCart = function(){document.getElementById('cartOverlay').classList.add('open');};
+window.closeCart = function(){document.getElementById('cartOverlay').classList.remove('open');};
+window.closeCartOutside = function(e){if(e.target===document.getElementById('cartOverlay'))window.closeCart();};
 
-async function commanderPanier(){
+window.commanderPanier = async function(){
   if(!cart.length){showToast('Votre panier est vide');return;}
-  const total=cart.reduce((s,i)=>s+Number(i.price),0);
-  let msg=`Bonjour 👋 Je souhaite commander ces modèles sur *LogoMart CI* :\n\n`;
-  cart.forEach(l=>{msg+=`• *${l.name}* — ${fp(l.price)}\n`;});
-  msg+=`\n💰 *Total : ${fp(total)}*\n\nNom de ma marque : \nCouleurs souhaitées (facultatif) : \n\nMerci ! 🙏`;
-  for(const l of cart){sbPost('commandes',{logos:l.name,montant:l.price,statut:'en_attente'});}
-  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,'_blank');
+  const total = cart.reduce(function(s,i){return s+Number(i.price);},0);
+  let msg = 'Bonjour je souhaite commander ces modèles sur *LogoMart CI* :\n\n';
+  cart.forEach(function(l){msg+='• *'+l.name+'* — '+fp(l.price)+'\n';});
+  msg+='\nTotal : *'+fp(total)+'*\n\nNom de ma marque : \nCouleurs souhaitées (facultatif) : \n\nMerci !';
+  for(const l of cart){await fbAddCommande({logos:l.name,montant:l.price,statut:'en_attente'});}
+  window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');
   cart=[];
   updateCart();
-  closeCart();
+  window.closeCart();
   showToast('Commande envoyée sur WhatsApp ✅');
-}
-
-// ═══════════════════════
-// CUSTOM ORDER
-// ═══════════════════════
-function submitCustomOrder(){
-  const formule=document.getElementById('cf-formule').value;
-  const nom=document.getElementById('cf-nom').value.trim();
-  const secteur=document.getElementById('cf-secteur').value;
-  const style=document.getElementById('cf-style').value;
-  const colors=document.getElementById('cf-colors').value.trim();
-  const desc=document.getElementById('cf-desc').value.trim();
-  const tel=document.getElementById('cf-tel').value.trim();
-  if(!formule){showToast('Veuillez choisir une formule');return;}
-  if(!nom||!secteur||!desc){showToast('Veuillez remplir les champs obligatoires (*)');return;}
-  const prix=formule==='simple'?'15 000 FCFA':'20 000 FCFA';
-  let msg=`🎨 *Commande Logo Custom — LogoMart CI*\n\n`;
-  msg+=`📋 *Formule :* ${formule==='simple'?'Logo Simple':'Logo Moyen'} — ${prix}\n`;
-  msg+=`📌 *Marque :* ${nom}\n`;
-  msg+=`🏷️ *Secteur :* ${secteur}\n`;
-  msg+=`🖌️ *Style :* ${style||'Non précisé'}\n`;
-  if(colors)msg+=`🎨 *Couleurs :* ${colors}\n`;
-  msg+=`📝 *Brief :* ${desc}\n`;
-  if(tel)msg+=`📞 *Numéro :* ${tel}\n`;
-  msg+=`\nMerci de me contacter pour confirmer. 🙏`;
-  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,'_blank');
-}
-
-// ═══════════════════════
-// UTILS
-// ═══════════════════════
-let toastTimer;
-function showToast(msg){
-  const t=document.getElementById('toast');
-  document.getElementById('toastMsg').textContent=msg;
-  t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>t.classList.remove('show'),3000);
-}
-
-function initReveal(){
-  const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}});},{threshold:.08});
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-}
-
-function previewAdminImg(v){
-  const box=document.getElementById('imgPreview');
-  const th=document.getElementById('imgPreviewThumb');
-  if(v.startsWith('http')){th.src=v;box.style.display='block';th.onerror=()=>box.style.display='none';}
-  else box.style.display='none';
-}
+};
 
 // ═══════════════════════
 // ADMIN
 // ═══════════════════════
-function openAdmin(){
+window.openAdmin = function(){
   document.getElementById('adminOverlay').classList.add('open');
   if(isAdmin){
     document.getElementById('adminLogin').style.display='none';
     document.getElementById('adminDashboard').classList.add('show');
     loadAdminData();
   }
-}
-function closeAdmin(){
+};
+window.closeAdmin = function(){
   document.getElementById('adminOverlay').classList.remove('open');
   document.getElementById('adminPwd').value='';
   document.getElementById('loginError').style.display='none';
-}
-function checkLogin(){
+};
+window.checkLogin = function(){
   if(document.getElementById('adminPwd').value===ADMIN_PWD){
     isAdmin=true;
     document.getElementById('adminLogin').style.display='none';
@@ -808,62 +811,60 @@ function checkLogin(){
   }else{
     document.getElementById('loginError').style.display='block';
   }
-}
-function logout(){
+};
+window.logout = function(){
   isAdmin=false;
   document.getElementById('adminDashboard').classList.remove('show');
   document.getElementById('adminLogin').style.display='flex';
-}
-function switchTab(btn,id){
-  document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.admin-tab-content').forEach(t=>t.classList.remove('active'));
+};
+window.switchTab = function(btn,id){
+  document.querySelectorAll('.admin-tab').forEach(function(t){t.classList.remove('active');});
+  document.querySelectorAll('.admin-tab-content').forEach(function(t){t.classList.remove('active');});
   btn.classList.add('active');
   document.getElementById(id).classList.add('active');
   if(id==='tabCommandes')loadCommandes();
-}
+};
 
 async function loadAdminData(){
-  const logos=await sbGet('logos','?order=created_at.desc');
-  allLogos=logos||[];
-  document.getElementById('statLogos').textContent=allLogos.length;
-  const cmd=await sbGet('commandes','?order=created_at.desc');
-  document.getElementById('statCommandes').textContent=(cmd||[]).length;
-  const list=document.getElementById('adminLogosList');
-  if(!allLogos.length){
-    list.innerHTML=`<div class="empty-state"><div style="font-size:2rem;opacity:.25;margin-bottom:.6rem;">🎨</div><p>Aucun modèle ajouté.<br>Utilisez l'onglet "Ajouter".</p></div>`;
+  const logos = await fbGetLogos();
+  allLogos = logos;
+  document.getElementById('statLogos').textContent = logos.length;
+  const cmd = await fbGetCommandes();
+  document.getElementById('statCommandes').textContent = cmd.length;
+  const list = document.getElementById('adminLogosList');
+  if(!logos.length){
+    list.innerHTML='<div class="empty-state"><p style="opacity:.2;margin-bottom:.6rem;">&#127912;</p><p>Aucun modèle ajouté.</p></div>';
     return;
   }
-  list.innerHTML=`<div class="admin-logos-list">${allLogos.map(l=>`
-    <div class="admin-logo-item">
-      ${l.image_url?`<img src="${l.image_url}" class="al-thumb" alt="${l.name}" onerror="this.style.display='none'"/>`:`<div class="al-thumb-ph">🎨</div>`}
-      <div class="al-info">
-        <div class="al-name">${l.name}${l.badge?`<span class="admin-badge ab-${l.badge}">${badgeLbl(l.badge)}</span>`:''}</div>
-        <div class="al-meta">${catLbl(l.cat)} · ${l.description||'—'}</div>
-      </div>
-      <span class="al-price">${fp(l.price)}</span>
-      <button class="al-del" onclick="askDelete(${l.id})">🗑</button>
-    </div>`).join('')}</div>`;
+  list.innerHTML='<div class="admin-logos-list">'+logos.map(function(l){
+    return '<div class="admin-logo-item">'
+      +(l.image_url?'<img src="'+l.image_url+'" class="al-thumb" alt="'+l.name+'" onerror="this.style.display=\'none\'"/>':'<div class="al-thumb-ph">&#127912;</div>')
+      +'<div class="al-info"><div class="al-name">'+l.name+(l.badge?'<span class="admin-badge ab-'+l.badge+'">'+badgeLbl(l.badge)+'</span>':'')+'</div>'
+      +'<div class="al-meta">'+catLbl(l.cat)+' · '+(l.description||'—')+'</div></div>'
+      +'<span class="al-price">'+fp(l.price)+'</span>'
+      +'<button class="al-del" onclick="window.askDelete(\''+l.id+'\')">&#128465;</button>'
+      +'</div>';
+  }).join('')+'</div>';
 }
 
 async function loadCommandes(){
-  const list=document.getElementById('adminCommandesList');
-  list.innerHTML=`<div class="loading-grid"><div class="spinner"></div><span>Chargement…</span></div>`;
-  const cmd=await sbGet('commandes','?order=created_at.desc');
-  if(!cmd||!cmd.length){
-    list.innerHTML=`<div class="empty-state"><div style="font-size:2rem;opacity:.25;margin-bottom:.6rem;">📋</div><p>Aucune commande pour l'instant.</p></div>`;
+  const list = document.getElementById('adminCommandesList');
+  list.innerHTML='<div class="loading-grid"><div class="spinner"></div><span>Chargement…</span></div>';
+  const cmd = await fbGetCommandes();
+  if(!cmd.length){
+    list.innerHTML='<div class="empty-state"><p>Aucune commande pour l\'instant.</p></div>';
     return;
   }
-  list.innerHTML=`<div class="orders-list">${cmd.map(c=>`
-    <div class="order-item">
-      <div class="order-head">
-        <span class="order-name">🛍️ ${c.logos||'Commande'}</span>
-        <span class="order-amount">${c.montant?fp(c.montant):''}</span>
-      </div>
-      <div class="order-meta">${c.created_at?new Date(c.created_at).toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}):''} · ${c.statut||'en attente'}</div>
-    </div>`).join('')}</div>`;
+  list.innerHTML='<div class="orders-list">'+cmd.map(function(c){
+    return '<div class="order-item">'
+      +'<div class="order-head"><span class="order-name">'+(c.logos||'Commande')+'</span>'
+      +'<span class="order-amount">'+(c.montant?fp(c.montant):'')+'</span></div>'
+      +'<div class="order-meta">'+(c.createdAt?new Date(c.createdAt).toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric'}):'')+' · '+(c.statut||'en attente')+'</div>'
+      +'</div>';
+  }).join('')+'</div>';
 }
 
-async function addLogo(){
+window.addLogo = async function(){
   const url=document.getElementById('a-url').value.trim();
   const name=document.getElementById('a-name').value.trim();
   const price=document.getElementById('a-price').value.trim();
@@ -875,37 +876,65 @@ async function addLogo(){
   if(!name||!price){showToast('Nom et prix obligatoires');return;}
   const btn=document.getElementById('saveBtnAdd');
   btn.disabled=true;btn.textContent='Enregistrement…';
-  const r=await sbPost('logos',{name,price:Number(price),cat,badge:badge||null,description:desc,color,bg_color:bg,image_url:url||null});
-  btn.disabled=false;btn.textContent='✅ Ajouter ce modèle à la boutique';
+  const r=await fbAddLogo({name,price:Number(price),cat,badge:badge||null,description:desc,color,bg_color:bg,image_url:url||null});
+  btn.disabled=false;btn.textContent='Ajouter ce modèle';
   if(r){
-    ['a-url','a-name','a-price','a-desc'].forEach(id=>document.getElementById(id).value='');
+    ['a-url','a-name','a-price','a-desc'].forEach(function(id){document.getElementById(id).value='';});
     document.getElementById('a-badge').value='';
     document.getElementById('imgPreview').style.display='none';
     await loadLogos();
     await loadAdminData();
-    showToast(`"${name}" ajouté ✅`);
-    document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
-    document.querySelectorAll('.admin-tab-content').forEach(t=>t.classList.remove('active'));
+    showToast('"'+name+'" ajouté ✅');
+    document.querySelectorAll('.admin-tab').forEach(function(t){t.classList.remove('active');});
+    document.querySelectorAll('.admin-tab-content').forEach(function(t){t.classList.remove('active');});
     document.querySelector('.admin-tab').classList.add('active');
     document.getElementById('tabLogos').classList.add('active');
   }else{
     showToast('Erreur — vérifie ta connexion');
   }
-}
+};
 
-function askDelete(id){deleteId=id;document.getElementById('confirmModal').classList.add('open');}
-function closeConfirm(){deleteId=null;document.getElementById('confirmModal').classList.remove('open');}
-async function confirmDelete(){
+window.askDelete = function(id){deleteId=id;document.getElementById('confirmModal').classList.add('open');};
+window.closeConfirm = function(){deleteId=null;document.getElementById('confirmModal').classList.remove('open');};
+window.confirmDelete = async function(){
   if(!deleteId)return;
-  const ok=await sbDel('logos',deleteId);
+  const ok=await fbDeleteLogo(deleteId);
   if(ok){await loadLogos();await loadAdminData();showToast('Modèle supprimé ✅');}
   else showToast('Erreur lors de la suppression');
-  closeConfirm();
+  window.closeConfirm();
+};
+
+// ═══════════════════════
+// UTILS
+// ═══════════════════════
+let toastTimer;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(function(){t.classList.remove('show');},3000);
 }
 
-function checkRoute(){if(window.location.hash==='#admin-lm2026')openAdmin();}
+window.previewImg = function(v){
+  const box=document.getElementById('imgPreview');
+  const th=document.getElementById('imgThumb');
+  if(v.startsWith('http')){th.src=v;box.style.display='block';th.onerror=function(){box.style.display='none';};}
+  else box.style.display='none';
+};
+
+function initReveal(){
+  const obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+  },{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+}
+
+function checkRoute(){if(window.location.hash==='#admin-lm2026')window.openAdmin();}
 window.addEventListener('hashchange',checkRoute);
 window.addEventListener('load',checkRoute);
+
+// INIT
 loadLogos();
 initReveal();
 </script>
