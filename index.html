@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>LogoMart CI — Logos Professionnels</title>
+<title>RegMark — Logos Professionnels</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -18,8 +18,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--body);font-weight:
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.2rem;background:rgba(13,13,15,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
-.nav-logo{font-family:var(--head);font-size:1.1rem;font-weight:800;text-decoration:none;background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;flex-shrink:0;}
-.cart-btn{position:relative;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:.45rem .9rem;font-family:var(--body);font-size:.78rem;cursor:pointer;display:flex;align-items:center;gap:.4rem;border-radius:8px;transition:border-color .2s;flex-shrink:0;}
+.nav-logo{font-family:var(--head);font-size:1.1rem;font-weight:800;text-decoration:none;flex-shrink:0;background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.cart-btn{position:relative;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:.5rem 1.1rem;font-family:var(--body);font-size:.8rem;cursor:pointer;display:flex;align-items:center;gap:.4rem;border-radius:8px;transition:border-color .2s;}
 .cart-btn:hover{border-color:var(--c1);}
 .cart-count{position:absolute;top:-.4rem;right:-.4rem;background:var(--c1);color:#fff;width:18px;height:18px;border-radius:50%;font-size:.6rem;font-weight:700;display:none;align-items:center;justify-content:center;}
 
@@ -35,7 +35,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 .hero-badge{display:inline-flex;align-items:center;gap:.45rem;background:var(--surface2);border:1px solid var(--border);padding:.38rem 1rem;border-radius:100px;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;}
 .hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--c3);animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
-.hero-title{font-family:var(--head);font-size:clamp(1.8rem,5.5vw,4.5rem);font-weight:800;line-height:1;letter-spacing:-.02em;margin-bottom:1.5rem;}
+.hero-title{font-family:var(--head);font-size:clamp(1.8rem,5.5vw,4.5rem);font-weight:800;line-height:.95;letter-spacing:-.03em;margin-bottom:1.5rem;}
 .g1{background:linear-gradient(135deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .g2{background:linear-gradient(135deg,var(--c3),var(--c5));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .hero-sub{color:var(--muted);font-size:1rem;line-height:1.85;max-width:500px;margin:0 auto 2.5rem;}
@@ -55,7 +55,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 #stock{padding:5rem 2rem;position:relative;z-index:1;}
 .section-header{margin-bottom:2.5rem;}
 .section-tag{display:inline-block;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;padding:.25rem .8rem;border-radius:100px;margin-bottom:.8rem;font-weight:600;background:rgba(255,107,53,.1);color:var(--c1);border:1px solid rgba(255,107,53,.2);}
-.section-title{font-family:var(--head);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem;}
+.section-title{font-family:var(--head);font-size:clamp(1.3rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem;}
 .section-sub{color:var(--muted);font-size:.85rem;line-height:1.75;max-width:520px;}
 
 /* INCLUS BARRE */
@@ -245,7 +245,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">LogoMart CI</a>
+  <a class="nav-logo" href="#">RegMark</a>
   <button class="cart-btn" onclick="openCart()">
     🛒 Panier
     <span class="cart-count" id="cartCount">0</span>
@@ -386,7 +386,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
 </section>
 
 <!-- POURQUOI LOGOMART CI -->
-<section style="padding:5rem 1.2rem;position:relative;z-index:1;">
+<section style="padding:5rem 2rem;position:relative;z-index:1;">
   <div style="max-width:760px;margin:0 auto;">
     <div class="section-header reveal" style="text-align:center;margin-bottom:3rem;">
       <span class="section-tag">Pourquoi nous ?</span>
@@ -413,9 +413,9 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
 </section>
 
 <!-- CTA FINAL -->
-<section style="background:var(--surface);border-top:1px solid var(--border);padding:5rem 1.2rem;position:relative;z-index:1;text-align:center;">
+<section style="background:var(--surface);border-top:1px solid var(--border);padding:5rem 2rem;position:relative;z-index:1;text-align:center;">
   <div style="max-width:560px;margin:0 auto;" class="reveal">
-    <h2 style="font-family:var(--head);font-size:clamp(1.4rem,4vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.8rem;">Prêt à <span style="background:linear-gradient(135deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">professionnaliser</span> votre image ?</h2>
+    <h2 style="font-family:var(--head);font-size:clamp(1.3rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.8rem;">Prêt à <span style="background:linear-gradient(135deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">professionnaliser</span><br>votre image ?</h2>
     <p style="color:var(--muted);font-size:.88rem;line-height:1.8;margin-bottom:2rem;">Choisissez votre modèle · On personnalise avec votre nom · On livre <strong style="color:var(--text);">PNG + SVG + PDF</strong> sous 48h.<br><span style="color:var(--c3);font-size:.82rem;">✓ Logo utilisable partout — web, impression, vêtements</span></p>
     <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;">
       <a href="#stock" class="btn-primary">Voir les modèles →</a>
@@ -429,8 +429,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">LogoMart CI</div>
-  <p class="footer-copy">© 2026 LogoMart CI · Abidjan, Côte d'Ivoire · Tous droits réservés</p>
+  <div class="footer-logo">RegMark</div>
+  <p class="footer-copy">© 2026 RegMark · Abidjan, Côte d'Ivoire · Tous droits réservés</p>
   <div class="footer-links">
     <a href="#stock">Boutique</a>
     <a href="https://wa.me/2250584161702" target="_blank">WhatsApp</a>
@@ -470,7 +470,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
 <div class="admin-overlay" id="adminOverlay">
   <div class="admin-login" id="adminLogin">
     <div class="login-box">
-      <div class="login-logo">LogoMart CI</div>
+      <div class="login-logo">RegMark</div>
       <p class="login-sub">Panneau Admin · Accès restreint</p>
       <input type="password" class="login-input" id="adminPwd" placeholder="Mot de passe" onkeydown="if(event.key==='Enter')checkLogin()"/>
       <button class="login-btn" onclick="checkLogin()">Accéder →</button>
@@ -481,7 +481,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
 
   <div class="admin-dashboard" id="adminDashboard">
     <div class="admin-nav">
-      <span class="admin-nav-logo">LogoMart CI <span>Admin</span></span>
+      <span class="admin-nav-logo">RegMark <span>Admin</span></span>
       <div style="display:flex;gap:.7rem;align-items:center;">
         <button onclick="closeAdmin()" style="background:transparent;border:none;color:var(--muted);font-family:var(--body);font-size:.75rem;cursor:pointer;">← Boutique</button>
         <button class="admin-logout" onclick="logout()">Déconnexion</button>
@@ -512,7 +512,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
           </div>
           <div style="margin-bottom:.8rem;">
             <label class="admin-label">URL Imgur de l'image</label>
-            <input type="url" class="admin-input" id="a-url" placeholder="https://i.imgur.com/xxxxxxx.png" oninput="previewAdminImg(this.value)" style="margin-bottom:.5rem;"/>
+            <input type="url" class="admin-input" id="a-url" placeholder="https://i.ibb.co/xxxxxxx/logo.png" oninput="window.previewImg(this.value)" style="margin-bottom:.5rem;"/>
             <div class="img-preview" id="imgPreview"><img id="imgPreviewThumb" alt="Aperçu"/></div>
           </div>
           <div class="admin-row">
@@ -585,300 +585,239 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
   </div>
 </div>
 
-<script>
-// ═══════════════════════
-// CONFIG
-// ═══════════════════════
-const SB_URL='https://vifbcxjzhzakagfuneue.supabase.co';
-const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZpZmJjeGp6aHpha2FnZnVuZXVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwNDkxMjEsImV4cCI6MjA4OTYyNTEyMX0.g-KKy1XTE_YLTcGxY8r57fsc7G070IMtuYmSXzo6lRM';
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc, orderBy, query } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCpqQAaGZjIqkvrU-misqUWWVW4Z0DyaX8",
+  authDomain: "logomart-775a2.firebaseapp.com",
+  projectId: "logomart-775a2",
+  storageBucket: "logomart-775a2.firebasestorage.app",
+  messagingSenderId: "154976140",
+  appId: "1:154976140:web:94b42be6caeee8e54fe0a9"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 const ADMIN_PWD='Lm@2026#Rg!';
 const WA='2250584161702';
-const H={'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=representation'};
 
-async function sbGet(t,q=''){
-  try{const r=await fetch(SB_URL+'/rest/v1/'+t+q,{headers:H});return r.ok?await r.json():[];}
-  catch(e){return[];}
+async function fbGetLogos(){
+  try{const q=query(collection(db,'logos'),orderBy('createdAt','desc'));const s=await getDocs(q);return s.docs.map(d=>({id:d.id,...d.data()}));}
+  catch(e){try{const s=await getDocs(collection(db,'logos'));return s.docs.map(d=>({id:d.id,...d.data()}));}catch(e2){return[];}}
 }
-async function sbPost(t,d){
-  try{const r=await fetch(SB_URL+'/rest/v1/'+t,{method:'POST',headers:H,body:JSON.stringify(d)});return r.ok?await r.json():null;}
-  catch(e){return null;}
+async function fbGetCommandes(){
+  try{const s=await getDocs(collection(db,'commandes'));return s.docs.map(d=>({id:d.id,...d.data()}));}catch(e){return[];}
 }
-async function sbDel(t,id){
-  try{const r=await fetch(SB_URL+'/rest/v1/'+t+'?id=eq.'+id,{method:'DELETE',headers:H});return r.ok;}
-  catch(e){return false;}
+async function fbAddLogo(data){
+  try{const r=await addDoc(collection(db,'logos'),{...data,createdAt:new Date().toISOString()});return{id:r.id,...data};}catch(e){return null;}
+}
+async function fbAddCommande(data){
+  try{await addDoc(collection(db,'commandes'),{...data,createdAt:new Date().toISOString()});}catch(e){}
+}
+async function fbDeleteLogo(id){
+  try{await deleteDoc(doc(db,'logos',id));return true;}catch(e){return false;}
 }
 
-// ═══════════════════════
-// STATE
-// ═══════════════════════
-let allLogos=[];
-let cart=[];
-let currentFilter='all';
-let deleteId=null;
-let isAdmin=false;
+let allLogos=[], cart=[], currentFilter='all', deleteId=null, isAdmin=false;
 
 function fp(n){return Number(n).toLocaleString('fr-FR')+' FCFA';}
 function catLbl(c){return{tech:'Tech & App',food:'Food & Restaurant',mode:'Mode',sport:'Sport',sante:'Santé & Bien-être'}[c]||c;}
-function badgeLbl(b){return{new:'Nouveau',hot:'🔥 Populaire',excl:'Exclusif'}[b]||'';}
+function badgeLbl(b){return{new:'Nouveau',hot:'Populaire',excl:'Exclusif'}[b]||'';}
 
-// ═══════════════════════
-// BOUTIQUE
-// ═══════════════════════
 async function loadLogos(){
   document.getElementById('logoGrid').innerHTML='<div class="loading-grid"><div class="spinner"></div><span>Chargement…</span></div>';
-  const data=await sbGet('logos','?order=created_at.desc');
-  allLogos=data||[];
+  allLogos=await fbGetLogos();
   renderLogos();
 }
 
 function renderLogos(){
   const grid=document.getElementById('logoGrid');
   const items=currentFilter==='all'?allLogos:allLogos.filter(l=>l.cat===currentFilter);
-  if(!items.length){
-    grid.innerHTML='<div class="empty-state"><div style="font-size:2.5rem;opacity:.2;margin-bottom:.8rem;">🎨</div><p>Aucun modèle dans cette catégorie.<br>Revenez bientôt !</p></div>';
-    return;
-  }
-  const cards=items.map(function(l){
-    const msg=encodeURIComponent('Bonjour 👋 Je souhaite commander le modèle *'+l.name+'* à '+fp(l.price)+' sur LogoMart CI.\n\nNom de ma marque : \nCouleurs souhaitées (facultatif) : \n\nMerci !');
+  if(!items.length){grid.innerHTML='<div class="empty-state"><div style="font-size:2.5rem;opacity:.2;margin-bottom:.8rem;">🎨</div><p>Aucun modèle dans cette catégorie.<br>Revenez bientôt !</p></div>';return;}
+  grid.innerHTML='<div class="logo-grid">'+items.map(function(l){
     return '<div class="logo-card reveal">'
       +'<div class="logo-preview" style="background:'+(l.bg_color||'#111')+'">'
       +(l.badge?'<div class="logo-badges"><span class="badge badge-'+l.badge+'">'+badgeLbl(l.badge)+'</span></div>':'')
-      +(l.image_url
-        ?'<img src="'+l.image_url+'" alt="'+l.name+'" class="logo-img" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"/>'
-         +'<div class="logo-placeholder" style="display:none"><span class="ph-icon">🖼️</span><span class="ph-text">Aperçu bientôt</span></div>'
+      +(l.image_url?'<img src="'+l.image_url+'" alt="'+l.name+'" class="logo-img" onerror="this.style.display=\'none\'"/>'
         :'<div class="logo-placeholder"><span class="ph-icon">🎨</span><span class="ph-text">Aperçu bientôt</span></div>')
       +'</div>'
       +'<div class="logo-info">'
       +'<div class="logo-cat">'+catLbl(l.cat)+'</div>'
       +'<div class="logo-name">'+l.name+'</div>'
-      +'<div class="logo-inclus"><span>✓ Nom personnalisé</span> · <span>✓ PNG + SVG</span> · <span>✓ Droits inclus</span></div>'
+      +'<div class="logo-inclus"><span>✓ Nom personnalisé</span> · <span>✓ PNG + SVG + PDF</span></div>'
       +'<div class="logo-footer">'
       +'<span class="logo-price" style="color:'+(l.color||'var(--c1)')+'">'+fp(l.price)+'</span>'
-      +'<button class="add-cart-btn" id="cb-'+l.id+'" onclick="addToCart('+l.id+')">+ Panier</button>'
+      +'<button class="add-cart-btn" id="cb-'+l.id+'" onclick="window.addToCart(\''+l.id+'\')">+ Panier</button>'
       +'</div></div></div>';
-  });
-  grid.innerHTML='<div class="logo-grid">'+cards.join('')+'</div>';
+  }).join('')+'</div>';
   initReveal();
 }
 
-function filterLogos(btn,cat){
-  document.querySelectorAll('.filter-chip').forEach(function(b){b.classList.remove('active');});
-  btn.classList.add('active');
-  currentFilter=cat;
-  renderLogos();
-}
+window.filterLogos=function(btn,cat){
+  document.querySelectorAll('.filter-chip').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');currentFilter=cat;renderLogos();
+};
 
-// ═══════════════════════
-// PANIER
-// ═══════════════════════
-function addToCart(id){
-  const l=allLogos.find(function(x){return String(x.id)===String(id);});
+window.addToCart=function(id){
+  const l=allLogos.find(x=>String(x.id)===String(id));
   if(!l){showToast('Logo introuvable');return;}
-  if(cart.some(function(c){return String(c.id)===String(id);})){showToast('Déjà dans le panier !');return;}
-  cart.push(l);
-  updateCart();
+  if(cart.some(c=>String(c.id)===String(id))){showToast('Déjà dans le panier !');return;}
+  cart.push(l);updateCart();
   const btn=document.getElementById('cb-'+id);
   if(btn){btn.classList.add('added');btn.textContent='✓ Ajouté';}
   showToast('"'+l.name+'" ajouté au panier');
-}
+};
 
-function removeFromCart(id){
-  cart=cart.filter(function(c){return String(c.id)!==String(id);});
-  updateCart();
+window.removeFromCart=function(id){
+  cart=cart.filter(c=>String(c.id)!==String(id));updateCart();
   const btn=document.getElementById('cb-'+id);
   if(btn){btn.classList.remove('added');btn.textContent='+ Panier';}
-}
+};
 
 function updateCart(){
   const n=cart.length;
   const ce=document.getElementById('cartCount');
-  ce.textContent=n;
-  ce.style.display=n>0?'flex':'none';
+  ce.textContent=n;ce.style.display=n>0?'flex':'none';
   const items=document.getElementById('cartItems');
   const footer=document.getElementById('cartFooter');
-  if(!n){
-    items.innerHTML='<div class="cart-empty"><span style="font-size:2rem;opacity:.2;">🛒</span><span>Votre panier est vide</span></div>';
-    footer.style.display='none';
-    return;
-  }
+  if(!n){items.innerHTML='<div class="cart-empty"><span style="font-size:2rem;opacity:.2;">🛒</span><span>Votre panier est vide</span></div>';footer.style.display='none';return;}
   footer.style.display='block';
   items.innerHTML=cart.map(function(l){
     return '<div class="cart-item">'
       +'<div class="cart-thumb" style="background:'+(l.bg_color||'#111')+'">'
-      +(l.image_url?'<img src="'+l.image_url+'" alt="'+l.name+'"/>':'🎨')
-      +'</div>'
+      +(l.image_url?'<img src="'+l.image_url+'" alt="'+l.name+'"/>':'🎨')+'</div>'
       +'<div class="cart-info"><div class="cart-name">'+l.name+'</div><div class="cart-cat">'+catLbl(l.cat)+'</div></div>'
       +'<span class="cart-price">'+fp(l.price)+'</span>'
-      +'<button class="cart-remove" onclick="removeFromCart(\''+l.id+'\')">🗑</button>'
+      +'<button class="cart-remove" onclick="window.removeFromCart(\''+l.id+'\')">🗑</button>'
       +'</div>';
   }).join('');
-  const total=cart.reduce(function(s,i){return s+Number(i.price);},0);
-  document.getElementById('cartTotal').textContent=fp(total);
+  document.getElementById('cartTotal').textContent=fp(cart.reduce((s,i)=>s+Number(i.price),0));
 }
 
-function openCart(){document.getElementById('cartOverlay').classList.add('open');}
-function closeCart(){document.getElementById('cartOverlay').classList.remove('open');}
-function closeCartOutside(e){if(e.target===document.getElementById('cartOverlay'))closeCart();}
+window.openCart=function(){document.getElementById('cartOverlay').classList.add('open');};
+window.closeCart=function(){document.getElementById('cartOverlay').classList.remove('open');};
+window.closeCartOutside=function(e){if(e.target===document.getElementById('cartOverlay'))window.closeCart();};
 
-async function commanderPanier(){
+window.commanderPanier=async function(){
   if(!cart.length){showToast('Votre panier est vide');return;}
-  const total=cart.reduce(function(s,i){return s+Number(i.price);},0);
-  let msg='Bonjour 👋 Je souhaite commander ces modèles sur *LogoMart CI* :\n\n';
-  cart.forEach(function(l){msg+='• *'+l.name+'* — '+fp(l.price)+'\n';});
-  msg+='\n💰 *Total : '+fp(total)+'*\n\nNom de ma marque : \nCouleurs souhaitées (facultatif) : \n\nMerci ! 🙏';
-  cart.forEach(function(l){sbPost('commandes',{logos:l.name,montant:l.price,statut:'en_attente'});});
+  const total=cart.reduce((s,i)=>s+Number(i.price),0);
+  let msg='Bonjour je souhaite commander sur *RegMark* :\n\n';
+  cart.forEach(l=>{msg+='• *'+l.name+'* — '+fp(l.price)+'\n';});
+  msg+='\nTotal : *'+fp(total)+'*\n\nNom de ma marque : \nCouleurs souhaitées : \n\nMerci !';
+  for(const l of cart){await fbAddCommande({logos:l.name,montant:l.price,statut:'en_attente'});}
   window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');
-  cart=[];
-  updateCart();
-  closeCart();
-  showToast('Commande envoyée sur WhatsApp ✅');
-}
+  cart=[];updateCart();window.closeCart();showToast('Commande envoyée ✅');
+};
 
-// ═══════════════════════
-// UTILS
-// ═══════════════════════
-var toastTimer;
-function showToast(msg){
-  var t=document.getElementById('toast');
-  document.getElementById('toastMsg').textContent=msg;
-  t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(function(){t.classList.remove('show');},3000);
-}
-
-function initReveal(){
-  var obs=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
-  },{threshold:.08});
-  document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
-}
-
-function previewAdminImg(v){
-  var box=document.getElementById('imgPreview');
-  var th=document.getElementById('imgPreviewThumb');
-  if(v.startsWith('http')){th.src=v;box.style.display='block';th.onerror=function(){box.style.display='none';};}
-  else box.style.display='none';
-}
-
-// ═══════════════════════
-// ADMIN
-// ═══════════════════════
-function openAdmin(){
+window.openAdmin=function(){
   document.getElementById('adminOverlay').classList.add('open');
-  if(isAdmin){
-    document.getElementById('adminLogin').style.display='none';
-    document.getElementById('adminDashboard').classList.add('show');
-    loadAdminData();
-  }
-}
-function closeAdmin(){
-  document.getElementById('adminOverlay').classList.remove('open');
-  document.getElementById('adminPwd').value='';
-  document.getElementById('loginError').style.display='none';
-}
-function checkLogin(){
+  if(isAdmin){document.getElementById('adminLogin').style.display='none';document.getElementById('adminDashboard').classList.add('show');loadAdminData();}
+};
+window.closeAdmin=function(){document.getElementById('adminOverlay').classList.remove('open');document.getElementById('adminPwd').value='';document.getElementById('loginError').style.display='none';};
+window.checkLogin=function(){
   if(document.getElementById('adminPwd').value===ADMIN_PWD){
-    isAdmin=true;
-    document.getElementById('adminLogin').style.display='none';
-    document.getElementById('adminDashboard').classList.add('show');
-    loadAdminData();
-  }else{
-    document.getElementById('loginError').style.display='block';
-  }
-}
-function logout(){
-  isAdmin=false;
-  document.getElementById('adminDashboard').classList.remove('show');
-  document.getElementById('adminLogin').style.display='flex';
-}
-function switchTab(btn,id){
-  document.querySelectorAll('.admin-tab').forEach(function(t){t.classList.remove('active');});
-  document.querySelectorAll('.admin-tab-content').forEach(function(t){t.classList.remove('active');});
-  btn.classList.add('active');
-  document.getElementById(id).classList.add('active');
+    isAdmin=true;document.getElementById('adminLogin').style.display='none';document.getElementById('adminDashboard').classList.add('show');loadAdminData();
+  }else{document.getElementById('loginError').style.display='block';}
+};
+window.logout=function(){isAdmin=false;document.getElementById('adminDashboard').classList.remove('show');document.getElementById('adminLogin').style.display='flex';};
+window.switchTab=function(btn,id){
+  document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.admin-tab-content').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');document.getElementById(id).classList.add('active');
   if(id==='tabCommandes')loadCommandes();
-}
+};
 
 async function loadAdminData(){
-  var logos=await sbGet('logos','?order=created_at.desc');
-  allLogos=logos||[];
-  document.getElementById('statLogos').textContent=allLogos.length;
-  var cmd=await sbGet('commandes','?order=created_at.desc');
-  document.getElementById('statCommandes').textContent=(cmd||[]).length;
-  var list=document.getElementById('adminLogosList');
-  if(!allLogos.length){
-    list.innerHTML='<div class="empty-state"><div style="font-size:2rem;opacity:.2;margin-bottom:.6rem;">🎨</div><p>Aucun modèle ajouté.<br>Utilisez l\'onglet "Ajouter".</p></div>';
-    return;
-  }
-  list.innerHTML='<div class="admin-logos-list">'+allLogos.map(function(l){
+  const logos=await fbGetLogos();allLogos=logos;
+  document.getElementById('statLogos').textContent=logos.length;
+  const cmd=await fbGetCommandes();
+  document.getElementById('statCommandes').textContent=cmd.length;
+  const list=document.getElementById('adminLogosList');
+  if(!logos.length){list.innerHTML='<div class="empty-state"><p>Aucun modèle ajouté.</p></div>';return;}
+  list.innerHTML='<div class="admin-logos-list">'+logos.map(function(l){
     return '<div class="admin-logo-item">'
       +(l.image_url?'<img src="'+l.image_url+'" class="al-thumb" alt="'+l.name+'" onerror="this.style.display=\'none\'"/>':'<div class="al-thumb-ph">🎨</div>')
       +'<div class="al-info"><div class="al-name">'+l.name+(l.badge?'<span class="admin-badge ab-'+l.badge+'">'+badgeLbl(l.badge)+'</span>':'')+'</div>'
       +'<div class="al-meta">'+catLbl(l.cat)+' · '+(l.description||'—')+'</div></div>'
       +'<span class="al-price">'+fp(l.price)+'</span>'
-      +'<button class="al-del" onclick="askDelete('+l.id+')">🗑</button>'
+      +'<button class="al-del" onclick="window.askDelete(\''+l.id+'\')">🗑</button>'
       +'</div>';
   }).join('')+'</div>';
 }
 
 async function loadCommandes(){
-  var list=document.getElementById('adminCommandesList');
+  const list=document.getElementById('adminCommandesList');
   list.innerHTML='<div class="loading-grid"><div class="spinner"></div><span>Chargement…</span></div>';
-  var cmd=await sbGet('commandes','?order=created_at.desc');
-  if(!cmd||!cmd.length){
-    list.innerHTML='<div class="empty-state"><div style="font-size:2rem;opacity:.2;margin-bottom:.6rem;">📋</div><p>Aucune commande pour l\'instant.</p></div>';
-    return;
-  }
+  const cmd=await fbGetCommandes();
+  if(!cmd.length){list.innerHTML='<div class="empty-state"><p>Aucune commande pour l\'instant.</p></div>';return;}
   list.innerHTML='<div class="orders-list">'+cmd.map(function(c){
     return '<div class="order-item">'
-      +'<div class="order-head"><span class="order-name">🛍️ '+(c.logos||'Commande')+'</span>'
+      +'<div class="order-head"><span class="order-name">'+(c.logos||'Commande')+'</span>'
       +'<span class="order-amount">'+(c.montant?fp(c.montant):'')+'</span></div>'
-      +'<div class="order-meta">'+(c.created_at?new Date(c.created_at).toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}):'')+' · '+(c.statut||'en attente')+'</div>'
+      +'<div class="order-meta">'+(c.createdAt?new Date(c.createdAt).toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric'}):'')+' · '+(c.statut||'en attente')+'</div>'
       +'</div>';
   }).join('')+'</div>';
 }
 
-async function addLogo(){
-  var url=document.getElementById('a-url').value.trim();
-  var name=document.getElementById('a-name').value.trim();
-  var price=document.getElementById('a-price').value.trim();
-  var cat=document.getElementById('a-cat').value;
-  var badge=document.getElementById('a-badge').value;
-  var desc=document.getElementById('a-desc').value.trim();
-  var color=document.getElementById('a-color').value;
-  var bg=document.getElementById('a-bg').value;
+window.addLogo=async function(){
+  const url=document.getElementById('a-url').value.trim();
+  const name=document.getElementById('a-name').value.trim();
+  const price=document.getElementById('a-price').value.trim();
+  const cat=document.getElementById('a-cat').value;
+  const badge=document.getElementById('a-badge').value;
+  const desc=document.getElementById('a-desc').value.trim();
+  const color=document.getElementById('a-color').value;
+  const bg=document.getElementById('a-bg').value;
   if(!name||!price){showToast('Nom et prix obligatoires');return;}
-  var btn=document.getElementById('saveBtnAdd');
+  const btn=document.getElementById('saveBtnAdd');
   btn.disabled=true;btn.textContent='Enregistrement…';
-  var r=await sbPost('logos',{name:name,price:Number(price),cat:cat,badge:badge||null,description:desc,color:color,bg_color:bg,image_url:url||null});
-  btn.disabled=false;btn.textContent='✅ Ajouter ce modèle à la boutique';
+  const r=await fbAddLogo({name,price:Number(price),cat,badge:badge||null,description:desc,color,bg_color:bg,image_url:url||null});
+  btn.disabled=false;btn.textContent='Ajouter ce modèle à la boutique';
   if(r){
-    ['a-url','a-name','a-price','a-desc'].forEach(function(id){document.getElementById(id).value='';});
+    ['a-url','a-name','a-price','a-desc'].forEach(id=>document.getElementById(id).value='');
     document.getElementById('a-badge').value='';
     document.getElementById('imgPreview').style.display='none';
-    await loadLogos();
-    await loadAdminData();
+    await loadLogos();await loadAdminData();
     showToast('"'+name+'" ajouté ✅');
-    document.querySelectorAll('.admin-tab').forEach(function(t){t.classList.remove('active');});
-    document.querySelectorAll('.admin-tab-content').forEach(function(t){t.classList.remove('active');});
+    document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.admin-tab-content').forEach(t=>t.classList.remove('active'));
     document.querySelector('.admin-tab').classList.add('active');
     document.getElementById('tabLogos').classList.add('active');
-  }else{
-    showToast('Erreur — vérifie ta connexion');
-  }
-}
+  }else showToast('Erreur — vérifie ta connexion');
+};
 
-function askDelete(id){deleteId=id;document.getElementById('confirmModal').classList.add('open');}
-function closeConfirm(){deleteId=null;document.getElementById('confirmModal').classList.remove('open');}
-async function confirmDelete(){
+window.askDelete=function(id){deleteId=id;document.getElementById('confirmModal').classList.add('open');};
+window.closeConfirm=function(){deleteId=null;document.getElementById('confirmModal').classList.remove('open');};
+window.confirmDelete=async function(){
   if(!deleteId)return;
-  var ok=await sbDel('logos',deleteId);
+  const ok=await fbDeleteLogo(deleteId);
   if(ok){await loadLogos();await loadAdminData();showToast('Modèle supprimé ✅');}
   else showToast('Erreur lors de la suppression');
-  closeConfirm();
+  window.closeConfirm();
+};
+
+window.previewImg=function(v){
+  const box=document.getElementById('imgPreview');const th=document.getElementById('imgThumb');
+  if(v.startsWith('http')){th.src=v;box.style.display='block';th.onerror=function(){box.style.display='none';};}
+  else box.style.display='none';
+};
+
+let toastTimer;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  t.classList.add('show');clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),3000);
 }
 
-function checkRoute(){if(window.location.hash==='#admin-lm2026')openAdmin();}
+function initReveal(){
+  const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}});},{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+}
+
+function checkRoute(){if(window.location.hash==='#admin-lm2026')window.openAdmin();}
 window.addEventListener('hashchange',checkRoute);
 window.addEventListener('load',checkRoute);
 loadLogos();
