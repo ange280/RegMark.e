@@ -90,6 +90,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 .logo-inclus span{color:var(--c3);}
 .logo-footer{display:flex;align-items:center;justify-content:space-between;}
 .logo-price{font-family:var(--head);font-size:1.2rem;font-weight:800;}
+.logo-price-old{font-family:var(--head);font-size:.78rem;font-weight:600;color:var(--muted);text-decoration:line-through;margin-right:.35rem;opacity:.7;}
+.logo-price-wrap{display:flex;align-items:baseline;gap:.2rem;flex-wrap:wrap;}
 .add-cart-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:.45rem .9rem;border-radius:7px;font-family:var(--body);font-size:.72rem;font-weight:500;cursor:pointer;transition:all .2s;}
 .add-cart-btn:hover{background:var(--c1);border-color:var(--c1);color:#111;}
 .add-cart-btn.added{background:var(--c3);border-color:var(--c3);color:#0d1a1a;}
@@ -519,6 +521,11 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
             <div><label class="admin-label">Nom du modèle</label><input type="text" class="admin-input" id="a-name" placeholder="Brand Name"/></div>
             <div><label class="admin-label">Prix (FCFA)</label><input type="number" class="admin-input" id="a-price" placeholder="10000"/></div>
           </div>
+          <div style="margin-bottom:.8rem;">
+            <label class="admin-label">Prix barré — <span style="color:var(--c1);font-weight:600;">optionnel</span> · stratégie marketing</label>
+            <input type="number" class="admin-input" id="a-oldprice" placeholder="Ex: 15000 — affiché barré sur la carte" style="margin-bottom:0;"/>
+            <div style="font-size:.68rem;color:var(--muted);margin-top:.3rem;line-height:1.6;">💡 Laisse vide si pas de promo. Exemple : prix barré <strong style="color:var(--muted);">15 000</strong> → prix actuel <strong style="color:var(--c1);">10 000 FCFA</strong></div>
+          </div>
           <div class="admin-row">
             <div><label class="admin-label">Catégorie</label>
               <select class="admin-input" id="a-cat">
@@ -648,7 +655,10 @@ function renderLogos(){
       +'<div class="logo-name">'+l.name+'</div>'
       +'<div class="logo-inclus"><span>✓ Nom personnalisé</span> · <span>✓ PNG + SVG + PDF</span></div>'
       +'<div class="logo-footer">'
+      +'<div class="logo-price-wrap">'
+      +(l.old_price?'<span class="logo-price-old">'+fp(l.old_price)+'</span>':'')
       +'<span class="logo-price" style="color:'+(l.color||'var(--c1)')+'">'+fp(l.price)+'</span>'
+      +'</div>'
       +'<button class="add-cart-btn" id="cb-'+l.id+'" onclick="window.addToCart(\''+l.id+'\')">+ Panier</button>'
       +'</div></div></div>';
   }).join('')+'</div>';
@@ -765,6 +775,7 @@ window.addLogo=async function(){
   const url=document.getElementById('a-url').value.trim();
   const name=document.getElementById('a-name').value.trim();
   const price=document.getElementById('a-price').value.trim();
+  const oldprice=document.getElementById('a-oldprice').value.trim();
   const cat=document.getElementById('a-cat').value;
   const badge=document.getElementById('a-badge').value;
   const desc=document.getElementById('a-desc').value.trim();
@@ -773,10 +784,10 @@ window.addLogo=async function(){
   if(!name||!price){showToast('Nom et prix obligatoires');return;}
   const btn=document.getElementById('saveBtnAdd');
   btn.disabled=true;btn.textContent='Enregistrement…';
-  const r=await fbAddLogo({name,price:Number(price),cat,badge:badge||null,description:desc,color,bg_color:bg,image_url:url||null});
+  const r=await fbAddLogo({name,price:Number(price),old_price:oldprice?Number(oldprice):null,cat,badge:badge||null,description:desc,color,bg_color:bg,image_url:url||null});
   btn.disabled=false;btn.textContent='Ajouter ce modèle à la boutique';
   if(r){
-    ['a-url','a-name','a-price','a-desc'].forEach(id=>document.getElementById(id).value='');
+    ['a-url','a-name','a-price','a-oldprice','a-desc'].forEach(id=>document.getElementById(id).value='');
     document.getElementById('a-badge').value='';
     document.getElementById('imgPreview').style.display='none';
     await loadLogos();await loadAdminData();
